@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
+import { homeTween } from '../lib/homeMotion'
 import { routes } from '../lib/routes'
 
 export function Hero() {
@@ -16,6 +17,7 @@ export function Hero() {
             className="eyebrow"
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={homeTween(0.04, 0.6)}
           >
             {t.hero.eyebrow}
           </motion.p>
@@ -27,7 +29,7 @@ export function Hero() {
                 className={`hero__line${i === 1 ? ' is-accent' : ''}`}
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.08 + i * 0.09 }}
+                transition={homeTween(0.12 + i * 0.08, 0.7)}
               >
                 {line}
               </motion.span>
@@ -36,18 +38,18 @@ export function Hero() {
 
           <motion.p
             className="hero__body"
-            initial={reduce ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.35 }}
+            initial={reduce ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={homeTween(0.4, 0.6)}
           >
             {t.hero.body}
           </motion.p>
 
           <motion.div
             className="hero__actions"
-            initial={reduce ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45 }}
+            initial={reduce ? false : { opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={homeTween(0.5, 0.55)}
           >
             <Link to={routes.contact} className="btn-ryse solid !text-ink">
               {t.hero.primary}
@@ -62,7 +64,7 @@ export function Hero() {
           className="hero__media"
           initial={reduce ? false : { opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.15 }}
+          transition={homeTween(0.18, 0.8)}
         >
           <div className="hero__frame">
             <img
@@ -72,7 +74,12 @@ export function Hero() {
             />
           </div>
 
-          <div className="hero__card">
+          <motion.div
+            className="hero__card"
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={homeTween(0.48, 0.6)}
+          >
             <p className="font-label text-[10px] font-semibold tracking-[2px] text-bronze uppercase">
               {t.home.practiceLabel}
             </p>
@@ -84,7 +91,7 @@ export function Hero() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -1,23 +1,13 @@
 import { Link } from 'react-router-dom'
 import {
-  IconEnergy,
-  IconExtractive,
-  IconFinance,
-  IconPolicy,
-  IconSecurity,
-} from '../components/BrandIcons'
-import { Reveal } from '../components/Reveal'
+  HomeImage,
+  HomeItem,
+  HomeReveal,
+  HomeStagger,
+} from '../components/home/HomeReveal'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
 import { Hero } from '../sections/Hero'
-
-const pillarIcons = [
-  IconPolicy,
-  IconExtractive,
-  IconEnergy,
-  IconSecurity,
-  IconFinance,
-] as const
 
 export function Home() {
   const { t } = useLanguage()
@@ -29,152 +19,191 @@ export function Home() {
     <>
       <Hero />
 
-      {/* Approach — Auren-style three column */}
+      {/* 1 — Approach */}
       <section className="border-t border-rule bg-ivory">
         <div className="approach-listen">
           <div className="wrap approach-listen__grid">
-            <Reveal className="approach-listen__intro">
-              <p className="eyebrow">{h.listeningLabel}</p>
-              <h2 className="approach-listen__title">{h.listeningTitle}</h2>
-              <p className="approach-listen__body">{h.listeningBody}</p>
-              <span className="approach-listen__rule" aria-hidden />
-              <Link to={routes.approach} className="approach-listen__cta">
-                {h.listeningCta}
-              </Link>
-            </Reveal>
-
-            <Reveal delay={0.06} className="approach-listen__media">
-              <img
-                src="/media/approach-listen.jpg"
-                alt=""
-                className="approach-listen__img"
+            <HomeStagger className="approach-listen__intro" stagger={0.08} delay={0.02}>
+              <HomeItem as="p" className="eyebrow" tone="soft">
+                {h.listeningLabel}
+              </HomeItem>
+              <HomeItem as="h2" className="approach-listen__title">
+                {h.listeningTitle}
+              </HomeItem>
+              <HomeItem as="p" className="approach-listen__body">
+                {h.listeningBody}
+              </HomeItem>
+              <HomeItem
+                as="span"
+                tone="rule"
+                className="approach-listen__rule"
+                aria-hidden
               />
-            </Reveal>
+              <HomeItem>
+                <Link to={routes.approach} className="approach-listen__cta">
+                  {h.listeningCta}
+                </Link>
+              </HomeItem>
+            </HomeStagger>
 
-            <Reveal delay={0.1}>
-              <ol className="approach-listen__steps">
-                {h.listeningSteps.map((step) => (
-                  <li key={step.num} className="approach-listen__step">
-                    <span className="approach-listen__num">{step.num}</span>
-                    <div>
-                      <h3 className="approach-listen__step-title">
-                        {step.title}
-                      </h3>
-                      <p className="approach-listen__step-body">{step.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </Reveal>
+            <div className="approach-listen__media">
+              <HomeImage
+                src="/media/approach-listen.jpg"
+                className="approach-listen__img-wrap"
+              />
+            </div>
+
+            <HomeStagger
+              as="ol"
+              className="approach-listen__steps"
+              stagger={0.1}
+              delay={0.06}
+            >
+              {h.listeningSteps.map((step) => (
+                <HomeItem key={step.num} as="li" className="approach-listen__step">
+                  <span className="approach-listen__num">{step.num}</span>
+                  <div>
+                    <h3 className="approach-listen__step-title">{step.title}</h3>
+                    <p className="approach-listen__step-body">{step.body}</p>
+                  </div>
+                </HomeItem>
+              ))}
+            </HomeStagger>
           </div>
         </div>
       </section>
 
-      {/* Pillars — ivory, not forest */}
-      <section className="bg-sand2 py-16 sm:py-20">
-        <div className="wrap">
-          <Reveal className="max-w-3xl">
-            <p className="eyebrow">{h.pillarsLabel}</p>
-            <h2 className="mt-4 max-w-[18ch] text-[clamp(28px,4.2vw,44px)] leading-[1.08] text-ink">
-              {h.pillarsTitle}
-            </h2>
-          </Reveal>
+      {/* 2 — Focus */}
+      <section className="border-t border-rule bg-sand2">
+        <div className="home-focus">
+          <div className="wrap home-focus__grid">
+            <HomeStagger className="home-focus__intro" stagger={0.08} delay={0.02}>
+              <HomeItem as="p" className="eyebrow" tone="soft">
+                {h.pillarsLabel}
+              </HomeItem>
+              <HomeItem as="h2" className="home-focus__title">
+                {h.pillarsTitle}
+              </HomeItem>
+              <HomeItem as="p" className="home-focus__body">
+                {h.pillarsBody}
+              </HomeItem>
+              <HomeItem
+                as="span"
+                tone="rule"
+                className="home-focus__rule"
+                aria-hidden
+              />
+              <HomeItem>
+                <Link to={routes.sectors} className="home-focus__cta">
+                  {h.pillarsCta}
+                </Link>
+              </HomeItem>
+            </HomeStagger>
 
-          <div className="mt-12 grid gap-8 border-t border-ink/15 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:gap-6">
-            {h.pillars.map((pillar, i) => {
-              const Icon = pillarIcons[i] ?? IconPolicy
-              return (
-                <Reveal
-                  key={pillar.title}
-                  delay={i * 0.04}
-                  className="min-w-0"
-                >
-                  <Icon className="h-8 w-8 text-bronzel" />
-                  <h3 className="mt-4 font-display text-[22px] leading-tight text-ink">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-2.5 text-[14.5px] leading-relaxed break-words text-ink2">
-                    {pillar.body}
-                  </p>
-                </Reveal>
-              )
-            })}
+            <HomeStagger as="ol" className="home-focus__list" stagger={0.07} delay={0.05}>
+              {h.pillars.map((pillar) => (
+                <HomeItem key={pillar.num} as="li" className="home-focus__item">
+                  <span className="home-focus__num">{pillar.num}</span>
+                  <div className="home-focus__copy">
+                    <h3 className="home-focus__item-title">{pillar.title}</h3>
+                    <p className="home-focus__item-body">{pillar.body}</p>
+                  </div>
+                </HomeItem>
+              ))}
+            </HomeStagger>
           </div>
         </div>
       </section>
 
-      {/* Featured partnership — photo + light panel */}
-      <section className="bg-ivory py-16 sm:py-24">
-        <div className="wrap">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">{h.mapLabel}</p>
-            <h2 className="mt-4 text-[clamp(28px,4.2vw,44px)] leading-[1.08] text-ink">
-              {h.mapTitle}
-            </h2>
-            <p className="mt-4 max-w-[48ch] text-[16.5px] leading-relaxed text-ink2">
-              {h.mapBody}
-            </p>
-          </Reveal>
+      {/* 3 — Ground */}
+      <section className="border-t border-rule bg-ivory">
+        <div className="home-ground">
+          <div className="wrap home-ground__grid">
+            <HomeStagger className="home-ground__intro" stagger={0.08} delay={0.02}>
+              <HomeItem as="p" className="eyebrow" tone="soft">
+                {h.mapLabel}
+              </HomeItem>
+              <HomeItem as="h2" className="home-ground__title">
+                {h.mapTitle}
+              </HomeItem>
+              <HomeItem as="p" className="home-ground__body">
+                {h.mapBody}
+              </HomeItem>
+              <HomeItem
+                as="span"
+                tone="rule"
+                className="home-ground__rule"
+                aria-hidden
+              />
+            </HomeStagger>
 
-          <Reveal className="mt-10 overflow-hidden border border-rule">
-            <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="relative min-h-[260px] lg:min-h-[380px]">
-                <img
-                  src="/media/project-energy.jpg"
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-              </div>
-              <div className="bg-cream-soft p-7 sm:p-9">
-                <p className="eyebrow">{featured.tag}</p>
-                <h3 className="mt-3 font-display text-[clamp(26px,3vw,36px)] text-ink">
-                  {featured.title}
-                </h3>
-                <p className="mt-4 text-[15.5px] leading-relaxed text-ink2">
-                  {featured.body[0]}
-                </p>
-                <dl className="mt-7 space-y-3 border-t border-rule pt-6">
+            <div className="home-ground__media">
+              <HomeImage
+                src="/media/project-energy.jpg"
+                className="home-ground__img-wrap"
+              />
+            </div>
+
+            <HomeStagger className="home-ground__aside" stagger={0.07} delay={0.05}>
+              <HomeItem as="p" className="home-ground__tag" tone="soft">
+                {featured.tag}
+              </HomeItem>
+              <HomeItem as="h3" className="home-ground__project">
+                {featured.title}
+              </HomeItem>
+              <HomeItem as="p" className="home-ground__project-body">
+                {featured.body[0]}
+              </HomeItem>
+              <HomeItem>
+                <dl className="home-ground__stats">
                   {h.mapStats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="grid grid-cols-[96px_1fr] gap-3"
-                    >
-                      <dt className="font-label text-[10.5px] font-semibold tracking-[1.6px] text-bronze uppercase">
-                        {stat.label}
-                      </dt>
-                      <dd className="text-[15px] text-ink">{stat.value}</dd>
+                    <div key={stat.label} className="home-ground__stat">
+                      <dt>{stat.label}</dt>
+                      <dd>{stat.value}</dd>
                     </div>
                   ))}
                 </dl>
-                <Link
-                  to={routes.projects}
-                  className="btn-ryse ink mt-8 inline-block"
-                >
+              </HomeItem>
+              <HomeItem>
+                <Link to={routes.projects} className="home-ground__cta">
                   {h.projectCta}
                 </Link>
-              </div>
-            </div>
-          </Reveal>
+              </HomeItem>
+            </HomeStagger>
+          </div>
         </div>
       </section>
 
-      {/* Board — editorial teaser */}
-      <section className="border-t border-rule bg-ivory">
+      {/* 4 — Board */}
+      <section className="border-t border-rule bg-sand2">
         <div className="board-home">
           <div className="wrap board-home__grid">
-            <Reveal className="board-home__intro">
-              <p className="eyebrow">{h.boardLabel}</p>
-              <h2 className="board-home__title">{h.boardTitle}</h2>
-              <p className="board-home__body">{h.boardBody}</p>
-              <span className="board-home__rule" aria-hidden />
-              <Link to={routes.board} className="board-home__cta">
-                {h.boardCta}
-              </Link>
-            </Reveal>
+            <HomeStagger className="board-home__intro" stagger={0.08} delay={0.02}>
+              <HomeItem as="p" className="eyebrow" tone="soft">
+                {h.boardLabel}
+              </HomeItem>
+              <HomeItem as="h2" className="board-home__title">
+                {h.boardTitle}
+              </HomeItem>
+              <HomeItem as="p" className="board-home__body">
+                {h.boardBody}
+              </HomeItem>
+              <HomeItem
+                as="span"
+                tone="rule"
+                className="board-home__rule"
+                aria-hidden
+              />
+              <HomeItem>
+                <Link to={routes.board} className="board-home__cta">
+                  {h.boardCta}
+                </Link>
+              </HomeItem>
+            </HomeStagger>
 
-            <div className="board-home__people">
-              {board.map((member, i) => (
-                <Reveal key={member.name} delay={0.06 + i * 0.05}>
+            <HomeStagger className="board-home__people" stagger={0.12} delay={0.05}>
+              {board.map((member) => (
+                <HomeItem key={member.name}>
                   <Link
                     to={routes.board}
                     className="board-home__person"
@@ -186,105 +215,118 @@ export function Home() {
                     <div className="board-home__meta">
                       <p className="board-home__role">{member.role}</p>
                       <h3 className="board-home__name">{member.name}</h3>
-                      <p className="board-home__snippet">
-                        {member.highlights[0]}
-                      </p>
+                      <p className="board-home__snippet">{member.highlights[0]}</p>
                     </div>
                   </Link>
-                </Reveal>
+                </HomeItem>
               ))}
-            </div>
+            </HomeStagger>
           </div>
         </div>
       </section>
 
-      {/* Moments */}
-      <section className="bg-sand2 py-16 sm:py-24">
-        <div className="wrap">
-          <Reveal className="max-w-2xl">
-            <h2 className="text-[clamp(28px,4.2vw,42px)] leading-[1.08] text-ink">
-              {h.momentsTitle}
-            </h2>
-          </Reveal>
+      {/* 5 — Moments */}
+      <section className="border-t border-rule bg-ivory">
+        <div className="home-moments">
+          <div className="wrap home-moments__grid">
+            <HomeStagger className="home-moments__intro" stagger={0.08} delay={0.02}>
+              <HomeItem as="p" className="eyebrow" tone="soft">
+                {h.momentsLabel}
+              </HomeItem>
+              <HomeItem as="h2" className="home-moments__title">
+                {h.momentsTitle}
+              </HomeItem>
+              <HomeItem as="p" className="home-moments__body">
+                {h.momentsBody}
+              </HomeItem>
+              <HomeItem
+                as="span"
+                tone="rule"
+                className="home-moments__rule"
+                aria-hidden
+              />
+            </HomeStagger>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {h.moments.map((moment, i) => (
-              <Reveal key={moment.title} delay={i * 0.04}>
-                <article>
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img
-                      src={moment.image}
-                      alt=""
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                    />
+            <HomeStagger
+              as="ol"
+              className="home-moments__list"
+              stagger={0.08}
+              delay={0.05}
+            >
+              {h.moments.map((moment) => (
+                <HomeItem key={moment.num} as="li" className="home-moments__item">
+                  <span className="home-moments__num">{moment.num}</span>
+                  <div className="home-moments__media">
+                    <img src={moment.image} alt="" />
                   </div>
-                  <h3 className="mt-3.5 font-display text-[22px] text-ink">
-                    {moment.title}
-                  </h3>
-                </article>
-              </Reveal>
-            ))}
+                  <h3 className="home-moments__name">{moment.title}</h3>
+                </HomeItem>
+              ))}
+            </HomeStagger>
           </div>
         </div>
       </section>
 
-      {/* Insights */}
-      <section className="bg-ivory py-16 sm:py-24">
-        <div className="wrap">
-          <Reveal className="max-w-2xl">
-            <p className="eyebrow">{h.insightsLabel}</p>
-            <h2 className="mt-3 text-[clamp(26px,3.8vw,40px)] text-ink">
-              {h.insightsTitle}
-            </h2>
-          </Reveal>
+      {/* 6 — Insights */}
+      <section className="border-t border-rule bg-sand2">
+        <div className="home-insights">
+          <div className="wrap home-insights__grid">
+            <HomeStagger className="home-insights__intro" stagger={0.08} delay={0.02}>
+              <HomeItem as="p" className="eyebrow" tone="soft">
+                {h.insightsLabel}
+              </HomeItem>
+              <HomeItem as="h2" className="home-insights__title">
+                {h.insightsTitle}
+              </HomeItem>
+              <HomeItem as="p" className="home-insights__body">
+                {h.insightsBody}
+              </HomeItem>
+              <HomeItem
+                as="span"
+                tone="rule"
+                className="home-insights__rule"
+                aria-hidden
+              />
+            </HomeStagger>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
-            {h.insights.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.05}>
-                <Link to={item.href} className="group block no-underline">
-                  <div className="aspect-[16/11] overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt=""
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <h3 className="mt-4 font-display text-[22px] leading-snug text-ink transition-colors group-hover:text-bronze sm:text-[24px]">
-                    {item.title}
-                  </h3>
-                  <span className="mt-2.5 inline-block font-label text-[11px] font-semibold tracking-[1.8px] text-bronze uppercase">
-                    {t.explore} →
-                  </span>
+            <HomeStagger className="home-insights__list" stagger={0.09} delay={0.05}>
+              {h.insights.map((item) => (
+                <HomeItem key={item.title}>
+                  <Link to={item.href} className="home-insights__row">
+                    <div className="home-insights__thumb">
+                      <img src={item.image} alt="" />
+                    </div>
+                    <div className="home-insights__meta">
+                      <h3 className="home-insights__name">{item.title}</h3>
+                      <span className="home-insights__more">{t.explore}</span>
+                    </div>
+                  </Link>
+                </HomeItem>
+              ))}
+            </HomeStagger>
+          </div>
+        </div>
+      </section>
+
+      {/* 7 — Close */}
+      <section className="border-t border-rule bg-ivory">
+        <div className="home-close">
+          <div className="wrap">
+            <HomeReveal className="home-close__panel">
+              <p className="eyebrow">{h.closeLabel}</p>
+              <h2 className="home-close__title">{h.closeTitle}</h2>
+              <p className="home-close__body">{h.closeBody}</p>
+              <span className="home-close__rule" aria-hidden />
+              <div className="home-close__actions">
+                <Link to={routes.contact} className="btn-ryse solid !text-ink">
+                  {h.ctaTalk}
                 </Link>
-              </Reveal>
-            ))}
+                <Link to={routes.experts} className="home-close__link">
+                  {h.ctaExpertsAction}
+                </Link>
+              </div>
+            </HomeReveal>
           </div>
-        </div>
-      </section>
-
-      {/* Closing — sand, not forest (footer is already green) */}
-      <section className="border-t border-rule bg-ivory py-16 sm:py-20">
-        <div className="wrap max-w-3xl text-center">
-          <Reveal>
-            <p className="eyebrow justify-center">{h.closeLabel}</p>
-            <h2 className="mt-4 text-[clamp(28px,4.2vw,44px)] leading-[1.08] text-ink">
-              {h.closeTitle}
-            </h2>
-            <p className="mx-auto mt-4 max-w-[36ch] text-[16.5px] text-ink2">
-              {h.closeBody}
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link to={routes.contact} className="btn-ryse solid !text-ink">
-                {h.ctaTalk}
-              </Link>
-              <Link
-                to={routes.experts}
-                className="font-label text-[12px] font-semibold tracking-[1.8px] text-ink uppercase underline decoration-bronzel decoration-[1.5px] underline-offset-[10px] hover:text-bronze"
-              >
-                {h.ctaExpertsAction}
-              </Link>
-            </div>
-          </Reveal>
         </div>
       </section>
     </>

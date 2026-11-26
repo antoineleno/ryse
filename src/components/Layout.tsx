@@ -15,7 +15,7 @@ export function Layout() {
     <div className="min-h-screen min-w-0 overflow-x-clip bg-cream text-ink">
       <ScrollToTop />
       <Header />
-      <main className="min-w-0 animate-[fadeRise_0.45s_cubic-bezier(0.22,1,0.36,1)]">
+      <main className="min-w-0">
         <Outlet />
       </main>
       <Footer />

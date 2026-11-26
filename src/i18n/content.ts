@@ -28,7 +28,9 @@ export type Content = {
     listeningCta: string
     pillarsLabel: string
     pillarsTitle: string
-    pillars: { title: string; body: string }[]
+    pillarsBody: string
+    pillarsCta: string
+    pillars: { num: string; title: string; body: string }[]
     projectLabel: string
     projectTitle: string
     projectBody: string
@@ -55,9 +57,11 @@ export type Content = {
     closeBody: string
     momentsLabel: string
     momentsTitle: string
-    moments: { title: string; image: string }[]
+    momentsBody: string
+    moments: { num: string; title: string; image: string }[]
     insightsLabel: string
     insightsTitle: string
+    insightsBody: string
     insights: { title: string; image: string; href: string }[]
     mapLabel: string
     mapTitle: string
@@ -270,24 +274,32 @@ export const content: Record<Lang, Content> = {
       listeningCta: 'Explore our approach',
       pillarsLabel: 'Our focus',
       pillarsTitle: 'Impact is more than a mandate.',
+      pillarsBody:
+        'We concentrate on the arenas where political judgment, institutional access and delivery on the ground decide whether a project advances.',
+      pillarsCta: 'Explore our sectors',
       pillars: [
         {
+          num: '01',
           title: 'Political advisory',
           body: 'Policy, reform and institutional strategy at the highest level.',
         },
         {
+          num: '02',
           title: 'Extractive industries',
           body: 'Align investors, the State and communities around durable outcomes.',
         },
         {
+          num: '03',
           title: 'Energy & climate',
           body: 'Access, transition and partnerships for sustainable power.',
         },
         {
+          num: '04',
           title: 'Security & defence',
           body: 'Institutional cooperation that underpins lasting investment.',
         },
         {
+          num: '05',
           title: 'Technology & finance',
           body: 'The levers that turn ambition into workable programmes.',
         },
@@ -352,26 +364,34 @@ export const content: Record<Lang, Content> = {
       closeBody: 'Start with a conversation. Build from there.',
       momentsLabel: 'Outcomes',
       momentsTitle: 'More than strategy. Real regional progress.',
+      momentsBody:
+        'Each mandate leaves a trace: a market opened, a partnership secured, a dialogue that holds when conditions shift.',
       moments: [
         {
+          num: '01',
           title: 'Market entry',
           image: '/media/guinea.jpg',
         },
         {
+          num: '02',
           title: 'Energy partnerships',
           image: '/media/sector-energy.jpg',
         },
         {
+          num: '03',
           title: 'Institutional dialogue',
           image: '/media/expertise-policy.jpg',
         },
         {
+          num: '04',
           title: 'Cross border cooperation',
           image: '/media/togo.jpg',
         },
       ],
       insightsLabel: 'Perspectives',
       insightsTitle: 'Clarity for complex environments.',
+      insightsBody:
+        'Short readings from our practice, for clients navigating political, sector and partnership questions across West Africa.',
       insights: [
         {
           title: 'From policy to delivery',
@@ -761,24 +781,32 @@ export const content: Record<Lang, Content> = {
       listeningCta: 'Découvrir notre approche',
       pillarsLabel: 'Notre focus',
       pillarsTitle: 'L’impact dépasse le mandat.',
+      pillarsBody:
+        'Nous nous concentrons sur les domaines où le jugement politique, l’accès institutionnel et la mise en œuvre sur le terrain décident si un projet avance.',
+      pillarsCta: 'Découvrir nos secteurs',
       pillars: [
         {
+          num: '01',
           title: 'Conseil politique',
           body: 'Politiques, réformes et stratégie institutionnelle au plus haut niveau.',
         },
         {
+          num: '02',
           title: 'Industries extractives',
           body: 'Aligner investisseurs, État et communautés autour de résultats durables.',
         },
         {
+          num: '03',
           title: 'Énergie et climat',
           body: 'Accès, transition et partenariats pour une énergie durable.',
         },
         {
+          num: '04',
           title: 'Sécurité et défense',
           body: 'Une coopération institutionnelle qui soutient l’investissement.',
         },
         {
+          num: '05',
           title: 'Technologie et finance',
           body: 'Les leviers qui transforment l’ambition en programmes concrets.',
         },
@@ -843,26 +871,34 @@ export const content: Record<Lang, Content> = {
       closeBody: 'Tout commence par une conversation. Construisons à partir de là.',
       momentsLabel: 'Résultats',
       momentsTitle: 'Plus que de la stratégie. Des avancées concrètes.',
+      momentsBody:
+        'Chaque mandat laisse une trace : un marché ouvert, un partenariat sécurisé, un dialogue qui tient lorsque le contexte change.',
       moments: [
         {
+          num: '01',
           title: 'Entrée sur le marché',
           image: '/media/guinea.jpg',
         },
         {
+          num: '02',
           title: 'Partenariats énergétiques',
           image: '/media/sector-energy.jpg',
         },
         {
+          num: '03',
           title: 'Dialogue institutionnel',
           image: '/media/expertise-policy.jpg',
         },
         {
+          num: '04',
           title: 'Coopération transfrontalière',
           image: '/media/togo.jpg',
         },
       ],
       insightsLabel: 'Perspectives',
       insightsTitle: 'De la clarté dans des environnements complexes.',
+      insightsBody:
+        'De courtes lectures issues de notre pratique, pour les clients qui naviguent des questions politiques, sectorielles et de partenariat en Afrique de l’Ouest.',
       insights: [
         {
           title: 'De la décision publique à l’exécution',
