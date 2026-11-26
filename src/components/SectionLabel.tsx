@@ -1,9 +1,11 @@
-import type { ReactNode } from 'react'
-
-export function SectionLabel({ children }: { children: ReactNode }) {
+export function SectionLabel({
+  children,
+  light = false,
+}: {
+  children: string
+  light?: boolean
+}) {
   return (
-    <p className="diamond mb-4 text-[0.72rem] font-medium tracking-[0.22em] text-gold uppercase">
-      {children}
-    </p>
+    <p className={`eyebrow ${light ? '!text-bronzeh' : ''}`}>{children}</p>
   )
 }

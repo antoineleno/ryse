@@ -2,15 +2,14 @@ import { useLanguage } from '../context/LanguageContext'
 
 export function Footer() {
   const { t } = useLanguage()
+
   return (
-    <footer className="bg-forest-deep">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-5 py-6 md:flex-row md:items-center md:justify-between md:px-8 lg:px-10">
-        <p className="text-[0.72rem] tracking-[0.06em] text-cream/75">
-          {t.brand.footer}
-        </p>
+    <footer className="border-t border-fline bg-forest text-onf2">
+      <div className="wrap flex flex-col gap-3 py-7 md:flex-row md:items-center md:justify-between">
+        <small className="text-[12.5px]">{t.brand.footer}</small>
         <a
           href="mailto:contact@ryseglobalinc.com"
-          className="text-[0.72rem] tracking-[0.08em] text-gold-soft transition-colors hover:text-cream"
+          className="text-[12.5px] text-bronzeh transition-colors hover:text-onf"
         >
           contact@ryseglobalinc.com
         </a>

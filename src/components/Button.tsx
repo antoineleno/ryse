@@ -1,17 +1,14 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-type Variant = 'gold' | 'dark' | 'ghost'
+type Variant = 'gold' | 'dark' | 'ghost' | 'ink'
 
-const styles: Record<Variant, string> = {
-  gold: 'bg-gold text-ink hover:bg-gold-deep hover:text-cream',
-  dark: 'bg-forest text-cream hover:bg-forest-deep',
-  ghost:
-    'border border-ink/20 bg-transparent text-ink hover:border-gold hover:text-gold-deep',
+const map: Record<Variant, string> = {
+  gold: 'btn-ryse solid',
+  dark: 'btn-ryse solid',
+  ghost: 'btn-ryse ghost',
+  ink: 'btn-ryse ink',
 }
-
-const base =
-  'inline-flex items-center justify-center px-7 py-3.5 text-[0.72rem] font-semibold tracking-[0.18em] uppercase transition-all duration-300'
 
 export function Button({
   children,
@@ -23,7 +20,7 @@ export function Button({
   variant?: Variant
 }) {
   return (
-    <button className={`${base} ${styles[variant]} ${className}`} {...props}>
+    <button className={`${map[variant]} ${className}`} {...props}>
       {children}
     </button>
   )
@@ -41,7 +38,7 @@ export function LinkButton({
   className?: string
 }) {
   return (
-    <Link to={to} className={`${base} ${styles[variant]} ${className}`}>
+    <Link to={to} className={`${map[variant]} ${className}`}>
       {children}
     </Link>
   )

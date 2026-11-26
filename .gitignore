@@ -30,3 +30,6 @@ public/images
 .venv
 public/images
 .pydeps
+
+# Local reference extracts
+.ref-*

@@ -1,7 +1,5 @@
-import { useState, type FormEvent, type ReactNode } from 'react'
-import { Button } from '../components/Button'
+import { useState, type FormEvent } from 'react'
 import { Reveal } from '../components/Reveal'
-import { SectionLabel } from '../components/SectionLabel'
 import { useLanguage } from '../context/LanguageContext'
 
 export function Contact() {
@@ -15,123 +13,121 @@ export function Contact() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-cream">
-      <div className="absolute inset-0 opacity-[0.12]">
-        <img
-          src="/media/contact-bg.jpg"
-          alt=""
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="relative mx-auto max-w-[1440px] px-5 py-20 md:px-8 md:py-28 lg:px-10">
-        <Reveal className="max-w-3xl">
-          <SectionLabel>{c.eyebrow}</SectionLabel>
-          <h2 className="font-display text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.08] font-medium text-ink text-balance">
-            {c.title}
-          </h2>
-          <p className="mt-5 max-w-2xl text-[1.05rem] leading-relaxed text-ink-muted">
-            {c.subtitle}
-          </p>
+    <section className="fsec">
+      <div className="wrap">
+        <Reveal>
+          <p className="eyebrow">{c.eyebrow}</p>
+          <h1>{c.title}</h1>
+          <p className="lede">{c.subtitle}</p>
         </Reveal>
 
-        <Reveal className="mt-10 grid gap-8 border-y border-ink/10 py-8 sm:grid-cols-2">
-          <div>
-            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/55 uppercase">
-              {c.whereLabel}
-            </p>
-            <p className="font-display mt-2 text-2xl text-ink">{c.whereValue}</p>
-          </div>
-          <div>
-            <p className="text-[0.68rem] font-semibold tracking-[0.16em] text-ink/55 uppercase">
-              {c.officesLabel}
-            </p>
-            <p className="font-display mt-2 text-2xl text-ink">{c.officesValue}</p>
-          </div>
+        <Reveal>
+          <dl className="cinfo">
+            <div>
+              <dt>{c.whereLabel}</dt>
+              <dd>{c.whereValue}</dd>
+            </div>
+            <div>
+              <dt>{c.officesLabel}</dt>
+              <dd>{c.officesValue}</dd>
+            </div>
+          </dl>
         </Reveal>
 
-        <Reveal className="mt-10">
+        <Reveal>
           {sent ? (
-            <div className="border border-gold/40 bg-cream-soft px-8 py-12 text-center">
-              <p className="font-display text-2xl text-ink">{c.fields.success}</p>
+            <div className="done">
+              <h2>{c.fields.success}</h2>
             </div>
           ) : (
-            <form onSubmit={onSubmit} className="space-y-6">
-              <div className="grid gap-6 md:grid-cols-2">
-                <Field label={`${c.fields.name} *`}>
-                  <input required className="input-field" name="name" />
-                </Field>
-                <Field label={`${c.fields.organisation} *`}>
-                  <input required className="input-field" name="organisation" />
-                </Field>
-                <Field label={`${c.fields.email} *`}>
-                  <input
-                    required
-                    type="email"
-                    className="input-field"
-                    name="email"
-                  />
-                </Field>
-                <Field label={`${c.fields.phone} *`}>
-                  <input required className="input-field" name="phone" />
-                </Field>
-                <Field label={`${c.fields.industry} *`}>
-                  <select required className="input-field" name="industry" defaultValue="">
-                    <option value="" disabled>
-                      {c.fields.choose}
-                    </option>
-                    {c.industries.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-                <Field label={`${c.fields.subject} *`}>
-                  <select required className="input-field" name="subject" defaultValue="">
-                    <option value="" disabled>
-                      {c.fields.choose}
-                    </option>
-                    {c.subjects.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-              </div>
-              <Field label={`${c.fields.objectives} *`}>
-                <textarea
-                  required
-                  name="objectives"
-                  rows={5}
-                  className="input-field resize-y"
-                />
-              </Field>
+            <form onSubmit={onSubmit} noValidate>
               <div>
-                <Button type="submit">{c.fields.submit}</Button>
-                <p className="mt-4 text-sm text-ink-muted">{c.fields.note}</p>
+                <label htmlFor="name">
+                  {c.fields.name} <span className="req">*</span>
+                </label>
+                <input id="name" name="name" autoComplete="name" required />
+              </div>
+              <div>
+                <label htmlFor="org">
+                  {c.fields.organisation} <span className="req">*</span>
+                </label>
+                <input
+                  id="org"
+                  name="organisation"
+                  autoComplete="organization"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="email">
+                  {c.fields.email} <span className="req">*</span>
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="cphone">
+                  {c.fields.phone} <span className="req">*</span>
+                </label>
+                <input
+                  id="cphone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="industry">
+                  {c.fields.industry} <span className="req">*</span>
+                </label>
+                <select id="industry" name="industry" defaultValue="" required>
+                  <option value="" disabled>
+                    {c.fields.choose}
+                  </option>
+                  {c.industries.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="type">
+                  {c.fields.subject} <span className="req">*</span>
+                </label>
+                <select id="type" name="subject" defaultValue="" required>
+                  <option value="" disabled>
+                    {c.fields.choose}
+                  </option>
+                  {c.subjects.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="full">
+                <label htmlFor="message">
+                  {c.fields.objectives} <span className="req">*</span>
+                </label>
+                <textarea id="message" name="message" required />
+              </div>
+              <div className="full actions">
+                <button className="btn-ryse solid" type="submit">
+                  {c.fields.submit}
+                </button>
               </div>
             </form>
           )}
         </Reveal>
+        <p className="priv">{c.fields.note}</p>
       </div>
     </section>
-  )
-}
-
-function Field({
-  label,
-  children,
-}: {
-  label: string
-  children: ReactNode
-}) {
-  return (
-    <label className="block">
-      <span className="mb-2 block text-[0.68rem] font-semibold tracking-[0.16em] text-ink/70 uppercase">
-        {label}
-      </span>
-      {children}
-    </label>
   )
 }

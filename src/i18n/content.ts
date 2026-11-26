@@ -15,12 +15,17 @@ export type Content = {
     sectorCards: { title: string; body: string; image: string }[]
     projectLabel: string
     whereLabel: string
+    corridorWest: string
+    ctaTalk: string
+    ctaExpertsTitle: string
+    ctaExpertsAction: string
     ctaTitle: string
     ctaBody: string
   }
   hero: {
     eyebrow: string
     title: string
+    titleLines: string[]
     body: string
     primary: string
     secondary: string
@@ -30,6 +35,7 @@ export type Content = {
     title: string
     intro: string
     body: string
+    body2: string
     missionLabel: string
     missionTitle: string
     missionBody: string
@@ -56,6 +62,7 @@ export type Content = {
     privateBody: string
     whereHelpLabel: string
     whereHelp: string[]
+    practicesLabel: string
     practices: { title: string; body: string }[]
     clientsLabel: string
     clientsTitle: string
@@ -212,23 +219,34 @@ export const content: Record<Lang, Content> = {
       ],
       projectLabel: 'Featured partnership',
       whereLabel: 'Offices',
+      corridorWest: 'West Africa',
+      ctaTalk: 'Talk to our team',
+      ctaExpertsTitle: 'Join our network of experts.',
+      ctaExpertsAction: 'Apply to join',
       ctaTitle: 'Ready to shape your next move in West Africa?',
       ctaBody:
         'From political strategy to partnerships and investment, let’s discuss what you want to achieve.',
     },
     hero: {
-      eyebrow: 'West Africa',
-      title: 'Strategic vision. Meaningful connections. Lasting impact.',
+      eyebrow: 'Political advisory · International cooperation',
+      title: 'Strategic Vision. Meaningful Connections. Lasting Impact.',
+      titleLines: [
+        'Strategic Vision.',
+        'Meaningful Connections.',
+        'Lasting Impact.',
+      ],
       body: 'We advise governments, institutions and investors across West Africa, from political strategy and policy making to partnerships and investment.',
-      primary: 'Our expertise',
-      secondary: 'Start a conversation',
+      primary: 'Explore our expertise',
+      secondary: 'Partner with RYSE',
     },
     about: {
       eyebrow: 'About RYSE',
       title: 'A strategic partner for a changing world.',
       intro:
         'RYSE is a strategic advisory and international cooperation firm operating in Guinea and Togo, with a regional outlook across West Africa.',
-      body: 'Africa offers significant opportunities. Realising them takes strategic clarity, trusted relationships, a real understanding of context and the ability to execute. We work where political decision-making, international cooperation, institutional engagement and delivery meet, helping our clients move forward with confidence.',
+      body: 'Africa offers significant opportunities. Realising them takes strategic clarity, trusted relationships, a real understanding of context and the ability to execute.',
+      body2:
+        'We work where political decision-making, international cooperation, institutional engagement and delivery meet, helping our clients move forward with confidence.',
       missionLabel: 'Our Mission',
       missionTitle: 'Connect international ambition with local opportunity.',
       missionBody:
@@ -287,7 +305,9 @@ export const content: Record<Lang, Content> = {
         'State-to-State & State–region cooperation',
         'Public-private partnerships (PPPs)',
         'Private-sector advisory',
+        'Helping private companies understand and access the public sector',
       ],
+      practicesLabel: 'Our other practices',
       practices: [
         {
           title: 'Strategic advisory & foresight',
@@ -313,7 +333,7 @@ export const content: Record<Lang, Content> = {
       clientTypes: ['Governments', 'Institutions', 'Investors', 'Companies'],
     },
     sectors: {
-      eyebrow: 'Our Sectors',
+      eyebrow: 'Our sectors of expertise',
       title: 'Where transformation happens.',
       subtitle:
         'Three strategic sectors for West Africa, carried by two levers: technology and finance.',
@@ -334,7 +354,7 @@ export const content: Record<Lang, Content> = {
           image: '/media/sector-security.jpg',
         },
       ],
-      enablersLabel: 'Cross-Cutting Enablers',
+      enablersLabel: 'Cross-cutting enablers',
       enablersTitle: 'Enabled by technology & finance',
       technology: {
         title: 'Technology',
@@ -574,23 +594,34 @@ export const content: Record<Lang, Content> = {
       ],
       projectLabel: 'Partenariat phare',
       whereLabel: 'Bureaux',
+      corridorWest: 'Afrique de l’Ouest',
+      ctaTalk: 'Échanger avec notre équipe',
+      ctaExpertsTitle: 'Rejoignez notre réseau d’experts.',
+      ctaExpertsAction: 'Proposer ma candidature',
       ctaTitle: 'Prêt à façonner votre prochaine étape en Afrique de l’Ouest ?',
       ctaBody:
         'De la stratégie politique aux partenariats et à l’investissement, parlons de ce que vous voulez accomplir.',
     },
     hero: {
-      eyebrow: 'Afrique de l’Ouest',
-      title: 'Vision stratégique. Connexions utiles. Impact durable.',
-      body: 'Nous conseillons gouvernements, institutions et investisseurs en Afrique de l’Ouest, de la stratégie politique et de l’élaboration des politiques aux partenariats et à l’investissement.',
-      primary: 'Notre expertise',
-      secondary: 'Engager la conversation',
+      eyebrow: 'Conseil politique · Coopération internationale',
+      title: 'Vision stratégique. Liens durables. Impact réel.',
+      titleLines: [
+        'Vision stratégique.',
+        'Liens durables.',
+        'Impact réel.',
+      ],
+      body: 'Nous conseillons gouvernements, institutions et investisseurs en Afrique de l’Ouest, de la stratégie politique et de l’élaboration des politiques publiques jusqu’aux partenariats et à l’investissement.',
+      primary: 'Découvrir notre expertise',
+      secondary: 'Devenir partenaire',
     },
     about: {
       eyebrow: 'À propos de RYSE',
-      title: 'Un partenaire stratégique pour un monde en mutation.',
+      title: 'Un partenaire stratégique dans un monde qui change.',
       intro:
-        'RYSE est un cabinet de conseil stratégique et de coopération internationale présent en Guinée et au Togo, avec une vision régionale sur l’Afrique de l’Ouest.',
-      body: 'L’Afrique offre d’importantes opportunités. Les saisir exige clarté stratégique, relations de confiance, compréhension réelle du contexte et capacité d’exécution. Nous intervenons là où se rejoignent décision politique, coopération internationale, engagement institutionnel et mise en œuvre, pour aider nos clients à avancer avec assurance.',
+        'RYSE est un cabinet de conseil stratégique et de coopération internationale implanté en Guinée et au Togo, avec une perspective régionale sur l’Afrique de l’Ouest.',
+      body: 'L’Afrique offre des opportunités considérables. Les saisir demande une vision claire, des relations de confiance, une compréhension fine du contexte et la capacité d’exécuter.',
+      body2:
+        'Nous intervenons là où se rencontrent la décision politique, la coopération internationale, le dialogue institutionnel et la mise en œuvre, pour aider nos clients à avancer avec assurance.',
       missionLabel: 'Notre mission',
       missionTitle:
         'Relier l’ambition internationale à l’opportunité locale.',
@@ -628,11 +659,11 @@ export const content: Record<Lang, Content> = {
     },
     expertise: {
       eyebrow: 'Notre expertise',
-      title: 'De la politique à la mise en œuvre.',
+      title: 'De la décision publique à l’exécution.',
       subtitle:
-        'Un conseil intégré, du plus haut niveau de décision jusqu’à la livraison sur le terrain.',
-      leadingLabel: 'Notre pratique phare',
-      leadingTitle: 'Conseil politique & élaboration des politiques',
+        'Un conseil intégré, du plus haut niveau de la décision jusqu’à la mise en œuvre sur le terrain.',
+      leadingLabel: 'Notre premier atout',
+      leadingTitle: 'Conseil politique et élaboration des politiques publiques',
       leadingBody:
         'Nous travaillons des deux côtés de la table : avec ceux qui conçoivent et mettent en œuvre l’action publique, et avec les entreprises et investisseurs qui doivent la comprendre et s’y engager.',
       govTitle: 'Pour les gouvernements & institutions',
@@ -643,14 +674,16 @@ export const content: Record<Lang, Content> = {
         'Nous aidons le secteur privé à comprendre le fonctionnement de l’action publique, à lire le contexte politique et à engager les bonnes institutions. Nous accompagnons la structuration de partenariats public-privé, pour que les projets privés avancent au rythme de l’État.',
       whereHelpLabel: 'Où nous intervenons',
       whereHelp: [
-        'Stratégie politique & institutionnelle',
-        'Conception des politiques',
+        'Stratégie politique et institutionnelle',
+        'Conception des politiques publiques',
         'Conduite des réformes',
-        'Relations gouvernementales & parlementaires',
+        'Relations gouvernementales et parlementaires',
         'Coopération État–État et État–région',
         'Partenariats public-privé (PPP)',
         'Conseil au secteur privé',
+        'Accès au secteur public pour les entreprises et les institutions privées',
       ],
+      practicesLabel: 'Nos autres pratiques',
       practices: [
         {
           title: 'Conseil stratégique & prospective',
@@ -676,7 +709,7 @@ export const content: Record<Lang, Content> = {
       clientTypes: ['Gouvernements', 'Institutions', 'Investisseurs', 'Entreprises'],
     },
     sectors: {
-      eyebrow: 'Nos secteurs',
+      eyebrow: 'Nos secteurs d’expertise',
       title: 'Là où se joue la transformation.',
       subtitle:
         'Trois secteurs stratégiques pour l’Afrique de l’Ouest, portés par deux leviers : la technologie et la finance.',
