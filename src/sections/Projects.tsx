@@ -1,3 +1,4 @@
+import { MediaFrame } from '../components/MediaFrame'
 import { Reveal } from '../components/Reveal'
 import { PageHeader } from '../components/PageHeader'
 import { useLanguage } from '../context/LanguageContext'
@@ -15,6 +16,9 @@ export function Projects() {
 
       <div className="blk">
         <div className="wrap">
+          <Reveal className="mb-8">
+            <MediaFrame src="/media/project-energy.jpg" aspect="aspect-[21/9]" />
+          </Reveal>
           <Reveal>
             <article className="project">
               <div className="pt">

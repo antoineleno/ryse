@@ -1,3 +1,5 @@
+import { IconPolicy } from '../components/BrandIcons'
+import { MediaFrame } from '../components/MediaFrame'
 import { Reveal } from '../components/Reveal'
 import { PageHeader } from '../components/PageHeader'
 import { useLanguage } from '../context/LanguageContext'
@@ -14,10 +16,16 @@ export function Expertise() {
 
       <div className="blk">
         <div className="wrap">
+          <Reveal className="mb-10">
+            <MediaFrame src="/media/expertise-policy.jpg" aspect="aspect-[21/9]" />
+          </Reveal>
           <Reveal>
             <div className="feature">
               <div>
                 <p className="eyebrow">{e.leadingLabel}</p>
+                <div className="mb-3 flex items-center gap-3 text-bronzeh">
+                  <IconPolicy className="h-8 w-8" />
+                </div>
                 <h2>{e.leadingTitle}</h2>
                 <p>{e.leadingBody}</p>
                 <div className="sides2">
@@ -51,8 +59,14 @@ export function Expertise() {
           </Reveal>
           <div className="practices mt-6">
             {e.practices.map((practice, i) => (
-              <Reveal key={practice.title} delay={i * 0.05}>
-                <h3>{practice.title}</h3>
+              <Reveal
+                key={practice.title}
+                delay={i * 0.05}
+                className="group transition-transform duration-300 hover:-translate-y-0.5"
+              >
+                <h3 className="transition-colors group-hover:text-bronze">
+                  {practice.title}
+                </h3>
                 <p>{practice.body}</p>
               </Reveal>
             ))}

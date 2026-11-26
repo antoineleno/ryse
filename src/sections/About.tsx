@@ -1,3 +1,4 @@
+import { MediaFrame } from '../components/MediaFrame'
 import { Reveal } from '../components/Reveal'
 import { PageHeader } from '../components/PageHeader'
 import { useLanguage } from '../context/LanguageContext'
@@ -13,10 +14,13 @@ export function About() {
       </PageHeader>
 
       <div className="blk">
-        <div className="wrap">
+        <div className="wrap grid items-start gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-12">
           <Reveal>
             <p className="lead">{a.body}</p>
             <p className="mt-4 text-ink2">{a.body2}</p>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <MediaFrame src="/media/about-landscape.jpg" aspect="aspect-[4/5] md:aspect-[4/5]" />
           </Reveal>
         </div>
       </div>
