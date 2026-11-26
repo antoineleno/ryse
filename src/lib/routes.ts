@@ -5,7 +5,7 @@ export const routes = {
   sectors: '/sectors',
   approach: '/approach',
   projects: '/projects',
-  where: '/where',
+  where: '/about#where',
   board: '/board',
   experts: '/experts',
   contact: '/contact',
@@ -19,7 +19,6 @@ export const navRoutes = [
   { id: 'sectors', path: routes.sectors },
   { id: 'approach', path: routes.approach },
   { id: 'projects', path: routes.projects },
-  { id: 'where', path: routes.where },
   { id: 'board', path: routes.board },
   { id: 'experts', path: routes.experts },
 ] as const

@@ -17,7 +17,7 @@ export function MediaFrame({
 
   return (
     <motion.div
-      className={`group relative overflow-hidden bg-sand ${aspect} ${className}`}
+      className={`group relative w-full overflow-hidden bg-sand ${aspect} ${className}`}
       whileHover={reduce ? undefined : { y: -2 }}
       transition={{ duration: 0.35 }}
     >

@@ -21,17 +21,48 @@ export type Content = {
     practiceTitle: string
     practiceBody: string
     practiceTags: string[]
+    listeningLabel: string
+    listeningTitle: string
+    listeningBody: string
+    listeningSteps: { num: string; title: string; body: string }[]
+    listeningCta: string
+    pillarsLabel: string
+    pillarsTitle: string
+    pillars: { title: string; body: string }[]
+    projectLabel: string
+    projectTitle: string
+    projectBody: string
+    projectCta: string
+    boardLabel: string
+    boardTitle: string
+    boardBody: string
+    boardCta: string
+    placesLabel: string
+    placesTitle: string
+    placesBody: string
+    whereLabel: string
+    corridorWest: string
     sectorsLabel: string
     sectorsTitle: string
     sectorCards: { title: string; body: string; image: string }[]
-    projectLabel: string
-    whereLabel: string
-    corridorWest: string
     ctaTalk: string
     ctaExpertsTitle: string
     ctaExpertsAction: string
     ctaTitle: string
     ctaBody: string
+    closeLabel: string
+    closeTitle: string
+    closeBody: string
+    momentsLabel: string
+    momentsTitle: string
+    moments: { title: string; image: string }[]
+    insightsLabel: string
+    insightsTitle: string
+    insights: { title: string; image: string; href: string }[]
+    mapLabel: string
+    mapTitle: string
+    mapBody: string
+    mapStats: { label: string; value: string }[]
   }
   hero: {
     eyebrow: string
@@ -94,7 +125,7 @@ export type Content = {
     eyebrow: string
     title: string
     subtitle: string
-    steps: { title: string; body: string }[]
+    steps: { num: string; title: string; body: string }[]
     networkLabel: string
     networkTitle: string
     networkBody: string
@@ -192,15 +223,14 @@ export const content: Record<Lang, Content> = {
       { id: 'sectors', label: 'Sectors' },
       { id: 'approach', label: 'Approach' },
       { id: 'projects', label: 'Projects' },
-      { id: 'where', label: 'Where We Work' },
-      { id: 'board', label: 'Our Board' },
-      { id: 'experts', label: 'Expert Network' },
+      { id: 'board', label: 'Board' },
+      { id: 'experts', label: 'Experts' },
     ],
     contactCta: 'Contact',
     explore: 'Explore',
     footer: {
       blurb:
-        'Strategic advisory and international cooperation across West Africa — from political decision-making to delivery on the ground.',
+        'Strategic advisory and international cooperation across West Africa, from political decision making to delivery on the ground.',
       firm: 'The firm',
       practice: 'Our work',
       connect: 'Connect',
@@ -216,6 +246,77 @@ export const content: Record<Lang, Content> = {
       practiceBody:
         'Our advice is shaped from inside government. Our leadership has served at the Presidency, in ministries, in Parliament and alongside international institutions.',
       practiceTags: ['Political strategy', 'Public policy', 'Reform'],
+      listeningLabel: 'Our approach',
+      listeningTitle: 'Advice that begins with understanding.',
+      listeningBody:
+        'Every mandate starts with a question that matters. We listen first, read the context carefully, then stay until decisions become delivery.',
+      listeningSteps: [
+        {
+          num: '01',
+          title: 'Understand',
+          body: 'Your goals, constraints and what success must look like.',
+        },
+        {
+          num: '02',
+          title: 'Assess',
+          body: 'A clear reading of the political and institutional landscape.',
+        },
+        {
+          num: '03',
+          title: 'Execute',
+          body: 'Relationships and delivery that hold as conditions change.',
+        },
+      ],
+      listeningCta: 'Explore our approach',
+      pillarsLabel: 'Our focus',
+      pillarsTitle: 'Impact is more than a mandate.',
+      pillars: [
+        {
+          title: 'Political advisory',
+          body: 'Policy, reform and institutional strategy at the highest level.',
+        },
+        {
+          title: 'Extractive industries',
+          body: 'Align investors, the State and communities around durable outcomes.',
+        },
+        {
+          title: 'Energy & climate',
+          body: 'Access, transition and partnerships for sustainable power.',
+        },
+        {
+          title: 'Security & defence',
+          body: 'Institutional cooperation that underpins lasting investment.',
+        },
+        {
+          title: 'Technology & finance',
+          body: 'The levers that turn ambition into workable programmes.',
+        },
+      ],
+      mapLabel: 'On the ground',
+      mapTitle: 'Real mandates. Lasting impact.',
+      mapBody:
+        'From Conakry to Lomé, we structure the relationships and decisions that move projects forward.',
+      mapStats: [
+        { label: 'Offices', value: 'Conakry · Lomé' },
+        { label: 'Reach', value: 'West Africa' },
+        { label: 'Focus', value: 'Policy to delivery' },
+      ],
+      projectLabel: 'Featured partnership',
+      projectTitle: 'Partnerships that build.',
+      projectBody:
+        'Our mandates take shape on the ground, alongside partners who share our ambition for West Africa.',
+      projectCta: 'View the project',
+      boardLabel: 'Our Board',
+      boardTitle: 'Governance shaped by the field.',
+      boardBody:
+        'Experience at the heart of government, Parliament, industry and international institutions, brought to every mandate.',
+      boardCta: 'Meet the board',
+      placesLabel: 'Presence',
+      placesTitle: 'Present where the decisions are made.',
+      placesBody:
+        'From Conakry and Lomé, we support clients across West Africa with local grounding and regional reach.',
+      whereLabel: 'Offices',
+      corridorWest: 'West Africa',
       sectorsLabel: 'Sectors',
       sectorsTitle: 'Where transformation happens.',
       sectorCards: [
@@ -240,15 +341,54 @@ export const content: Record<Lang, Content> = {
           image: '/media/expertise-policy.jpg',
         },
       ],
-      projectLabel: 'Featured partnership',
-      whereLabel: 'Offices',
-      corridorWest: 'West Africa',
       ctaTalk: 'Talk to our team',
       ctaExpertsTitle: 'Join our network of experts.',
       ctaExpertsAction: 'Apply to join',
       ctaTitle: 'Ready to shape your next move in West Africa?',
       ctaBody:
         'From political strategy to partnerships and investment, let’s discuss what you want to achieve.',
+      closeLabel: 'Next step',
+      closeTitle: 'Plan with the region in mind.',
+      closeBody: 'Start with a conversation. Build from there.',
+      momentsLabel: 'Outcomes',
+      momentsTitle: 'More than strategy. Real regional progress.',
+      moments: [
+        {
+          title: 'Market entry',
+          image: '/media/guinea.jpg',
+        },
+        {
+          title: 'Energy partnerships',
+          image: '/media/sector-energy.jpg',
+        },
+        {
+          title: 'Institutional dialogue',
+          image: '/media/expertise-policy.jpg',
+        },
+        {
+          title: 'Cross border cooperation',
+          image: '/media/togo.jpg',
+        },
+      ],
+      insightsLabel: 'Perspectives',
+      insightsTitle: 'Clarity for complex environments.',
+      insights: [
+        {
+          title: 'From policy to delivery',
+          image: '/media/expertise-policy.jpg',
+          href: '/expertise',
+        },
+        {
+          title: 'Where transformation happens',
+          image: '/media/sector-extractive.jpg',
+          href: '/sectors',
+        },
+        {
+          title: 'Partnerships that build',
+          image: '/media/project-energy.jpg',
+          href: '/projects',
+        },
+      ],
     },
     hero: {
       eyebrow: 'Political advisory · International cooperation',
@@ -258,9 +398,9 @@ export const content: Record<Lang, Content> = {
         'Meaningful Connections.',
         'Lasting Impact.',
       ],
-      body: 'We advise governments, institutions and investors across West Africa, from political strategy and policy making to partnerships and investment.',
-      primary: 'Explore our expertise',
-      secondary: 'Partner with RYSE',
+      body: 'Thoughtful strategic advice for the decisions that shape West Africa’s next decade, and the partnerships that endure beyond it.',
+      primary: 'Book a conversation',
+      secondary: 'Explore our approach',
     },
     about: {
       eyebrow: 'About RYSE',
@@ -269,7 +409,7 @@ export const content: Record<Lang, Content> = {
         'RYSE is a strategic advisory and international cooperation firm operating in Guinea and Togo, with a regional outlook across West Africa.',
       body: 'Africa offers significant opportunities. Realising them takes strategic clarity, trusted relationships, a real understanding of context and the ability to execute.',
       body2:
-        'We work where political decision-making, international cooperation, institutional engagement and delivery meet, helping our clients move forward with confidence.',
+        'We work where political decision making, international cooperation, institutional engagement and delivery meet, helping our clients move forward with confidence.',
       missionLabel: 'Our Mission',
       missionTitle: 'Connect international ambition with local opportunity.',
       missionBody:
@@ -301,14 +441,14 @@ export const content: Record<Lang, Content> = {
       whyTitle:
         'Local understanding. International perspective. Strategic execution.',
       whyBody:
-        'Entering a market or launching a cross-border initiative takes more than information. It takes the ability to interpret it, to understand the people and institutions involved, and to choose the right way forward. Our aim is to make complex environments readable and opportunities actionable.',
+        'Entering a market or launching a cross border initiative takes more than information. It takes the ability to interpret it, to understand the people and institutions involved, and to choose the right way forward. Our aim is to make complex environments readable and opportunities actionable.',
       whyKeywords: ['Context', 'Connections', 'Clarity', 'Coordination'],
     },
     expertise: {
       eyebrow: 'Our Expertise',
       title: 'From policy to delivery.',
       subtitle:
-        'Integrated advice, from the highest level of decision-making to delivery on the ground.',
+        'Integrated advice, from the highest level of decision making to delivery on the ground.',
       leadingLabel: 'Our Leading Practice',
       leadingTitle: 'Political advisory & policy making',
       leadingBody:
@@ -318,16 +458,16 @@ export const content: Record<Lang, Content> = {
         'We support leaders in designing and delivering public policy, reform and political strategy, and facilitate cooperation between States and with regional organisations. Our leadership has served at the Presidency, in ministries and in Parliament: we know how a decision is prepared, negotiated and carried through.',
       privateTitle: 'For companies & investors',
       privateBody:
-        'We help the private sector understand how public action works, read the political context and engage with the right institutions. We support the structuring of public-private partnerships, so that private projects move forward in step with the State.',
+        'We help the private sector understand how public action works, read the political context and engage with the right institutions. We support the structuring of public private partnerships, so that private projects move forward in step with the State.',
       whereHelpLabel: 'Where we help',
       whereHelp: [
         'Political & institutional strategy',
         'Policy design',
         'Reform delivery',
         'Government & parliamentary relations',
-        'State-to-State & State–region cooperation',
-        'Public-private partnerships (PPPs)',
-        'Private-sector advisory',
+        'State to State and State to region cooperation',
+        'Public private partnerships (PPPs)',
+        'Private sector advisory',
         'Helping private companies understand and access the public sector',
       ],
       practicesLabel: 'Our other practices',
@@ -338,7 +478,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           title: 'Market entry & operational support',
-          body: 'Establishing a presence takes more than a good strategy. We stay with clients from first exploration to being fully up and running, coordinating local partners, formalities and follow-through.',
+          body: 'Establishing a presence takes more than a good strategy. We stay with clients from first exploration to being fully up and running, coordinating local partners, formalities and follow through.',
         },
         {
           title: 'International cooperation & partnerships',
@@ -363,21 +503,21 @@ export const content: Record<Lang, Content> = {
       items: [
         {
           title: 'Extractive industries',
-          body: 'Guinea and the wider region hold some of the world’s most sought-after resources. Yet in mining and hydrocarbons, a project depends less on the deposit than on the relationship between investors, the State and communities. We help build that relationship, from dialogue with the authorities to local content and social performance.',
+          body: 'Guinea and the wider region hold some of the world’s most sought after resources. Yet in mining and hydrocarbons, a project depends less on the deposit than on the relationship between investors, the State and communities. We help build that relationship, from dialogue with the authorities to local content and social performance.',
           image: '/media/sector-extractive.jpg',
         },
         {
           title: 'Energy & climate',
-          body: 'Access to energy shapes everything else: industry, jobs and public services. We support the projects and public-private partnerships that extend sustainable energy, and help clients mobilise climate finance in support of resilience.',
+          body: 'Access to energy shapes everything else: industry, jobs and public services. We support the projects and public private partnerships that extend sustainable energy, and help clients mobilise climate finance in support of resilience.',
           image: '/media/sector-energy.jpg',
         },
         {
           title: 'Security & defence',
-          body: 'There is no lasting investment without stability. We facilitate institutional cooperation between States, dialogue on security-sector governance, and the protection of the critical infrastructure the region’s economies depend on.',
+          body: 'There is no lasting investment without stability. We facilitate institutional cooperation between States, dialogue on security sector governance, and the protection of the critical infrastructure the region’s economies depend on.',
           image: '/media/sector-security.jpg',
         },
       ],
-      enablersLabel: 'Cross-cutting enablers',
+      enablersLabel: 'Cross cutting enablers',
       enablersTitle: 'Enabled by technology & finance',
       technology: {
         title: 'Technology',
@@ -390,29 +530,24 @@ export const content: Record<Lang, Content> = {
     },
     approach: {
       eyebrow: 'Our Approach',
-      title: 'From insight to implementation.',
+      title: 'Advice that begins with understanding.',
       subtitle:
-        'Every mandate begins with a question that matters: a reform to deliver, a market to open, a partnership to secure. We start there, and stay until the answer is in place.',
+        'Every mandate starts with a question that matters. We listen first, read the context carefully, then stay until decisions become delivery.',
       steps: [
         {
-          title: 'Define the need',
-          body: 'We never start with a solution. We start with the sticking point: what is holding things back, what is really at stake, and what success will look like. That question, framed with you, guides everything that follows.',
-        },
-        {
+          num: '01',
           title: 'Understand',
-          body: 'We take the time to step into the client’s world: their objectives, constraints, priorities and the people who matter.',
+          body: 'Your goals, constraints and what success must look like.',
         },
         {
+          num: '02',
           title: 'Assess',
-          body: 'We read the political, institutional and economic landscape to separate real opportunities from false leads, and make the options clear.',
+          body: 'A clear reading of the political and institutional landscape.',
         },
         {
-          title: 'Connect',
-          body: 'We open the right doors and build the relationships and partnerships that serve the goal.',
-        },
-        {
+          num: '03',
           title: 'Execute',
-          body: 'We stay alongside the client to turn strategy into decisions, coordinated action and results.',
+          body: 'Relationships and delivery that hold as conditions change.',
         },
       ],
       networkLabel: 'Our Expert Network',
@@ -456,22 +591,22 @@ export const content: Record<Lang, Content> = {
         {
           name: 'Togo',
           meta: 'Lomé · 6.13° N 1.22° E',
-          body: 'A strategic base for regional engagement and cross-border relationships. We help clients read the local context and build their partnerships.',
+          body: 'A strategic base for regional engagement and cross border relationships. We help clients read the local context and build their partnerships.',
           image: '/media/togo.jpg',
         },
       ],
     },
     board: {
-      eyebrow: 'Meet Our Board',
-      title: 'Experienced governance.',
+      eyebrow: 'Our Board',
+      title: 'Governance shaped by the field.',
       subtitle:
         'The RYSE board brings experience gained at the heart of government, Parliament, industry and international institutions.',
       members: [
         {
           name: 'Zeinab Camara',
-          role: 'Non-Executive Board Member',
+          role: 'Non Executive Board Member',
           image: '/media/zeinab-camara.jpg',
-          bio: 'A senior executive and political strategist, Zeinab Camara has built her career where public decision-making, international business and institutional transformation in Africa meet. She has worked alongside two Presidents, a Prime Minister and a President of the National Assembly.',
+          bio: 'A senior executive and political strategist, Zeinab Camara has built her career where public decision making, international business and institutional transformation in Africa meet. She has worked alongside two Presidents, a Prime Minister and a President of the National Assembly.',
           highlights: [
             'Country Director, Tony Blair Institute for Global Change, Togo',
             'Senior Manager, Communities & Social Performance, Rio Tinto (Simandou)',
@@ -483,7 +618,7 @@ export const content: Record<Lang, Content> = {
           name: 'David S. Edoh',
           role: 'Board Member',
           image: '/media/david-edoh.jpg',
-          bio: 'A Lomé-based lawyer and entrepreneur, David S. Edoh has more than twenty years of experience in management and the delivery of energy infrastructure. He founded and has led three companies in Togo and Benin, carrying out electrical works and engineering services for the national utilities CEET and SBEE, alongside contractors such as SDEL-ELEXA (VINCI Energies) and AEE Power, on programmes financed by the World Bank, the AFD, the European Union and KfW.',
+          bio: 'A lawyer and entrepreneur based in Lomé, David S. Edoh has more than twenty years of experience in management and the delivery of energy infrastructure. He founded and has led three companies in Togo and Benin, carrying out electrical works and engineering services for the national utilities CEET and SBEE, alongside contractors such as SDEL-ELEXA (VINCI Energies) and AEE Power, on programmes financed by the World Bank, the AFD, the European Union and KfW.',
           highlights: [
             'Founder and CEO, ETS (Energies Technologies & Solutions) and AXELEC (Axe Electrique), Togo',
             'Founder, ENERTECH, electrical works, Benin',
@@ -500,7 +635,7 @@ export const content: Record<Lang, Content> = {
         'RYSE draws on a network of recognised consultants and specialists. Share your profile and we will contact you when an assignment matches your expertise.',
       fields: {
         fullName: 'Full Name',
-        email: 'E-mail',
+        email: 'Email',
         phone: 'Phone',
         linkedin: 'LinkedIn Profile',
         mainField: 'Main Field',
@@ -524,7 +659,7 @@ export const content: Record<Lang, Content> = {
         'Finance',
         'Other',
       ],
-      yearOptions: ['1–3', '4–7', '8–12', '13–20', '20+'],
+      yearOptions: ['1 to 3', '4 to 7', '8 to 12', '13 to 20', '20+'],
     },
     contact: {
       eyebrow: "Let's start a conversation",
@@ -538,7 +673,7 @@ export const content: Record<Lang, Content> = {
       fields: {
         name: 'Name',
         organisation: 'Organisation',
-        email: 'E-mail',
+        email: 'Email',
         phone: 'Phone',
         industry: 'Industry',
         subject: 'Subject',
@@ -546,7 +681,7 @@ export const content: Record<Lang, Content> = {
         submit: 'Send',
         note: 'Enquiries are handled in confidence.',
         choose: 'Choose',
-        success: 'Thank you. Your message is ready — we will respond shortly.',
+        success: 'Thank you. Your message is ready. We will respond shortly.',
       },
       industries: [
         'Government / Public sector',
@@ -579,20 +714,19 @@ export const content: Record<Lang, Content> = {
       { id: 'sectors', label: 'Secteurs' },
       { id: 'approach', label: 'Approche' },
       { id: 'projects', label: 'Projets' },
-      { id: 'where', label: 'Où nous travaillons' },
-      { id: 'board', label: 'Notre conseil' },
-      { id: 'experts', label: 'Réseau d’experts' },
+      { id: 'board', label: 'Conseil' },
+      { id: 'experts', label: 'Experts' },
     ],
     contactCta: 'Contact',
     explore: 'Découvrir',
     footer: {
       blurb:
-        'Conseil stratégique et coopération internationale en Afrique de l’Ouest — de la décision politique à la mise en œuvre sur le terrain.',
+        'Conseil stratégique et coopération internationale en Afrique de l’Ouest, de la décision politique à la mise en œuvre sur le terrain.',
       firm: 'Le cabinet',
       practice: 'Notre métier',
       connect: 'Nous écrire',
       offices: 'Bureaux',
-      email: 'E-mail',
+      email: 'Email',
       rights: '© 2026 RYSE & Co. Tous droits réservés.',
       region: 'Afrique de l’Ouest · Conakry · Lomé',
       officeLines: ['Conakry, Guinée', 'Lomé, Togo'],
@@ -603,6 +737,77 @@ export const content: Record<Lang, Content> = {
       practiceBody:
         'Notre conseil est façonné de l’intérieur de l’État. Notre direction a servi à la Présidence, dans les ministères, au Parlement et aux côtés d’institutions internationales.',
       practiceTags: ['Stratégie politique', 'Politiques publiques', 'Réforme'],
+      listeningLabel: 'Notre approche',
+      listeningTitle: 'Un conseil qui commence par comprendre.',
+      listeningBody:
+        'Chaque mandat commence par une question qui compte. Nous écoutons d’abord, lisons le contexte avec rigueur, puis restons jusqu’à ce que la décision se traduise en résultats.',
+      listeningSteps: [
+        {
+          num: '01',
+          title: 'Comprendre',
+          body: 'Vos objectifs, vos contraintes et ce à quoi ressemble la réussite.',
+        },
+        {
+          num: '02',
+          title: 'Évaluer',
+          body: 'Une lecture claire du paysage politique et institutionnel.',
+        },
+        {
+          num: '03',
+          title: 'Exécuter',
+          body: 'Des relations et une mise en œuvre qui tiennent dans la durée.',
+        },
+      ],
+      listeningCta: 'Découvrir notre approche',
+      pillarsLabel: 'Notre focus',
+      pillarsTitle: 'L’impact dépasse le mandat.',
+      pillars: [
+        {
+          title: 'Conseil politique',
+          body: 'Politiques, réformes et stratégie institutionnelle au plus haut niveau.',
+        },
+        {
+          title: 'Industries extractives',
+          body: 'Aligner investisseurs, État et communautés autour de résultats durables.',
+        },
+        {
+          title: 'Énergie et climat',
+          body: 'Accès, transition et partenariats pour une énergie durable.',
+        },
+        {
+          title: 'Sécurité et défense',
+          body: 'Une coopération institutionnelle qui soutient l’investissement.',
+        },
+        {
+          title: 'Technologie et finance',
+          body: 'Les leviers qui transforment l’ambition en programmes concrets.',
+        },
+      ],
+      mapLabel: 'Sur le terrain',
+      mapTitle: 'Des mandats concrets. Un impact durable.',
+      mapBody:
+        'De Conakry à Lomé, nous structurons les relations et les décisions qui font avancer les projets.',
+      mapStats: [
+        { label: 'Bureaux', value: 'Conakry · Lomé' },
+        { label: 'Portée', value: 'Afrique de l’Ouest' },
+        { label: 'Focus', value: 'De la politique à l’exécution' },
+      ],
+      projectLabel: 'Partenariat phare',
+      projectTitle: 'Des partenariats qui construisent.',
+      projectBody:
+        'Nos mandats prennent forme sur le terrain, aux côtés de partenaires qui partagent notre ambition pour l’Afrique de l’Ouest.',
+      projectCta: 'Voir le projet',
+      boardLabel: 'Notre conseil',
+      boardTitle: 'Une gouvernance forgée sur le terrain.',
+      boardBody:
+        'Une expérience acquise au cœur de l’État, du Parlement, de l’industrie et des institutions internationales, au service de chaque mandat.',
+      boardCta: 'Rencontrer le conseil',
+      placesLabel: 'Présence',
+      placesTitle: 'Présents là où se prennent les décisions.',
+      placesBody:
+        'Depuis Conakry et Lomé, nous accompagnons nos clients dans toute l’Afrique de l’Ouest, avec ancrage local et portée régionale.',
+      whereLabel: 'Bureaux',
+      corridorWest: 'Afrique de l’Ouest',
       sectorsLabel: 'Secteurs',
       sectorsTitle: 'Là où se joue la transformation.',
       sectorCards: [
@@ -627,15 +832,54 @@ export const content: Record<Lang, Content> = {
           image: '/media/expertise-policy.jpg',
         },
       ],
-      projectLabel: 'Partenariat phare',
-      whereLabel: 'Bureaux',
-      corridorWest: 'Afrique de l’Ouest',
       ctaTalk: 'Échanger avec notre équipe',
       ctaExpertsTitle: 'Rejoignez notre réseau d’experts.',
       ctaExpertsAction: 'Proposer ma candidature',
       ctaTitle: 'Prêt à façonner votre prochaine étape en Afrique de l’Ouest ?',
       ctaBody:
         'De la stratégie politique aux partenariats et à l’investissement, parlons de ce que vous voulez accomplir.',
+      closeLabel: 'Prochaine étape',
+      closeTitle: 'Penser la région dans la durée.',
+      closeBody: 'Tout commence par une conversation. Construisons à partir de là.',
+      momentsLabel: 'Résultats',
+      momentsTitle: 'Plus que de la stratégie. Des avancées concrètes.',
+      moments: [
+        {
+          title: 'Entrée sur le marché',
+          image: '/media/guinea.jpg',
+        },
+        {
+          title: 'Partenariats énergétiques',
+          image: '/media/sector-energy.jpg',
+        },
+        {
+          title: 'Dialogue institutionnel',
+          image: '/media/expertise-policy.jpg',
+        },
+        {
+          title: 'Coopération transfrontalière',
+          image: '/media/togo.jpg',
+        },
+      ],
+      insightsLabel: 'Perspectives',
+      insightsTitle: 'De la clarté dans des environnements complexes.',
+      insights: [
+        {
+          title: 'De la décision publique à l’exécution',
+          image: '/media/expertise-policy.jpg',
+          href: '/expertise',
+        },
+        {
+          title: 'Là où se joue la transformation',
+          image: '/media/sector-extractive.jpg',
+          href: '/sectors',
+        },
+        {
+          title: 'Des partenariats qui construisent',
+          image: '/media/project-energy.jpg',
+          href: '/projects',
+        },
+      ],
     },
     hero: {
       eyebrow: 'Conseil politique · Coopération internationale',
@@ -645,9 +889,9 @@ export const content: Record<Lang, Content> = {
         'Liens durables.',
         'Impact réel.',
       ],
-      body: 'Nous conseillons gouvernements, institutions et investisseurs en Afrique de l’Ouest, de la stratégie politique et de l’élaboration des politiques publiques jusqu’aux partenariats et à l’investissement.',
-      primary: 'Découvrir notre expertise',
-      secondary: 'Devenir partenaire',
+      body: 'Un conseil stratégique pensé pour les décisions qui façonnent la prochaine décennie en Afrique de l’Ouest, et les partenariats qui durent au delà.',
+      primary: 'Réserver un échange',
+      secondary: 'Découvrir notre approche',
     },
     about: {
       eyebrow: 'À propos de RYSE',
@@ -670,7 +914,7 @@ export const content: Record<Lang, Content> = {
       values: [
         {
           title: 'Prospective',
-          body: 'Anticiper le changement et regarder au-delà de l’horizon immédiat.',
+          body: 'Anticiper le changement et regarder au delà de l’horizon immédiat.',
         },
         {
           title: 'Rigueur',
@@ -706,15 +950,15 @@ export const content: Record<Lang, Content> = {
         'Nous accompagnons les dirigeants dans la conception et la mise en œuvre des politiques publiques, des réformes et de la stratégie politique, et facilitons la coopération entre États et avec les organisations régionales. Notre direction a servi à la Présidence, dans les ministères et au Parlement : nous savons comment une décision se prépare, se négocie et se conduit.',
       privateTitle: 'Pour les entreprises & investisseurs',
       privateBody:
-        'Nous aidons le secteur privé à comprendre le fonctionnement de l’action publique, à lire le contexte politique et à engager les bonnes institutions. Nous accompagnons la structuration de partenariats public-privé, pour que les projets privés avancent au rythme de l’État.',
+        'Nous aidons le secteur privé à comprendre le fonctionnement de l’action publique, à lire le contexte politique et à engager les bonnes institutions. Nous accompagnons la structuration de partenariats public privé, pour que les projets privés avancent au rythme de l’État.',
       whereHelpLabel: 'Où nous intervenons',
       whereHelp: [
         'Stratégie politique et institutionnelle',
         'Conception des politiques publiques',
         'Conduite des réformes',
         'Relations gouvernementales et parlementaires',
-        'Coopération État–État et État–région',
-        'Partenariats public-privé (PPP)',
+        'Coopération État à État et État à région',
+        'Partenariats public privé (PPP)',
         'Conseil au secteur privé',
         'Accès au secteur public pour les entreprises et les institutions privées',
       ],
@@ -756,7 +1000,7 @@ export const content: Record<Lang, Content> = {
         },
         {
           title: 'Énergie & climat',
-          body: 'L’accès à l’énergie conditionne tout le reste : industrie, emplois et services publics. Nous soutenons les projets et partenariats public-privé qui étendent l’énergie durable, et aidons nos clients à mobiliser la finance climat au service de la résilience.',
+          body: 'L’accès à l’énergie conditionne tout le reste : industrie, emplois et services publics. Nous soutenons les projets et partenariats public privé qui étendent l’énergie durable, et aidons nos clients à mobiliser la finance climat au service de la résilience.',
           image: '/media/sector-energy.jpg',
         },
         {
@@ -778,29 +1022,24 @@ export const content: Record<Lang, Content> = {
     },
     approach: {
       eyebrow: 'Notre approche',
-      title: 'De l’insight à la mise en œuvre.',
+      title: 'Un conseil qui commence par comprendre.',
       subtitle:
-        'Chaque mandat commence par une question qui compte : une réforme à conduire, un marché à ouvrir, un partenariat à sécuriser. Nous partons de là, et restons jusqu’à ce que la réponse soit en place.',
+        'Chaque mandat commence par une question qui compte. Nous écoutons d’abord, lisons le contexte avec rigueur, puis restons jusqu’à ce que la décision se traduise en résultats.',
       steps: [
         {
-          title: 'Définir le besoin',
-          body: 'Nous ne partons jamais d’une solution. Nous partons du point de blocage : ce qui retient, ce qui est vraiment en jeu, et à quoi ressemble le succès. Cette question, formulée avec vous, oriente tout ce qui suit.',
-        },
-        {
+          num: '01',
           title: 'Comprendre',
-          body: 'Nous prenons le temps d’entrer dans le monde du client : objectifs, contraintes, priorités et personnes qui comptent.',
+          body: 'Vos objectifs, vos contraintes et ce à quoi ressemble la réussite.',
         },
         {
+          num: '02',
           title: 'Évaluer',
-          body: 'Nous lisons le paysage politique, institutionnel et économique pour séparer les vraies opportunités des fausses pistes, et clarifier les options.',
+          body: 'Une lecture claire du paysage politique et institutionnel.',
         },
         {
-          title: 'Connecter',
-          body: 'Nous ouvrons les bonnes portes et construisons les relations et partenariats au service de l’objectif.',
-        },
-        {
+          num: '03',
           title: 'Exécuter',
-          body: 'Nous restons aux côtés du client pour transformer la stratégie en décisions, en action coordonnée et en résultats.',
+          body: 'Des relations et une mise en œuvre qui tiennent dans la durée.',
         },
       ],
       networkLabel: 'Notre réseau d’experts',
@@ -851,7 +1090,7 @@ export const content: Record<Lang, Content> = {
     },
     board: {
       eyebrow: 'Notre conseil',
-      title: 'Une gouvernance expérimentée.',
+      title: 'Une gouvernance forgée sur le terrain.',
       subtitle:
         'Le conseil de RYSE réunit une expérience acquise au cœur de l’État, du Parlement, de l’industrie et des institutions internationales.',
       members: [
@@ -888,7 +1127,7 @@ export const content: Record<Lang, Content> = {
         'RYSE s’appuie sur un réseau de consultants et de spécialistes reconnus. Partagez votre profil ; nous vous contacterons lorsqu’une mission correspondra à votre expertise.',
       fields: {
         fullName: 'Nom complet',
-        email: 'E-mail',
+        email: 'Email',
         phone: 'Téléphone',
         linkedin: 'Profil LinkedIn',
         mainField: 'Domaine principal',
@@ -912,7 +1151,7 @@ export const content: Record<Lang, Content> = {
         'Finance',
         'Autre',
       ],
-      yearOptions: ['1–3', '4–7', '8–12', '13–20', '20+'],
+      yearOptions: ['1 to 3', '4 to 7', '8 to 12', '13 to 20', '20+'],
     },
     contact: {
       eyebrow: 'Engager la conversation',
@@ -926,7 +1165,7 @@ export const content: Record<Lang, Content> = {
       fields: {
         name: 'Nom',
         organisation: 'Organisation',
-        email: 'E-mail',
+        email: 'Email',
         phone: 'Téléphone',
         industry: 'Secteur',
         subject: 'Objet',
@@ -934,7 +1173,7 @@ export const content: Record<Lang, Content> = {
         submit: 'Envoyer',
         note: 'Les demandes sont traitées en toute confidentialité.',
         choose: 'Choisir',
-        success: 'Merci. Votre message est prêt — nous vous répondrons rapidement.',
+        success: 'Merci. Votre message est prêt. Nous vous répondrons rapidement.',
       },
       industries: [
         'Gouvernement / Secteur public',

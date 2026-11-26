@@ -1,25 +1,20 @@
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
 
 export function Logo() {
+  const { t } = useLanguage()
+
   return (
     <Link
       to={routes.home}
-      className="flex items-center gap-3 whitespace-nowrap no-underline"
-      aria-label="RYSE, home"
+      className="site-logo"
+      aria-label={`${t.brand.name}, home`}
     >
-      <img
-        src="/media/logo-mark.png"
-        alt=""
-        className="block h-10 w-auto"
-      />
-      <span className="flex flex-col items-center leading-none">
-        <span className="font-display text-[27px] font-semibold tracking-[0.5em] text-[#E6DCCB] mr-[-0.5em]">
-          RYSE
-        </span>
-        <span className="font-label mt-[7px] text-[8.5px] font-medium tracking-[0.3em] text-[#E6DCCB] uppercase mr-[-0.3em] whitespace-nowrap">
-          Strategy & Foresight
-        </span>
+      <img src="/media/logo-mark.png" alt="" className="site-logo__mark" />
+      <span className="site-logo__wordmark">
+        <span className="site-logo__name">{t.brand.name}</span>
+        <span className="site-logo__tag">{t.brand.tagline}</span>
       </span>
     </Link>
   )

@@ -6,7 +6,6 @@ import { Logo } from './Logo'
 const firmLinks = [
   { id: 'about', path: routes.about },
   { id: 'board', path: routes.board },
-  { id: 'where', path: routes.where },
   { id: 'experts', path: routes.experts },
 ] as const
 
@@ -24,23 +23,20 @@ export function Footer() {
 
   return (
     <footer className="border-t border-fline bg-forest text-onf">
-      <div className="wrap py-14 md:py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-10">
-          <div className="max-w-sm">
+      <div className="wrap py-12 md:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-10">
+          <div className="max-w-sm sm:col-span-2 lg:col-span-1">
             <Logo />
-            <p className="mt-6 text-[14.5px] leading-relaxed text-onf2">
+            <p className="mt-5 text-[14.5px] leading-relaxed text-onf2 sm:mt-6">
               {f.blurb}
             </p>
-            <Link to={routes.contact} className="btn-ryse solid sm mt-7">
-              {t.contactCta}
-            </Link>
           </div>
 
           <nav aria-label={f.firm}>
             <p className="font-label text-[11px] font-semibold tracking-[2px] text-bronzeh uppercase">
               {f.firm}
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-3 sm:mt-5">
               {firmLinks.map((item) => (
                 <li key={item.id}>
                   <Link
@@ -58,7 +54,7 @@ export function Footer() {
             <p className="font-label text-[11px] font-semibold tracking-[2px] text-bronzeh uppercase">
               {f.practice}
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-3 sm:mt-5">
               {practiceLinks.map((item) => (
                 <li key={item.id}>
                   <Link
@@ -76,7 +72,7 @@ export function Footer() {
             <p className="font-label text-[11px] font-semibold tracking-[2px] text-bronzeh uppercase">
               {f.connect}
             </p>
-            <dl className="mt-5 space-y-5">
+            <dl className="mt-4 space-y-5 sm:mt-5">
               <div>
                 <dt className="font-label text-[10.5px] font-semibold tracking-[1.6px] text-onf2/80 uppercase">
                   {f.email}
@@ -84,7 +80,7 @@ export function Footer() {
                 <dd className="mt-1.5">
                   <a
                     href="mailto:contact@ryseglobalinc.com"
-                    className="text-[14.5px] text-[#F1E9DC] no-underline transition-colors hover:text-bronzeh"
+                    className="break-all text-[14.5px] text-[#F1E9DC] no-underline transition-colors hover:text-bronzeh"
                   >
                     contact@ryseglobalinc.com
                   </a>
@@ -106,9 +102,9 @@ export function Footer() {
       </div>
 
       <div className="border-t border-fline">
-        <div className="wrap flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="wrap flex flex-col gap-2 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:py-6">
           <p className="text-[12.5px] text-onf2">{f.rights}</p>
-          <p className="font-label text-[11px] font-medium tracking-[1.6px] text-onf2 uppercase">
+          <p className="font-label text-[10.5px] font-medium tracking-[1.4px] text-onf2 uppercase sm:text-[11px] sm:tracking-[1.6px]">
             {f.region}
           </p>
         </div>

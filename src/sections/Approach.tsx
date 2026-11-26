@@ -1,80 +1,44 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useReducedMotion } from 'framer-motion'
-import { approachIcons } from '../components/BrandIcons'
-import { MediaFrame } from '../components/MediaFrame'
 import { Reveal } from '../components/Reveal'
-import { PageHeader } from '../components/PageHeader'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
 
 export function Approach() {
   const { t } = useLanguage()
   const a = t.approach
-  const [active, setActive] = useState(0)
-  const reduce = useReducedMotion()
 
   return (
     <section className="bg-ivory">
-      <PageHeader eyebrow={a.eyebrow} title={a.title}>
-        <p className="q">{a.subtitle}</p>
-      </PageHeader>
-
-      <div className="blk">
-        <div className="wrap">
-          <Reveal className="mb-12 max-w-3xl">
-            <MediaFrame src="/media/approach-meeting.jpg" aspect="aspect-[21/9]" />
+      <div className="approach-listen">
+        <div className="wrap approach-listen__grid">
+          <Reveal className="approach-listen__intro">
+            <p className="eyebrow">{a.eyebrow}</p>
+            <h1 className="approach-listen__title">{a.title}</h1>
+            <p className="approach-listen__body">{a.subtitle}</p>
+            <span className="approach-listen__rule" aria-hidden />
           </Reveal>
 
-          <div className="flow">
-            {a.steps.map((step, i) => {
-              const Icon = approachIcons[i] ?? approachIcons[0]
-              const isActive = active === i
-              const first = i === 0
-              return (
-                <motion.button
-                  key={step.title}
-                  type="button"
-                  className={`box w-full cursor-pointer text-left transition-colors ${
-                    first || isActive ? 'first' : ''
-                  }`}
-                  style={
-                    !first && isActive
-                      ? {
-                          background: 'var(--forest)',
-                          borderColor: 'var(--forest)',
-                        }
-                      : undefined
-                  }
-                  onMouseEnter={() => setActive(i)}
-                  onFocus={() => setActive(i)}
-                  onClick={() => setActive(i)}
-                  whileHover={reduce ? undefined : { y: -3 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <Icon
-                    className={`mb-3 h-8 w-8 ${
-                      first || isActive ? 'text-bronzeh' : 'text-bronzel'
-                    }`}
-                  />
-                  <h3
-                    className={
-                      !first && isActive ? '!text-bronzeh' : undefined
-                    }
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    className={
-                      !first && isActive ? '!text-[#D3D6CC]' : undefined
-                    }
-                  >
-                    {step.body}
-                  </p>
-                </motion.button>
-              )
-            })}
-          </div>
+          <Reveal delay={0.06} className="approach-listen__media">
+            <img
+              src="/media/approach-listen.jpg"
+              alt=""
+              className="approach-listen__img"
+            />
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ol className="approach-listen__steps">
+              {a.steps.map((step) => (
+                <li key={step.num} className="approach-listen__step">
+                  <span className="approach-listen__num">{step.num}</span>
+                  <div>
+                    <h2 className="approach-listen__step-title">{step.title}</h2>
+                    <p className="approach-listen__step-body">{step.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
         </div>
       </div>
 
@@ -87,7 +51,7 @@ export function Approach() {
           <Reveal delay={0.08}>
             <p>{a.networkBody}</p>
             <p className="mt-[22px]">
-              <Link to={routes.experts} className="more !text-[#F1E9DC]">
+              <Link to={routes.experts} className="more">
                 {a.networkCta}
               </Link>
             </p>

@@ -11,7 +11,6 @@ import { ExpertsPage } from './pages/ExpertsPage'
 import { Home } from './pages/Home'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { SectorsPage } from './pages/SectorsPage'
-import { WherePage } from './pages/WherePage'
 
 export default function App() {
   return (
@@ -25,7 +24,7 @@ export default function App() {
             <Route path={routes.sectors} element={<SectorsPage />} />
             <Route path={routes.approach} element={<ApproachPage />} />
             <Route path={routes.projects} element={<ProjectsPage />} />
-            <Route path={routes.where} element={<WherePage />} />
+            <Route path="/where" element={<Navigate to="/about#where" replace />} />
             <Route path={routes.board} element={<BoardPage />} />
             <Route path={routes.experts} element={<ExpertsPage />} />
             <Route path={routes.contact} element={<ContactPage />} />

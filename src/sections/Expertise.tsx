@@ -16,14 +16,17 @@ export function Expertise() {
 
       <div className="blk">
         <div className="wrap">
-          <Reveal className="mb-10">
-            <MediaFrame src="/media/expertise-policy.jpg" aspect="aspect-[21/9]" />
+          <Reveal className="mb-6 sm:mb-10">
+            <MediaFrame
+              src="/media/expertise-policy.jpg"
+              aspect="aspect-[16/9] sm:aspect-[21/9]"
+            />
           </Reveal>
           <Reveal>
             <div className="feature">
               <div>
                 <p className="eyebrow">{e.leadingLabel}</p>
-                <div className="mb-3 flex items-center gap-3 text-bronzeh">
+                <div className="mb-3 flex items-center gap-3 text-bronzel">
                   <IconPolicy className="h-8 w-8" />
                 </div>
                 <h2>{e.leadingTitle}</h2>

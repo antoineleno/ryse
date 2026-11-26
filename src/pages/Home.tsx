@@ -1,85 +1,101 @@
 import { Link } from 'react-router-dom'
-import { sectorIcons } from '../components/BrandIcons'
-import { MediaFrame } from '../components/MediaFrame'
+import {
+  IconEnergy,
+  IconExtractive,
+  IconFinance,
+  IconPolicy,
+  IconSecurity,
+} from '../components/BrandIcons'
 import { Reveal } from '../components/Reveal'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
 import { Hero } from '../sections/Hero'
 
+const pillarIcons = [
+  IconPolicy,
+  IconExtractive,
+  IconEnergy,
+  IconSecurity,
+  IconFinance,
+] as const
+
 export function Home() {
   const { t } = useLanguage()
   const h = t.home
   const featured = t.projects.featured
+  const board = t.board.members
 
   return (
     <>
       <Hero />
 
-      <div className="border-t border-fline bg-forest2">
-        <div className="wrap flex items-center gap-[18px] py-4 font-label text-[12px] font-semibold tracking-[2.6px] text-[#F1E9DC] uppercase max-sm:gap-2.5 max-sm:text-[10.5px] max-sm:tracking-[1.6px]">
-          <span>{t.where.locations[0].name}</span>
-          <div
-            className="h-px flex-1 bg-[repeating-linear-gradient(90deg,#A9824F_0_6px,transparent_6px_12px)]"
-            aria-hidden
-          />
-          <span>{t.where.locations[1].name}</span>
-          <div
-            className="h-px flex-1 bg-[repeating-linear-gradient(90deg,#A9824F_0_6px,transparent_6px_12px)]"
-            aria-hidden
-          />
-          <span>{h.corridorWest}</span>
-        </div>
-      </div>
-
-      <section className="bg-ivory pt-[88px]">
-        <div className="wrap grid items-center gap-10 md:grid-cols-[1fr_1.05fr] md:gap-14">
-          <Reveal>
-            <div className="border-l-2 border-bronzel pl-7">
-              <p className="eyebrow">{h.practiceLabel}</p>
-              <h2 className="mt-3.5 max-w-[22ch] text-[clamp(34px,4.6vw,54px)] text-ink">
-                {h.practiceTitle}
-              </h2>
-            </div>
-            <p className="lead mt-6 pl-7 md:pl-0 md:mt-8">{h.practiceBody}</p>
-            <p className="meta-line mt-5 mb-6 pl-7 md:pl-0">
-              {h.practiceTags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </p>
-            <div className="pl-7 md:pl-0">
-              <Link to={routes.expertise} className="more-link">
-                {t.explore}
+      {/* Approach — Auren-style three column */}
+      <section className="border-t border-rule bg-ivory">
+        <div className="approach-listen">
+          <div className="wrap approach-listen__grid">
+            <Reveal className="approach-listen__intro">
+              <p className="eyebrow">{h.listeningLabel}</p>
+              <h2 className="approach-listen__title">{h.listeningTitle}</h2>
+              <p className="approach-listen__body">{h.listeningBody}</p>
+              <span className="approach-listen__rule" aria-hidden />
+              <Link to={routes.approach} className="approach-listen__cta">
+                {h.listeningCta}
               </Link>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <MediaFrame src="/media/expertise-policy.jpg" aspect="aspect-[5/4]" />
-          </Reveal>
+            </Reveal>
+
+            <Reveal delay={0.06} className="approach-listen__media">
+              <img
+                src="/media/approach-listen.jpg"
+                alt=""
+                className="approach-listen__img"
+              />
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <ol className="approach-listen__steps">
+                {h.listeningSteps.map((step) => (
+                  <li key={step.num} className="approach-listen__step">
+                    <span className="approach-listen__num">{step.num}</span>
+                    <div>
+                      <h3 className="approach-listen__step-title">
+                        {step.title}
+                      </h3>
+                      <p className="approach-listen__step-body">{step.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+          </div>
         </div>
       </section>
 
-      <section className="bg-ivory pt-[88px] pb-4">
+      {/* Pillars — ivory, not forest */}
+      <section className="bg-sand2 py-16 sm:py-20">
         <div className="wrap">
-          <Reveal>
-            <p className="eyebrow">{h.sectorsLabel}</p>
+          <Reveal className="max-w-3xl">
+            <p className="eyebrow">{h.pillarsLabel}</p>
+            <h2 className="mt-4 max-w-[18ch] text-[clamp(28px,4.2vw,44px)] leading-[1.08] text-ink">
+              {h.pillarsTitle}
+            </h2>
           </Reveal>
-          <div className="mt-[22px] grid border-t-[1.5px] border-ink sm:grid-cols-2 lg:grid-cols-4">
-            {h.sectorCards.map((card, i) => {
-              const Icon = sectorIcons[i] ?? sectorIcons[0]
+
+          <div className="mt-12 grid gap-8 border-t border-ink/15 pt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:gap-6">
+            {h.pillars.map((pillar, i) => {
+              const Icon = pillarIcons[i] ?? IconPolicy
               return (
-                <Reveal key={card.title} delay={i * 0.04}>
-                  <Link
-                    to={routes.sectors}
-                    className={`group flex h-full flex-col gap-3 py-[22px] no-underline transition-colors ${
-                      i > 0 ? 'sm:border-l sm:border-rule sm:pl-[22px]' : 'sm:pr-[22px]'
-                    } ${i % 2 === 1 ? 'sm:pl-[22px]' : ''} border-t border-rule first:border-t-0 sm:border-t-0`}
-                  >
-                    <Icon className="h-9 w-9 text-bronzel transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:text-bronze" />
-                    <h3 className="font-display text-[27px] leading-[1.1] font-bold text-ink transition-colors group-hover:text-bronze">
-                      {card.title}
-                    </h3>
-                    <p className="text-[14.5px] text-ink2">{card.body}</p>
-                  </Link>
+                <Reveal
+                  key={pillar.title}
+                  delay={i * 0.04}
+                  className="min-w-0"
+                >
+                  <Icon className="h-8 w-8 text-bronzel" />
+                  <h3 className="mt-4 font-display text-[22px] leading-tight text-ink">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-2.5 text-[14.5px] leading-relaxed break-words text-ink2">
+                    {pillar.body}
+                  </p>
                 </Reveal>
               )
             })}
@@ -87,76 +103,184 @@ export function Home() {
         </div>
       </section>
 
-      <section className="bg-ivory pt-16 pb-4">
+      {/* Featured partnership — photo + light panel */}
+      <section className="bg-ivory py-16 sm:py-24">
         <div className="wrap">
-          <Reveal>
-            <p className="eyebrow">{h.projectLabel}</p>
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">{h.mapLabel}</p>
+            <h2 className="mt-4 text-[clamp(28px,4.2vw,44px)] leading-[1.08] text-ink">
+              {h.mapTitle}
+            </h2>
+            <p className="mt-4 max-w-[48ch] text-[16.5px] leading-relaxed text-ink2">
+              {h.mapBody}
+            </p>
           </Reveal>
-          <div className="mt-6 grid items-stretch gap-0 border border-rule lg:grid-cols-[1.15fr_0.85fr]">
-            <Reveal>
-              <MediaFrame
-                src="/media/project-energy.jpg"
-                aspect="aspect-[16/11] lg:aspect-auto lg:h-full lg:min-h-[320px]"
-                className="h-full"
-              />
-            </Reveal>
-            <Reveal delay={0.08} className="bg-forest p-8 text-onf md:p-10">
-              <p className="eyebrow !text-bronzeh">{featured.tag}</p>
-              <h3 className="mt-3 font-display text-[clamp(28px,3vw,40px)] text-[#F1E9DC]">
-                {featured.title}
-              </h3>
-              <p className="mt-4 text-[#D3D6CC]">{featured.body[0]}</p>
-              <Link to={routes.projects} className="more mt-7 !text-[#F1E9DC]">
-                {t.explore}
+
+          <Reveal className="mt-10 overflow-hidden border border-rule">
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
+              <div className="relative min-h-[260px] lg:min-h-[380px]">
+                <img
+                  src="/media/project-energy.jpg"
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+              <div className="bg-cream-soft p-7 sm:p-9">
+                <p className="eyebrow">{featured.tag}</p>
+                <h3 className="mt-3 font-display text-[clamp(26px,3vw,36px)] text-ink">
+                  {featured.title}
+                </h3>
+                <p className="mt-4 text-[15.5px] leading-relaxed text-ink2">
+                  {featured.body[0]}
+                </p>
+                <dl className="mt-7 space-y-3 border-t border-rule pt-6">
+                  {h.mapStats.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="grid grid-cols-[96px_1fr] gap-3"
+                    >
+                      <dt className="font-label text-[10.5px] font-semibold tracking-[1.6px] text-bronze uppercase">
+                        {stat.label}
+                      </dt>
+                      <dd className="text-[15px] text-ink">{stat.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <Link
+                  to={routes.projects}
+                  className="btn-ryse ink mt-8 inline-block"
+                >
+                  {h.projectCta}
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Board — editorial teaser */}
+      <section className="border-t border-rule bg-ivory">
+        <div className="board-home">
+          <div className="wrap board-home__grid">
+            <Reveal className="board-home__intro">
+              <p className="eyebrow">{h.boardLabel}</p>
+              <h2 className="board-home__title">{h.boardTitle}</h2>
+              <p className="board-home__body">{h.boardBody}</p>
+              <span className="board-home__rule" aria-hidden />
+              <Link to={routes.board} className="board-home__cta">
+                {h.boardCta}
               </Link>
             </Reveal>
+
+            <div className="board-home__people">
+              {board.map((member, i) => (
+                <Reveal key={member.name} delay={0.06 + i * 0.05}>
+                  <Link
+                    to={routes.board}
+                    className="board-home__person"
+                    aria-label={`${member.name}, ${member.role}`}
+                  >
+                    <div className="board-home__photo">
+                      <img src={member.image} alt="" />
+                    </div>
+                    <div className="board-home__meta">
+                      <p className="board-home__role">{member.role}</p>
+                      <h3 className="board-home__name">{member.name}</h3>
+                      <p className="board-home__snippet">
+                        {member.highlights[0]}
+                      </p>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-ivory pt-16">
-        <div className="wrap grid gap-4 sm:grid-cols-2">
-          {t.where.locations.map((loc, i) => (
-            <Reveal key={loc.name} delay={i * 0.08}>
-              <Link to={routes.where} className="group block no-underline">
-                <MediaFrame src={loc.image} aspect="aspect-[16/10]" />
-                <div className="mt-4 flex items-end justify-between gap-4">
-                  <div>
-                    <h3 className="font-display text-[32px] text-ink transition-colors group-hover:text-bronze">
-                      {loc.name}
-                    </h3>
-                    <p className="font-label mt-1 text-[11px] font-semibold tracking-[1.6px] text-bronze uppercase">
-                      {loc.meta}
-                    </p>
+      {/* Moments */}
+      <section className="bg-sand2 py-16 sm:py-24">
+        <div className="wrap">
+          <Reveal className="max-w-2xl">
+            <h2 className="text-[clamp(28px,4.2vw,42px)] leading-[1.08] text-ink">
+              {h.momentsTitle}
+            </h2>
+          </Reveal>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {h.moments.map((moment, i) => (
+              <Reveal key={moment.title} delay={i * 0.04}>
+                <article>
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <img
+                      src={moment.image}
+                      alt=""
+                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    />
                   </div>
-                  <span className="more-link shrink-0">{t.explore}</span>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                  <h3 className="mt-3.5 font-display text-[22px] text-ink">
+                    {moment.title}
+                  </h3>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mt-24 bg-sand py-16">
-        <div className="wrap grid gap-7 md:grid-cols-2">
+      {/* Insights */}
+      <section className="bg-ivory py-16 sm:py-24">
+        <div className="wrap">
+          <Reveal className="max-w-2xl">
+            <p className="eyebrow">{h.insightsLabel}</p>
+            <h2 className="mt-3 text-[clamp(26px,3.8vw,40px)] text-ink">
+              {h.insightsTitle}
+            </h2>
+          </Reveal>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            {h.insights.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.05}>
+                <Link to={item.href} className="group block no-underline">
+                  <div className="aspect-[16/11] overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt=""
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <h3 className="mt-4 font-display text-[22px] leading-snug text-ink transition-colors group-hover:text-bronze sm:text-[24px]">
+                    {item.title}
+                  </h3>
+                  <span className="mt-2.5 inline-block font-label text-[11px] font-semibold tracking-[1.8px] text-bronze uppercase">
+                    {t.explore} →
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Closing — sand, not forest (footer is already green) */}
+      <section className="border-t border-rule bg-ivory py-16 sm:py-20">
+        <div className="wrap max-w-3xl text-center">
           <Reveal>
-            <div className="flex flex-col items-start gap-3.5 border-t-[1.5px] border-ink pt-[18px]">
-              <p className="eyebrow">{t.contact.eyebrow}</p>
-              <h2 className="m-0 max-w-[22ch] text-[clamp(26px,3vw,36px)] text-ink">
-                {t.contact.title}
-              </h2>
-              <Link to={routes.contact} className="btn-ryse ink">
+            <p className="eyebrow justify-center">{h.closeLabel}</p>
+            <h2 className="mt-4 text-[clamp(28px,4.2vw,44px)] leading-[1.08] text-ink">
+              {h.closeTitle}
+            </h2>
+            <p className="mx-auto mt-4 max-w-[36ch] text-[16.5px] text-ink2">
+              {h.closeBody}
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link to={routes.contact} className="btn-ryse solid !text-ink">
                 {h.ctaTalk}
               </Link>
-            </div>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <div className="flex flex-col items-start gap-3.5 border-t-[1.5px] border-ink pt-[18px]">
-              <p className="eyebrow">{t.experts.eyebrow}</p>
-              <h2 className="m-0 max-w-[22ch] text-[clamp(26px,3vw,36px)] text-ink">
-                {h.ctaExpertsTitle}
-              </h2>
-              <Link to={routes.experts} className="btn-ryse ink">
+              <Link
+                to={routes.experts}
+                className="font-label text-[12px] font-semibold tracking-[1.8px] text-ink uppercase underline decoration-bronzel decoration-[1.5px] underline-offset-[10px] hover:text-bronze"
+              >
                 {h.ctaExpertsAction}
               </Link>
             </div>

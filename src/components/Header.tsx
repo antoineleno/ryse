@@ -23,19 +23,21 @@ export function Header() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-20 border-b border-fline bg-forest text-onf">
-      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-4 px-5 md:px-6">
+    <header className="site-header">
+      <div className="site-header__bar">
         <Logo />
 
-        <nav className="hidden items-center gap-5 xl:flex" aria-label="Main">
+        <nav className="site-nav" aria-label="Main">
           {navRoutes.map((item) => {
             const label = t.nav.find((n) => n.id === item.id)?.label ?? item.id
+            const active = pathname === item.path
             return (
               <NavLink
                 key={item.id}
                 to={item.path}
-                className="nav-link"
-                data-active={pathname === item.path}
+                className="site-nav__link"
+                data-active={active}
+                aria-current={active ? 'page' : undefined}
               >
                 {label}
               </NavLink>
@@ -43,40 +45,41 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <div
-            className="flex border border-fline p-0.5"
-            role="group"
-            aria-label="Language"
-          >
-            {(['en', 'fr'] as const).map((code) => (
-              <button
-                key={code}
-                type="button"
-                onClick={() => setLang(code)}
-                className={`font-label px-2.5 py-1.5 text-[11px] font-bold tracking-[1px] uppercase ${
-                  lang === code
-                    ? 'bg-bronzel text-ink'
-                    : 'bg-transparent text-onf2'
-                }`}
-                aria-pressed={lang === code}
-              >
-                {code}
-              </button>
+        <div className="site-header__actions">
+          <div className="site-lang" role="group" aria-label="Language">
+            {(['en', 'fr'] as const).map((code, i) => (
+              <span key={code} className="contents">
+                {i > 0 ? (
+                  <span className="site-lang__sep" aria-hidden>
+                    /
+                  </span>
+                ) : null}
+                <button
+                  type="button"
+                  onClick={() => setLang(code)}
+                  className="site-lang__btn"
+                  data-active={lang === code}
+                  aria-pressed={lang === code}
+                  aria-label={code === 'en' ? 'English' : 'Français'}
+                >
+                  {code.toUpperCase()}
+                </button>
+              </span>
             ))}
           </div>
 
-          <NavLink to={routes.contact} className="btn-ryse solid sm hidden sm:inline-block">
+          <NavLink to={routes.contact} className="site-header__cta">
             {t.contactCta}
           </NavLink>
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center border border-fline text-onf xl:hidden"
+            className="site-header__menu-btn"
             onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
             aria-label={open ? 'Close menu' : 'Open menu'}
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {open ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
           </button>
         </div>
       </div>
@@ -87,28 +90,51 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-fline bg-forest xl:hidden"
+            className="site-header__drawer"
           >
-            <nav className="flex flex-col px-5 py-4">
+            <nav className="site-header__drawer-nav" aria-label="Mobile">
               {navRoutes.map((item) => {
-                const label = t.nav.find((n) => n.id === item.id)?.label ?? item.id
+                const label =
+                  t.nav.find((n) => n.id === item.id)?.label ?? item.id
+                const active = pathname === item.path
                 return (
                   <NavLink
                     key={item.id}
                     to={item.path}
-                    className="border-b border-fline/60 py-3.5 font-label text-[11px] tracking-[1.6px] text-onf2 uppercase"
-                    data-active={pathname === item.path}
+                    className="site-header__drawer-link"
+                    data-active={active}
+                    aria-current={active ? 'page' : undefined}
                   >
                     {label}
                   </NavLink>
                 )
               })}
-              <NavLink
-                to={routes.contact}
-                className="btn-ryse solid mt-5 text-center"
-              >
-                {t.contactCta}
-              </NavLink>
+
+              <div className="site-header__drawer-foot">
+                <div className="site-lang" role="group" aria-label="Language">
+                  {(['en', 'fr'] as const).map((code, i) => (
+                    <span key={code} className="contents">
+                      {i > 0 ? (
+                        <span className="site-lang__sep" aria-hidden>
+                          /
+                        </span>
+                      ) : null}
+                      <button
+                        type="button"
+                        onClick={() => setLang(code)}
+                        className="site-lang__btn"
+                        data-active={lang === code}
+                        aria-pressed={lang === code}
+                      >
+                        {code.toUpperCase()}
+                      </button>
+                    </span>
+                  ))}
+                </div>
+                <NavLink to={routes.contact} className="site-header__cta">
+                  {t.contactCta}
+                </NavLink>
+              </div>
             </nav>
           </motion.div>
         )}

@@ -16,8 +16,11 @@ export function Projects() {
 
       <div className="blk">
         <div className="wrap">
-          <Reveal className="mb-8">
-            <MediaFrame src="/media/project-energy.jpg" aspect="aspect-[21/9]" />
+          <Reveal className="mb-6 sm:mb-8">
+            <MediaFrame
+              src="/media/project-energy.jpg"
+              aspect="aspect-[16/9] sm:aspect-[21/9]"
+            />
           </Reveal>
           <Reveal>
             <article className="project">

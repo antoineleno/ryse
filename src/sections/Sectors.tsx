@@ -20,7 +20,7 @@ export function Sectors() {
 
       <div className="blk">
         <div className="wrap">
-          <div className="mb-10 grid gap-3 md:grid-cols-[1.1fr_0.9fr] md:gap-8">
+          <div className="mb-8 grid gap-5 md:mb-10 md:grid-cols-[1.1fr_0.9fr] md:gap-8">
             <Reveal>
               <MediaFrame src={s.items[active]?.image ?? s.items[0].image} aspect="aspect-[16/10]" />
             </Reveal>
@@ -28,10 +28,12 @@ export function Sectors() {
               <p className="font-label text-[11px] font-semibold tracking-[2px] text-bronze uppercase">
                 0{active + 1} / 0{s.items.length}
               </p>
-              <h3 className="mt-3 font-display text-[clamp(28px,3.4vw,40px)] text-ink">
+              <h3 className="mt-3 font-display text-[clamp(26px,5vw,40px)] text-ink">
                 {s.items[active]?.title}
               </h3>
-              <p className="mt-4 text-ink2">{s.items[active]?.body}</p>
+              <p className="mt-4 text-[15px] text-ink2 sm:text-base">
+                {s.items[active]?.body}
+              </p>
             </Reveal>
           </div>
 
@@ -66,12 +68,12 @@ export function Sectors() {
                 <b>{s.enablersTitle}</b>
               </div>
               <div>
-                <IconEnergy className="mb-2 h-7 w-7 text-bronzeh" />
+                <IconEnergy className="mb-2 h-7 w-7 text-bronzel" />
                 <h4>{s.technology.title}</h4>
                 <p>{s.technology.body}</p>
               </div>
               <div>
-                <IconFinance className="mb-2 h-7 w-7 text-bronzeh" />
+                <IconFinance className="mb-2 h-7 w-7 text-bronzel" />
                 <h4>{s.finance.title}</h4>
                 <p>{s.finance.body}</p>
               </div>
