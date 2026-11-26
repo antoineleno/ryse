@@ -5,6 +5,17 @@ export type Content = {
   nav: { id: string; label: string }[]
   contactCta: string
   explore: string
+  footer: {
+    blurb: string
+    firm: string
+    practice: string
+    connect: string
+    offices: string
+    email: string
+    rights: string
+    region: string
+    officeLines: string[]
+  }
   home: {
     practiceLabel: string
     practiceTitle: string
@@ -187,6 +198,18 @@ export const content: Record<Lang, Content> = {
     ],
     contactCta: 'Contact',
     explore: 'Explore',
+    footer: {
+      blurb:
+        'Strategic advisory and international cooperation across West Africa — from political decision-making to delivery on the ground.',
+      firm: 'The firm',
+      practice: 'Our work',
+      connect: 'Connect',
+      offices: 'Offices',
+      email: 'Email',
+      rights: '© 2026 RYSE & Co. All rights reserved.',
+      region: 'West Africa · Conakry · Lomé',
+      officeLines: ['Conakry, Guinea', 'Lomé, Togo'],
+    },
     home: {
       practiceLabel: 'Leading practice',
       practiceTitle: 'Political advisory & policy making.',
@@ -562,6 +585,18 @@ export const content: Record<Lang, Content> = {
     ],
     contactCta: 'Contact',
     explore: 'Découvrir',
+    footer: {
+      blurb:
+        'Conseil stratégique et coopération internationale en Afrique de l’Ouest — de la décision politique à la mise en œuvre sur le terrain.',
+      firm: 'Le cabinet',
+      practice: 'Notre métier',
+      connect: 'Nous écrire',
+      offices: 'Bureaux',
+      email: 'E-mail',
+      rights: '© 2026 RYSE & Co. Tous droits réservés.',
+      region: 'Afrique de l’Ouest · Conakry · Lomé',
+      officeLines: ['Conakry, Guinée', 'Lomé, Togo'],
+    },
     home: {
       practiceLabel: 'Pratique phare',
       practiceTitle: 'Conseil politique & élaboration des politiques.',
