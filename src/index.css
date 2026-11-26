@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #f2ebe1;
+  --color-cream-soft: #faf7f2;
+  --color-cream-deep: #e5dfd1;
+  --color-ink: #151a17;
+  --color-ink-muted: #4a524c;
+  --color-forest: #1a2b23;
+  --color-forest-deep: #0f1a15;
+  --color-gold: #a68966;
+  --color-gold-deep: #8f7352;
+  --color-gold-soft: #c4a882;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-gold) 35%, transparent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .nav-link {
+    position: relative;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link[data-active='true']::after {
+    transform: scaleX(1);
+  }
+
+  .input-field {
+    width: 100%;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    background: color-mix(in srgb, white 70%, var(--color-cream));
+    padding: 0.85rem 1rem;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+  }
+
+  .input-field:hover {
+    border-color: color-mix(in srgb, var(--color-gold) 55%, transparent);
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-gold) 22%, transparent);
+    background: #fff;
+  }
+
+  .diamond::before {
+    content: '◆';
+    margin-right: 0.55rem;
+    color: var(--color-gold);
+    font-size: 0.65em;
+  }
+}
