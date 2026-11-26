@@ -12,7 +12,7 @@ export function Layout() {
   }, [location.pathname])
 
   return (
-    <div className="min-h-screen min-w-0 overflow-x-clip bg-cream text-ink">
+    <div className="min-h-screen min-w-0 bg-cream text-ink">
       <ScrollToTop />
       <Header />
       <main className="min-w-0">

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
-import { homeTween } from '../lib/homeMotion'
+import { homeTween } from '../lib/motion'
 import { routes } from '../lib/routes'
 
 export function Hero() {
@@ -15,9 +15,9 @@ export function Hero() {
         <div className="hero__copy">
           <motion.p
             className="eyebrow"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={homeTween(0.04, 0.6)}
+            transition={homeTween(0.05, 0.65)}
           >
             {t.hero.eyebrow}
           </motion.p>
@@ -27,9 +27,9 @@ export function Hero() {
               <motion.span
                 key={line}
                 className={`hero__line${i === 1 ? ' is-accent' : ''}`}
-                initial={reduce ? false : { opacity: 0, y: 20 }}
+                initial={reduce ? false : { opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={homeTween(0.12 + i * 0.08, 0.7)}
+                transition={homeTween(0.15 + i * 0.1, 0.75)}
               >
                 {line}
               </motion.span>
@@ -38,18 +38,18 @@ export function Hero() {
 
           <motion.p
             className="hero__body"
-            initial={reduce ? false : { opacity: 0, y: 10 }}
+            initial={reduce ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={homeTween(0.4, 0.6)}
+            transition={homeTween(0.48, 0.65)}
           >
             {t.hero.body}
           </motion.p>
 
           <motion.div
             className="hero__actions"
-            initial={reduce ? false : { opacity: 0, y: 8 }}
+            initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={homeTween(0.5, 0.55)}
+            transition={homeTween(0.58, 0.6)}
           >
             <Link to={routes.contact} className="btn-ryse solid !text-ink">
               {t.hero.primary}
@@ -62,9 +62,9 @@ export function Hero() {
 
         <motion.div
           className="hero__media"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
+          initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={homeTween(0.18, 0.8)}
+          transition={homeTween(0.22, 0.85)}
         >
           <div className="hero__frame">
             <img
@@ -76,9 +76,9 @@ export function Hero() {
 
           <motion.div
             className="hero__card"
-            initial={reduce ? false : { opacity: 0, y: 12 }}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={homeTween(0.48, 0.6)}
+            transition={homeTween(0.55, 0.65)}
           >
             <p className="font-label text-[10px] font-semibold tracking-[2px] text-bronze uppercase">
               {t.home.practiceLabel}

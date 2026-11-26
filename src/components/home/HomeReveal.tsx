@@ -1,19 +1,45 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import type { ReactNode } from 'react'
 import {
-  fadeSoft,
-  fadeUp,
-  homeTween,
-  imageIn,
-  ruleDraw,
-  staggerBlock,
-  viewportOnce,
-} from '../../lib/homeMotion'
+  motion,
+  useInView,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from 'framer-motion'
+import { useRef, type ReactNode } from 'react'
+import { homeTween } from '../../lib/motion'
 
-/**
- * One scroll-triggered fade-up unit.
- * Prefer wrapping a whole column/block — avoid nesting HomeReveal inside HomeReveal.
- */
+type As = 'div' | 'section' | 'article' | 'li' | 'span' | 'p' | 'h2' | 'h3' | 'ol' | 'ul' | 'dl'
+
+function pick(as: As) {
+  switch (as) {
+    case 'section':
+      return motion.section
+    case 'article':
+      return motion.article
+    case 'li':
+      return motion.li
+    case 'span':
+      return motion.span
+    case 'p':
+      return motion.p
+    case 'h2':
+      return motion.h2
+    case 'h3':
+      return motion.h3
+    case 'ol':
+      return motion.ol
+    case 'ul':
+      return motion.ul
+    case 'dl':
+      return motion.dl
+    default:
+      return motion.div
+  }
+}
+
+const viewOpts = { once: true, amount: 0.2 as const }
+
+/** Single block — useInView + animate (reliable). */
 export function HomeReveal({
   children,
   className = '',
@@ -23,43 +49,34 @@ export function HomeReveal({
   children?: ReactNode
   className?: string
   delay?: number
-  as?: 'div' | 'section' | 'article' | 'li' | 'span'
+  as?: As
 }) {
   const reduce = useReducedMotion()
-  const Component =
-    as === 'section'
-      ? motion.section
-      : as === 'article'
-        ? motion.article
-        : as === 'li'
-          ? motion.li
-          : as === 'span'
-            ? motion.span
-            : motion.div
+  const ref = useRef(null)
+  const inView = useInView(ref, viewOpts)
+  const Component = pick(as)
+
+  if (reduce) {
+    return <Component className={className}>{children}</Component>
+  }
 
   return (
     <Component
+      ref={ref}
       className={className}
-      variants={reduce ? undefined : fadeUp}
-      initial={reduce ? false : 'hidden'}
-      whileInView={reduce ? undefined : 'show'}
-      viewport={viewportOnce}
-      transition={homeTween(delay, 0.7)}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      transition={homeTween(delay, 0.75)}
     >
       {children}
     </Component>
   )
 }
 
-/**
- * Staggered children for lists and intro stacks.
- * Children must use HomeItem (or variants={fadeUp}).
- */
+/** Plain wrapper — children animate themselves. */
 export function HomeStagger({
   children,
   className = '',
-  stagger = 0.08,
-  delay = 0.02,
   as = 'div',
 }: {
   children: ReactNode
@@ -68,81 +85,83 @@ export function HomeStagger({
   delay?: number
   as?: 'div' | 'ol' | 'ul' | 'dl'
 }) {
-  const reduce = useReducedMotion()
-  const Component =
-    as === 'ol'
-      ? motion.ol
-      : as === 'ul'
-        ? motion.ul
-        : as === 'dl'
-          ? motion.dl
-          : motion.div
-
-  return (
-    <Component
-      className={className}
-      variants={reduce ? undefined : staggerBlock(stagger, delay)}
-      initial={reduce ? false : 'hidden'}
-      whileInView={reduce ? undefined : 'show'}
-      viewport={viewportOnce}
-    >
-      {children}
-    </Component>
-  )
+  const Component = as === 'ol' ? 'ol' : as === 'ul' ? 'ul' : as === 'dl' ? 'dl' : 'div'
+  return <Component className={className}>{children}</Component>
 }
 
+/** Staggered child with index-based delay. */
 export function HomeItem({
   children,
   className = '',
   as = 'div',
   tone = 'up',
+  index = 0,
+  stagger = 0.08,
+  baseDelay = 0.05,
   'aria-hidden': ariaHidden,
 }: {
   children?: ReactNode
   className?: string
-  as?: 'div' | 'li' | 'article' | 'span' | 'p' | 'h2' | 'h3'
+  as?: As
   tone?: 'up' | 'soft' | 'rule'
+  index?: number
+  stagger?: number
+  baseDelay?: number
   'aria-hidden'?: boolean | 'true' | 'false'
 }) {
   const reduce = useReducedMotion()
-  const variants = tone === 'rule' ? ruleDraw : tone === 'soft' ? fadeSoft : fadeUp
-  const Component =
-    as === 'li'
-      ? motion.li
-      : as === 'article'
-        ? motion.article
-        : as === 'span'
-          ? motion.span
-          : as === 'p'
-            ? motion.p
-            : as === 'h2'
-              ? motion.h2
-              : as === 'h3'
-                ? motion.h3
-                : motion.div
+  const ref = useRef(null)
+  const inView = useInView(ref, viewOpts)
+  const Component = pick(as)
+  const delay = baseDelay + index * stagger
+
+  if (reduce) {
+    return (
+      <Component className={className} aria-hidden={ariaHidden}>
+        {children}
+      </Component>
+    )
+  }
+
+  if (tone === 'rule') {
+    return (
+      <Component
+        ref={ref}
+        className={className}
+        aria-hidden={ariaHidden}
+        style={{ originX: 0, transformOrigin: 'left center' }}
+        initial={{ opacity: 0, scaleX: 0 }}
+        animate={inView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
+        transition={homeTween(delay, 0.55)}
+      />
+    )
+  }
+
+  const hidden =
+    tone === 'soft' ? { opacity: 0 } : { opacity: 0, y: 28 }
+  const shown =
+    tone === 'soft' ? { opacity: 1 } : { opacity: 1, y: 0 }
 
   return (
     <Component
+      ref={ref}
       className={className}
-      variants={reduce ? undefined : variants}
       aria-hidden={ariaHidden}
-      style={
-        tone === 'rule'
-          ? ({ originX: 0, transformOrigin: 'left center' } as const)
-          : undefined
-      }
+      initial={hidden}
+      animate={inView ? shown : hidden}
+      transition={homeTween(delay, tone === 'soft' ? 0.55 : 0.7)}
     >
       {children}
     </Component>
   )
 }
 
-/** Soft image entrance — opacity + rise only (no competing scale layers). */
+/** Image fade + soft parallax. */
 export function HomeImage({
   src,
   alt = '',
   className = '',
-  delay = 0.06,
+  delay = 0.08,
 }: {
   src: string
   alt?: string
@@ -150,27 +169,61 @@ export function HomeImage({
   delay?: number
 }) {
   const reduce = useReducedMotion()
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, viewOpts)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reduce ? ['0%', '0%'] : ['-5%', '5%'],
+  )
+
+  if (reduce) {
+    return (
+      <div className={className} style={{ overflow: 'hidden' }}>
+        <img
+          src={src}
+          alt={alt}
+          style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </div>
+    )
+  }
 
   return (
     <motion.div
+      ref={ref}
       className={className}
-      variants={reduce ? undefined : imageIn}
-      initial={reduce ? false : 'hidden'}
-      whileInView={reduce ? undefined : 'show'}
-      viewport={viewportOnce}
-      transition={homeTween(delay, 0.85)}
       style={{ overflow: 'hidden' }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      transition={homeTween(delay, 0.85)}
     >
-      <img
+      <motion.img
         src={src}
         alt={alt}
         style={{
           display: 'block',
           width: '100%',
-          height: '100%',
+          height: '118%',
           objectFit: 'cover',
+          y,
+          willChange: 'transform',
         }}
       />
     </motion.div>
   )
+}
+
+export function HomeSection({
+  children,
+  className = '',
+}: {
+  children: ReactNode
+  className?: string
+}) {
+  return <section className={className}>{children}</section>
 }

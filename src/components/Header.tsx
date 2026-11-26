@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
@@ -10,6 +10,12 @@ export function Header() {
   const { t, lang, setLang } = useLanguage()
   const { pathname } = useLocation()
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { scrollY } = useScroll()
+
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    setScrolled(y > 12)
+  })
 
   useEffect(() => {
     setOpen(false)
@@ -23,7 +29,7 @@ export function Header() {
   }, [open])
 
   return (
-    <header className="site-header">
+    <header className="site-header" data-scrolled={scrolled}>
       <div className="site-header__bar">
         <Logo />
 
