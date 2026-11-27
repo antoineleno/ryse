@@ -24,7 +24,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-fline bg-forest text-onf">
+    <footer className="site-footer border-t border-fline bg-forest text-onf">
       <div className="wrap py-12 md:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr] lg:gap-10">
           <div className="max-w-sm sm:col-span-2 lg:col-span-1">
