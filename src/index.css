@@ -4421,6 +4421,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   line-height: 1.15;
   color: var(--color-ink);
   min-width: 0;
+  white-space: pre-line;
 }
 
 .ex-sides__rule {

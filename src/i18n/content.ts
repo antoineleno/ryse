@@ -523,7 +523,7 @@ export const content: Record<Lang, Content> = {
       govTitle: 'For governments & institutions',
       govBody:
         'We support leaders in designing and delivering public policy, reform and political strategy, and facilitate cooperation between States and with regional organisations. Our leadership has served at the Presidency, in ministries and in Parliament: we know how a decision is prepared, negotiated and carried through.',
-      privateTitle: 'For companies & investors',
+      privateTitle: 'For companies\n& investors',
       privateBody:
         'We help the private sector understand how public action works, read the political context and engage with the right institutions. We support the structuring of public private partnerships, so that private projects move forward in step with the State.',
       whereHelpLabel: 'Where we help',
@@ -1069,7 +1069,7 @@ export const content: Record<Lang, Content> = {
       govTitle: 'Pour les gouvernements & institutions',
       govBody:
         'Nous accompagnons les dirigeants dans la conception et la mise en œuvre des politiques publiques, des réformes et de la stratégie politique, et facilitons la coopération entre États et avec les organisations régionales. Notre direction a servi à la Présidence, dans les ministères et au Parlement : nous savons comment une décision se prépare, se négocie et se conduit.',
-      privateTitle: 'Pour les entreprises & investisseurs',
+      privateTitle: 'Pour les entreprises\n& investisseurs',
       privateBody:
         'Nous aidons le secteur privé à comprendre le fonctionnement de l’action publique, à lire le contexte politique et à engager les bonnes institutions. Nous accompagnons la structuration de partenariats public privé, pour que les projets privés avancent au rythme de l’État.',
       whereHelpLabel: 'Où nous intervenons',
