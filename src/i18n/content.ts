@@ -103,6 +103,10 @@ export type Content = {
     whyTitle: string
     whyBody: string
     whyKeywords: string[]
+    approachLabel: string
+    approachTitle: string
+    approachLead: string
+    approachSteps: { num: string; title: string; body: string }[]
   }
   expertise: {
     eyebrow: string
@@ -474,6 +478,37 @@ export const content: Record<Lang, Content> = {
       whyBody:
         'Entering a market or launching a cross border initiative takes more than information. It takes the ability to interpret it, to understand the people and institutions involved, and to choose the right way forward. Our aim is to make complex environments readable and opportunities actionable.',
       whyKeywords: ['Context', 'Connections', 'Clarity', 'Coordination'],
+      approachLabel: 'Our Approach',
+      approachTitle: 'From insight to implementation.',
+      approachLead:
+        'Every mandate begins with a question that matters: a reform to deliver, a market to open, a partnership to secure. We start there, and stay until the answer is in place.',
+      approachSteps: [
+        {
+          num: '01',
+          title: 'Define the need',
+          body: 'We never start with a solution. We start with the sticking point: what is holding things back, what is really at stake, and what success will look like. That question, framed with you, guides everything that follows.',
+        },
+        {
+          num: '02',
+          title: 'Understand',
+          body: "We take the time to step into the client's world: their objectives, constraints, priorities and the people who matter.",
+        },
+        {
+          num: '03',
+          title: 'Assess',
+          body: 'We read the political, institutional and economic landscape to separate real opportunities from false leads, and make the options clear.',
+        },
+        {
+          num: '04',
+          title: 'Connect',
+          body: 'We open the right doors and build the relationships and partnerships that serve the goal.',
+        },
+        {
+          num: '05',
+          title: 'Execute',
+          body: 'We stay alongside the client to turn strategy into decisions, coordinated action and results.',
+        },
+      ],
     },
     expertise: {
       eyebrow: 'Our Expertise',
@@ -989,6 +1024,37 @@ export const content: Record<Lang, Content> = {
       whyBody:
         'Entrer sur un marché ou lancer une initiative transfrontalière demande plus que de l’information. Il faut savoir l’interpréter, comprendre les acteurs et les institutions concernés, et choisir la bonne voie. Notre objectif : rendre lisibles les environnements complexes et actionnables les opportunités.',
       whyKeywords: ['Contexte', 'Connexions', 'Clarté', 'Coordination'],
+      approachLabel: 'Notre approche',
+      approachTitle: 'De l’analyse à la mise en œuvre.',
+      approachLead:
+        'Chaque mandat commence par une question qui compte : une réforme à conduire, un marché à ouvrir, un partenariat à sécuriser. Nous partons de là, et restons jusqu’à ce que la réponse soit en place.',
+      approachSteps: [
+        {
+          num: '01',
+          title: 'Définir le besoin',
+          body: 'Nous ne partons jamais d’une solution. Nous partons du point de blocage : ce qui retient l’avancée, ce qui est vraiment en jeu, et à quoi ressemble le succès. Cette question, cadrée avec vous, oriente tout ce qui suit.',
+        },
+        {
+          num: '02',
+          title: 'Comprendre',
+          body: 'Nous prenons le temps d’entrer dans le monde du client : ses objectifs, ses contraintes, ses priorités et les personnes qui comptent.',
+        },
+        {
+          num: '03',
+          title: 'Évaluer',
+          body: 'Nous lisons le paysage politique, institutionnel et économique pour distinguer les vraies opportunités des fausses pistes, et clarifier les options.',
+        },
+        {
+          num: '04',
+          title: 'Connecter',
+          body: 'Nous ouvrons les bonnes portes et construisons les relations et partenariats qui servent l’objectif.',
+        },
+        {
+          num: '05',
+          title: 'Exécuter',
+          body: 'Nous restons aux côtés du client pour transformer la stratégie en décisions, en action coordonnée et en résultats.',
+        },
+      ],
     },
     expertise: {
       eyebrow: 'Notre expertise',

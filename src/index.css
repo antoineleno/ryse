@@ -5375,6 +5375,125 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   padding: 10px 12px;
 }
 
+/* Approach — clean open rows */
+.ab-approach {
+  padding-block: 56px 64px;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+@media (min-width: 768px) {
+  .ab-approach {
+    padding-block: 80px 96px;
+  }
+}
+
+.ab-approach__intro {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
+
+@media (min-width: 768px) {
+  .ab-approach__intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 40px 56px;
+    align-items: end;
+    margin-bottom: 8px;
+    padding-bottom: 40px;
+  }
+}
+
+.ab-approach__title {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.2vw, 44px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.ab-approach__lead {
+  margin: 0;
+  max-width: 42ch;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 2.2vw, 19px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--color-ink2);
+}
+
+@media (min-width: 768px) {
+  .ab-approach__lead {
+    margin-left: auto;
+  }
+}
+
+.ab-approach__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ab-approach__row {
+  display: grid;
+  gap: 8px 16px;
+  margin: 0;
+  padding: 24px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  align-items: start;
+}
+
+.ab-approach__row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+@media (min-width: 720px) {
+  .ab-approach__row {
+    grid-template-columns: 3.5rem minmax(10rem, 0.85fr) minmax(0, 1.35fr);
+    gap: 20px 40px;
+    padding: 32px 0;
+    align-items: baseline;
+  }
+}
+
+.ab-approach__num {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-bronze);
+}
+
+.ab-approach__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.8vw, 28px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-ink);
+}
+
+.ab-approach__body {
+  margin: 0;
+  max-width: 48ch;
+  font-family: var(--font-sans);
+  font-size: clamp(14.5px, 2vw, 15.5px);
+  line-height: 1.7;
+  color: var(--color-ink2);
+}
+
+@media (min-width: 720px) {
+  .ab-approach__body {
+    max-width: none;
+  }
+}
+
 /* Network */
 .ab-network {
   padding-block: 56px 64px;

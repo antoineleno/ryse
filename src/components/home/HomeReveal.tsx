@@ -1,17 +1,10 @@
 import {
   motion,
-  useInView,
   useReducedMotion,
   useScroll,
   useTransform,
 } from 'framer-motion'
-import {
-  useLayoutEffect,
-  useRef,
-  useState,
-  type ReactNode,
-  type RefObject,
-} from 'react'
+import { useRef, type ReactNode } from 'react'
 import { homeTween } from '../../lib/motion'
 
 type As =
@@ -57,26 +50,36 @@ function pick(as: As) {
   }
 }
 
-const viewOpts = { once: true, amount: 0.15 as const }
-
-/** True once the node is (or was) in view — layout-sync for above-the-fold. */
-function useRevealGate(ref: RefObject<Element | null>) {
-  const inView = useInView(ref, viewOpts)
-  const [early, setEarly] = useState(false)
-
-  useLayoutEffect(() => {
-    const el = ref.current
-    if (!el || typeof window === 'undefined') return
-    const rect = el.getBoundingClientRect()
-    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 48) {
-      setEarly(true)
-    }
-  }, [ref])
-
-  return early || inView
+const viewport = {
+  once: true,
+  amount: 0.18 as const,
+  margin: '0px 0px -8% 0px' as const,
 }
 
-/** Single block — useInView + animate (reliable). */
+type RevealTone = 'up' | 'soft' | 'media' | 'rule'
+
+function hiddenState(tone: RevealTone) {
+  if (tone === 'soft') return { opacity: 0 }
+  if (tone === 'media') return { opacity: 0, scale: 1.04 }
+  if (tone === 'rule') return { opacity: 0, scaleX: 0 }
+  return { opacity: 0, y: 26 }
+}
+
+function shownState(tone: RevealTone) {
+  if (tone === 'soft') return { opacity: 1 }
+  if (tone === 'media') return { opacity: 1, scale: 1 }
+  if (tone === 'rule') return { opacity: 1, scaleX: 1 }
+  return { opacity: 1, y: 0 }
+}
+
+function durationFor(tone: RevealTone) {
+  if (tone === 'media') return 1.05
+  if (tone === 'soft') return 0.85
+  if (tone === 'rule') return 0.55
+  return 0.72
+}
+
+/** Single block — whileInView (reliable across hash / HMR). */
 export function HomeReveal({
   children,
   className = '',
@@ -88,28 +91,24 @@ export function HomeReveal({
   className?: string
   delay?: number
   as?: As
-  /** `soft` = fade only (images / full-bleed). `up` = fade + rise. */
-  tone?: 'up' | 'soft'
+  /** `soft` fade · `up` rise · `media` soft zoom · `rule` draw */
+  tone?: Exclude<RevealTone, 'rule'>
 }) {
   const reduce = useReducedMotion()
-  const ref = useRef(null)
-  const show = useRevealGate(ref)
   const Component = pick(as)
 
   if (reduce) {
     return <Component className={className}>{children}</Component>
   }
 
-  const hidden = tone === 'soft' ? { opacity: 0 } : { opacity: 0, y: 28 }
-  const shown = tone === 'soft' ? { opacity: 1 } : { opacity: 1, y: 0 }
-
   return (
     <Component
-      ref={ref}
       className={className}
-      initial={hidden}
-      animate={show ? shown : hidden}
-      transition={homeTween(delay, tone === 'soft' ? 0.9 : 0.75)}
+      initial={hiddenState(tone)}
+      whileInView={shownState(tone)}
+      viewport={viewport}
+      transition={homeTween(delay, durationFor(tone))}
+      style={tone === 'media' ? { transformOrigin: 'center center' } : undefined}
     >
       {children}
     </Component>
@@ -128,7 +127,8 @@ export function HomeStagger({
   delay?: number
   as?: 'div' | 'ol' | 'ul' | 'dl'
 }) {
-  const Component = as === 'ol' ? 'ol' : as === 'ul' ? 'ul' : as === 'dl' ? 'dl' : 'div'
+  const Component =
+    as === 'ol' ? 'ol' : as === 'ul' ? 'ul' : as === 'dl' ? 'dl' : 'div'
   return <Component className={className}>{children}</Component>
 }
 
@@ -146,15 +146,13 @@ export function HomeItem({
   children?: ReactNode
   className?: string
   as?: As
-  tone?: 'up' | 'soft' | 'rule'
+  tone?: RevealTone
   index?: number
   stagger?: number
   baseDelay?: number
   'aria-hidden'?: boolean | 'true' | 'false'
 }) {
   const reduce = useReducedMotion()
-  const ref = useRef(null)
-  const show = useRevealGate(ref)
   const Component = pick(as)
   const delay = baseDelay + index * stagger
 
@@ -169,30 +167,26 @@ export function HomeItem({
   if (tone === 'rule') {
     return (
       <Component
-        ref={ref}
         className={className}
         aria-hidden={ariaHidden}
         style={{ originX: 0, transformOrigin: 'left center' }}
-        initial={{ opacity: 0, scaleX: 0 }}
-        animate={show ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
-        transition={homeTween(delay, 0.55)}
+        initial={hiddenState('rule')}
+        whileInView={shownState('rule')}
+        viewport={viewport}
+        transition={homeTween(delay, durationFor('rule'))}
       />
     )
   }
 
-  const hidden =
-    tone === 'soft' ? { opacity: 0 } : { opacity: 0, y: 28 }
-  const shown =
-    tone === 'soft' ? { opacity: 1 } : { opacity: 1, y: 0 }
-
   return (
     <Component
-      ref={ref}
       className={className}
       aria-hidden={ariaHidden}
-      initial={hidden}
-      animate={show ? shown : hidden}
-      transition={homeTween(delay, tone === 'soft' ? 0.55 : 0.7)}
+      initial={hiddenState(tone)}
+      whileInView={shownState(tone)}
+      viewport={viewport}
+      transition={homeTween(delay, durationFor(tone))}
+      style={tone === 'media' ? { transformOrigin: 'center center' } : undefined}
     >
       {children}
     </Component>
@@ -215,7 +209,6 @@ export function HomeImage({
 }) {
   const reduce = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
-  const show = useRevealGate(ref)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
@@ -249,9 +242,10 @@ export function HomeImage({
       ref={ref}
       className={className}
       style={{ overflow: 'hidden' }}
-      initial={{ opacity: 0, y: 24 }}
-      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={homeTween(delay, 0.85)}
+      initial={{ opacity: 0, scale: 1.04 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={viewport}
+      transition={homeTween(delay, 1.05)}
     >
       <motion.img
         src={src}
