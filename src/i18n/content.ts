@@ -80,8 +80,12 @@ export type Content = {
     eyebrow: string
     title: string
     intro: string
+    storyLabel: string
+    storyTitle: string
     body: string
     body2: string
+    purposeLabel: string
+    purposeTitle: string
     missionLabel: string
     missionTitle: string
     missionBody: string
@@ -424,14 +428,18 @@ export const content: Record<Lang, Content> = {
       title: 'A strategic partner for a changing world.',
       intro:
         'RYSE is a strategic advisory and international cooperation firm operating in Guinea and Togo, with a regional outlook across West Africa.',
+      storyLabel: 'Our Story',
+      storyTitle: 'Clarity before action.',
       body: 'Africa offers significant opportunities. Realising them takes strategic clarity, trusted relationships, a real understanding of context and the ability to execute.',
       body2:
         'We work where political decision making, international cooperation, institutional engagement and delivery meet, helping our clients move forward with confidence.',
-      missionLabel: 'Our Mission',
+      purposeLabel: 'Purpose',
+      purposeTitle: 'Mission and vision.',
+      missionLabel: 'Mission',
       missionTitle: 'Connect international ambition with local opportunity.',
       missionBody:
         'Through the strategic guidance, partnerships and operational support needed to develop African markets.',
-      visionLabel: 'Our Vision',
+      visionLabel: 'Vision',
       visionTitle: "A trusted partner in Africa's transformation.",
       visionBody:
         'For those who want to contribute through strategic cooperation, responsible investment and lasting partnerships.',
@@ -607,13 +615,13 @@ export const content: Record<Lang, Content> = {
           name: 'Guinea',
           meta: 'Conakry · 9.64° N 13.58° W',
           body: 'A major market for strategic investment and institutional engagement. We help clients understand the environment and find the right counterparts.',
-          image: '/media/guinea.jpg',
+          image: '/media/guinea.jpg?v=5',
         },
         {
           name: 'Togo',
           meta: 'Lomé · 6.13° N 1.22° E',
           body: 'A strategic base for regional engagement and cross border relationships. We help clients read the local context and build their partnerships.',
-          image: '/media/togo.jpg',
+          image: '/media/togo.jpg?v=5',
         },
       ],
     },
@@ -934,15 +942,19 @@ export const content: Record<Lang, Content> = {
       title: 'Un partenaire stratégique dans un monde qui change.',
       intro:
         'RYSE est un cabinet de conseil stratégique et de coopération internationale implanté en Guinée et au Togo, avec une perspective régionale sur l’Afrique de l’Ouest.',
+      storyLabel: 'Notre histoire',
+      storyTitle: 'La clarté avant l’action.',
       body: 'L’Afrique offre des opportunités considérables. Les saisir demande une vision claire, des relations de confiance, une compréhension fine du contexte et la capacité d’exécuter.',
       body2:
         'Nous intervenons là où se rencontrent la décision politique, la coopération internationale, le dialogue institutionnel et la mise en œuvre, pour aider nos clients à avancer avec assurance.',
-      missionLabel: 'Notre mission',
+      purposeLabel: 'Raison d’être',
+      purposeTitle: 'Mission et vision.',
+      missionLabel: 'Mission',
       missionTitle:
         'Relier l’ambition internationale à l’opportunité locale.',
       missionBody:
         'Par l’accompagnement stratégique, les partenariats et le soutien opérationnel nécessaires au développement des marchés africains.',
-      visionLabel: 'Notre vision',
+      visionLabel: 'Vision',
       visionTitle: 'Un partenaire de confiance dans la transformation africaine.',
       visionBody:
         'Pour ceux qui souhaitent contribuer par la coopération stratégique, l’investissement responsable et des partenariats durables.',
@@ -1118,13 +1130,13 @@ export const content: Record<Lang, Content> = {
           name: 'Guinée',
           meta: 'Conakry · 9.64° N 13.58° W',
           body: 'Un marché majeur pour l’investissement stratégique et l’engagement institutionnel. Nous aidons nos clients à comprendre l’environnement et à trouver les bons interlocuteurs.',
-          image: '/media/guinea.jpg',
+          image: '/media/guinea.jpg?v=5',
         },
         {
           name: 'Togo',
           meta: 'Lomé · 6.13° N 1.22° E',
           body: 'Une base stratégique pour l’engagement régional et les relations transfrontalières. Nous aidons nos clients à lire le contexte local et à construire leurs partenariats.',
-          image: '/media/togo.jpg',
+          image: '/media/togo.jpg?v=5',
         },
       ],
     },
