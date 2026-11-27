@@ -4,10 +4,36 @@ import { useLanguage } from '../context/LanguageContext'
 import { homeTween } from '../lib/motion'
 import { routes } from '../lib/routes'
 
-export function Hero() {
+type HeroProps = {
+  eyebrow?: string
+  titleLines?: string[]
+  body?: string
+  primary?: string
+  primaryTo?: string
+  secondary?: string
+  secondaryTo?: string
+  image?: string
+  cardLabel?: string
+  cardTags?: string[]
+}
+
+export function Hero({
+  eyebrow,
+  titleLines,
+  body,
+  primary,
+  primaryTo = routes.contact,
+  secondary,
+  secondaryTo = routes.mission,
+  image = '/media/approach-meeting.jpg',
+  cardLabel,
+  cardTags,
+}: HeroProps = {}) {
   const { t } = useLanguage()
-  const lines = t.hero.titleLines
   const reduce = useReducedMotion()
+
+  const lines = titleLines ?? t.hero.titleLines
+  const cardItems = cardTags ?? t.home.practiceTags
 
   return (
     <section className="hero">
@@ -19,7 +45,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={homeTween(0.05, 0.65)}
           >
-            {t.hero.eyebrow}
+            {eyebrow ?? t.hero.eyebrow}
           </motion.p>
 
           <h1 className="hero__title">
@@ -42,7 +68,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={homeTween(0.48, 0.65)}
           >
-            {t.hero.body}
+            {body ?? t.hero.body}
           </motion.p>
 
           <motion.div
@@ -51,11 +77,11 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={homeTween(0.58, 0.6)}
           >
-            <Link to={routes.contact} className="btn-ryse solid !text-ink">
-              {t.hero.primary}
+            <Link to={primaryTo} className="btn-ryse solid !text-ink">
+              {primary ?? t.hero.primary}
             </Link>
-            <Link to={routes.mission} className="hero__link">
-              {t.hero.secondary}
+            <Link to={secondaryTo} className="hero__link">
+              {secondary ?? t.hero.secondary}
             </Link>
           </motion.div>
         </div>
@@ -67,11 +93,7 @@ export function Hero() {
           transition={homeTween(0.22, 0.85)}
         >
           <div className="hero__frame">
-            <img
-              src="/media/approach-meeting.jpg"
-              alt=""
-              className="hero__img"
-            />
+            <img src={image} alt="" className="hero__img" />
           </div>
 
           <motion.div
@@ -81,10 +103,10 @@ export function Hero() {
             transition={homeTween(0.55, 0.65)}
           >
             <p className="font-label text-[10px] font-semibold tracking-[2px] text-bronze uppercase">
-              {t.home.practiceLabel}
+              {cardLabel ?? t.home.practiceLabel}
             </p>
             <div className="mt-3 space-y-2">
-              {t.home.practiceTags.map((tag) => (
+              {cardItems.map((tag) => (
                 <div key={tag} className="flex items-center gap-2.5">
                   <span className="h-1.5 w-1.5 shrink-0 rotate-45 bg-bronzel" />
                   <span className="text-[13px] text-ink">{tag}</span>

@@ -199,11 +199,13 @@ export function HomeImage({
   alt = '',
   className = '',
   delay = 0.08,
+  objectPosition = '50% 50%',
 }: {
   src: string
   alt?: string
   className?: string
   delay?: number
+  objectPosition?: string
 }) {
   const reduce = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
@@ -224,7 +226,13 @@ export function HomeImage({
         <img
           src={src}
           alt={alt}
-          style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition,
+          }}
         />
       </div>
     )
@@ -247,6 +255,7 @@ export function HomeImage({
           width: '100%',
           height: '118%',
           objectFit: 'cover',
+          objectPosition,
           y,
           willChange: 'transform',
         }}

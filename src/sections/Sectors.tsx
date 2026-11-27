@@ -1,11 +1,14 @@
+import { Link } from 'react-router-dom'
 import {
   HomeImage,
   HomeItem,
   HomeSection,
   HomeStagger,
 } from '../components/home/HomeReveal'
-import { PageIntro } from '../components/PageIntro'
 import { useLanguage } from '../context/LanguageContext'
+import { routes } from '../lib/routes'
+
+const mediaFocus = ['22% 30%', '45% 35%', '48% 42%'] as const
 
 export function Sectors() {
   const { t } = useLanguage()
@@ -13,56 +16,82 @@ export function Sectors() {
 
   return (
     <section className="bg-ivory">
-      <HomeSection className="border-b border-rule">
-        <div className="wrap">
-          <PageIntro eyebrow={s.eyebrow} title={s.title} body={s.subtitle} />
+      <HomeSection>
+        <div className="sector-stack">
+          <div className="wrap">
+            <HomeStagger className="sector-stack__head">
+              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
+                {s.eyebrow}
+              </HomeItem>
+              <HomeItem index={1} as="h1" className="sector-stack__title">
+                {s.title}
+              </HomeItem>
+              <HomeItem index={2} as="p" className="sector-stack__lede">
+                {s.subtitle}
+              </HomeItem>
+            </HomeStagger>
+          </div>
+
+          <div className="sector-stack__list">
+            {s.items.map((item, i) => {
+              const flip = i % 2 === 1
+              return (
+                <article
+                  key={item.title}
+                  className={`sector-block${flip ? ' is-flip' : ''}`}
+                >
+                  <div className="wrap sector-block__grid">
+                    <HomeStagger className="sector-block__copy">
+                      <HomeItem
+                        index={0}
+                        as="p"
+                        className="sector-block__num"
+                        tone="soft"
+                      >
+                        {String(i + 1).padStart(2, '0')}.
+                        <span className="sector-block__rail" aria-hidden />
+                      </HomeItem>
+                      <HomeItem index={1} as="h2" className="sector-block__name">
+                        {item.title}
+                      </HomeItem>
+                      <HomeItem index={2} as="p" className="sector-block__body">
+                        {item.body}
+                      </HomeItem>
+                      <HomeItem
+                        index={3}
+                        as="p"
+                        className="sector-block__tagline"
+                        tone="soft"
+                      >
+                        {item.prompt}
+                      </HomeItem>
+                      <HomeItem index={4} className="sector-block__actions">
+                        <Link
+                          to={routes.contact}
+                          className="btn-ryse solid sector-block__cta"
+                        >
+                          {s.learnMore}
+                        </Link>
+                      </HomeItem>
+                    </HomeStagger>
+
+                    <div className="sector-block__visual">
+                      <span className="sector-block__plate" aria-hidden />
+                      <HomeImage
+                        src={item.image}
+                        className="sector-block__media"
+                        objectPosition={mediaFocus[i] ?? '50% 50%'}
+                      />
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
         </div>
       </HomeSection>
 
-      {s.items.map((item, i) => {
-        const flip = i % 2 === 1
-        return (
-          <HomeSection
-            key={item.title}
-            className={`border-b border-rule ${flip ? 'bg-ivory' : 'bg-sand2'}`}
-          >
-            <div className="page-sector">
-              <div
-                className={`wrap page-sector__panel${flip ? ' page-sector__panel--flip' : ''}`}
-              >
-                <HomeImage src={item.image} className="page-sector__media" />
-                <HomeStagger className="page-sector__detail">
-                  <HomeItem
-                    index={0}
-                    as="p"
-                    className="page-sector__count"
-                    tone="soft"
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                    <span aria-hidden> / </span>
-                    {String(s.items.length).padStart(2, '0')}
-                  </HomeItem>
-                  <HomeItem index={1} as="h2" className="page-sector__name">
-                    {item.title}
-                  </HomeItem>
-                  <HomeItem
-                    index={2}
-                    as="span"
-                    tone="rule"
-                    className="page-sector__rule"
-                    aria-hidden
-                  />
-                  <HomeItem index={3} as="p" className="page-sector__body">
-                    {item.body}
-                  </HomeItem>
-                </HomeStagger>
-              </div>
-            </div>
-          </HomeSection>
-        )
-      })}
-
-      <HomeSection className="bg-ivory">
+      <HomeSection className="border-t border-rule bg-sand2">
         <div className="page-pair">
           <div className="wrap">
             <HomeStagger className="page-pair__head">

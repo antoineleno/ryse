@@ -103,6 +103,7 @@ export type Content = {
   expertise: {
     eyebrow: string
     title: string
+    titleLines: string[]
     subtitle: string
     leadingLabel: string
     leadingTitle: string
@@ -125,7 +126,8 @@ export type Content = {
     eyebrow: string
     title: string
     subtitle: string
-    items: { title: string; body: string; image: string }[]
+    learnMore: string
+    items: { title: string; body: string; image: string; prompt: string }[]
     enablersLabel: string
     enablersTitle: string
     technology: { title: string; body: string }
@@ -468,6 +470,7 @@ export const content: Record<Lang, Content> = {
     expertise: {
       eyebrow: 'Our Expertise',
       title: 'From policy to delivery.',
+      titleLines: ['From policy.', 'To delivery.', 'On the ground.'],
       subtitle:
         'Integrated advice, from the highest level of decision making to delivery on the ground.',
       leadingLabel: 'Our Leading Practice',
@@ -522,19 +525,23 @@ export const content: Record<Lang, Content> = {
       title: 'Where transformation happens.',
       subtitle:
         'Three strategic sectors for West Africa, carried by two levers: technology and finance.',
+      learnMore: 'Learn more',
       items: [
         {
           title: 'Extractive industries',
+          prompt: 'Your first step in extractive industries',
           body: 'Guinea and the wider region hold some of the world’s most sought after resources. Yet in mining and hydrocarbons, a project depends less on the deposit than on the relationship between investors, the State and communities. We help build that relationship, from dialogue with the authorities to local content and social performance.',
           image: '/media/sector-extractive.jpg',
         },
         {
           title: 'Energy & climate',
+          prompt: 'Your first step in energy & climate',
           body: 'Access to energy shapes everything else: industry, jobs and public services. We support the projects and public private partnerships that extend sustainable energy, and help clients mobilise climate finance in support of resilience.',
           image: '/media/sector-energy.jpg',
         },
         {
           title: 'Security & defence',
+          prompt: 'Your first step in security & defence',
           body: 'There is no lasting investment without stability. We facilitate institutional cooperation between States, dialogue on security sector governance, and the protection of the critical infrastructure the region’s economies depend on.',
           image: '/media/sector-security.jpg',
         },
@@ -954,6 +961,7 @@ export const content: Record<Lang, Content> = {
     expertise: {
       eyebrow: 'Notre expertise',
       title: 'De la décision publique à l’exécution.',
+      titleLines: ['De la décision.', 'À l’exécution.', 'Sur le terrain.'],
       subtitle:
         'Un conseil intégré, du plus haut niveau de la décision jusqu’à la mise en œuvre sur le terrain.',
       leadingLabel: 'Notre premier atout',
@@ -1008,19 +1016,23 @@ export const content: Record<Lang, Content> = {
       title: 'Là où se joue la transformation.',
       subtitle:
         'Trois secteurs stratégiques pour l’Afrique de l’Ouest, portés par deux leviers : la technologie et la finance.',
+      learnMore: 'En savoir plus',
       items: [
         {
           title: 'Industries extractives',
+          prompt: 'Votre premier pas dans les industries extractives',
           body: 'La Guinée et la région détiennent certaines des ressources les plus recherchées au monde. Pourtant, dans les mines et les hydrocarbures, un projet dépend moins du gisement que de la relation entre investisseurs, État et communautés. Nous aidons à construire cette relation, du dialogue avec les autorités au contenu local et à la performance sociale.',
           image: '/media/sector-extractive.jpg',
         },
         {
           title: 'Énergie & climat',
+          prompt: 'Votre premier pas dans l’énergie & le climat',
           body: 'L’accès à l’énergie conditionne tout le reste : industrie, emplois et services publics. Nous soutenons les projets et partenariats public privé qui étendent l’énergie durable, et aidons nos clients à mobiliser la finance climat au service de la résilience.',
           image: '/media/sector-energy.jpg',
         },
         {
           title: 'Sécurité & défense',
+          prompt: 'Votre premier pas dans la sécurité & la défense',
           body: 'Il n’y a pas d’investissement durable sans stabilité. Nous facilitons la coopération institutionnelle entre États, le dialogue sur la gouvernance du secteur de la sécurité, et la protection des infrastructures critiques dont dépendent les économies de la région.',
           image: '/media/sector-security.jpg',
         },

@@ -5,9 +5,9 @@ import {
   HomeSection,
   HomeStagger,
 } from '../components/home/HomeReveal'
-import { PageIntro } from '../components/PageIntro'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
+import { Hero } from './Hero'
 
 export function Expertise() {
   const { t } = useLanguage()
@@ -15,14 +15,15 @@ export function Expertise() {
 
   return (
     <section className="bg-ivory">
-      <HomeSection className="border-b border-rule">
-        <div className="wrap">
-          <PageIntro eyebrow={e.eyebrow} title={e.title} body={e.subtitle} />
-        </div>
-      </HomeSection>
+      <Hero
+        eyebrow={e.eyebrow}
+        titleLines={e.titleLines}
+        body={e.subtitle}
+        image="/media/approach-meeting.jpg"
+      />
 
       {/* Leading practice */}
-      <HomeSection className="border-b border-rule bg-sand2">
+      <HomeSection className="border-y border-rule bg-sand2" id="leading">
         <div className="page-story">
           <div className="wrap page-story__grid">
             <HomeStagger className="page-story__copy">
