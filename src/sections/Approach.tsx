@@ -1,5 +1,10 @@
 import { Link } from 'react-router-dom'
-import { Reveal } from '../components/Reveal'
+import {
+  HomeImage,
+  HomeItem,
+  HomeSection,
+  HomeStagger,
+} from '../components/home/HomeReveal'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
 
@@ -9,55 +14,85 @@ export function Approach() {
 
   return (
     <section className="bg-ivory">
-      <div className="approach-listen">
-        <div className="wrap approach-listen__grid">
-          <Reveal className="approach-listen__intro">
-            <p className="eyebrow">{a.eyebrow}</p>
-            <h1 className="approach-listen__title">{a.title}</h1>
-            <p className="approach-listen__body">{a.subtitle}</p>
-            <span className="approach-listen__rule" aria-hidden />
-          </Reveal>
+      <HomeSection className="border-b border-rule bg-ivory">
+        <div className="approach-listen">
+          <div className="wrap approach-listen__grid">
+            <HomeStagger className="approach-listen__intro">
+              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
+                {a.eyebrow}
+              </HomeItem>
+              <HomeItem index={1} as="h1" className="approach-listen__title">
+                {a.title}
+              </HomeItem>
+              <HomeItem index={2} as="p" className="approach-listen__body">
+                {a.subtitle}
+              </HomeItem>
+              <HomeItem
+                index={3}
+                as="span"
+                tone="rule"
+                className="approach-listen__rule"
+                aria-hidden
+              />
+            </HomeStagger>
 
-          <Reveal delay={0.06} className="approach-listen__media">
-            <img
-              src="/media/approach-listen.jpg"
-              alt=""
-              className="approach-listen__img"
-            />
-          </Reveal>
+            <div className="approach-listen__media">
+              <HomeImage
+                src="/media/approach-listen.jpg"
+                className="approach-listen__img-wrap"
+              />
+            </div>
 
-          <Reveal delay={0.1}>
-            <ol className="approach-listen__steps">
-              {a.steps.map((step) => (
-                <li key={step.num} className="approach-listen__step">
+            <HomeStagger as="ol" className="approach-listen__steps">
+              {a.steps.map((step, i) => (
+                <HomeItem
+                  key={step.num}
+                  index={i}
+                  stagger={0.1}
+                  as="li"
+                  className="approach-listen__step"
+                >
                   <span className="approach-listen__num">{step.num}</span>
                   <div>
                     <h2 className="approach-listen__step-title">{step.title}</h2>
                     <p className="approach-listen__step-body">{step.body}</p>
                   </div>
-                </li>
+                </HomeItem>
               ))}
-            </ol>
-          </Reveal>
+            </HomeStagger>
+          </div>
         </div>
-      </div>
+      </HomeSection>
 
-      <div className="band">
-        <div className="wrap split">
-          <Reveal>
-            <p className="eyebrow">{a.networkLabel}</p>
-            <h2>{a.networkTitle}</h2>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <p>{a.networkBody}</p>
-            <p className="mt-[22px]">
-              <Link to={routes.experts} className="more">
-                {a.networkCta}
-              </Link>
-            </p>
-          </Reveal>
+      <HomeSection className="bg-sand2">
+        <div className="page-band">
+          <div className="wrap page-band__grid">
+            <HomeStagger className="page-band__intro">
+              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
+                {a.networkLabel}
+              </HomeItem>
+              <HomeItem index={1} as="h2" className="page-band__title">
+                {a.networkTitle}
+              </HomeItem>
+              <HomeItem
+                index={2}
+                as="span"
+                tone="rule"
+                className="page-band__rule"
+                aria-hidden
+              />
+              <HomeItem index={3}>
+                <Link to={routes.experts} className="page-band__cta">
+                  {a.networkCta}
+                </Link>
+              </HomeItem>
+            </HomeStagger>
+            <HomeItem index={0} className="page-band__copy" baseDelay={0.1}>
+              <p className="page-band__body">{a.networkBody}</p>
+            </HomeItem>
+          </div>
         </div>
-      </div>
+      </HomeSection>
     </section>
   )
 }

@@ -19,7 +19,10 @@ const practiceLinks = [
 export function Footer() {
   const { t } = useLanguage()
   const f = t.footer
-  const label = (id: string) => t.nav.find((n) => n.id === id)?.label ?? id
+  const label = (id: string) => {
+    if (id === 'board') return t.board.eyebrow
+    return t.nav.find((n) => n.id === id)?.label ?? id
+  }
 
   return (
     <footer className="border-t border-fline bg-forest text-onf">

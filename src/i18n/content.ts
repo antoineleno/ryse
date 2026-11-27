@@ -89,6 +89,7 @@ export type Content = {
     visionTitle: string
     visionBody: string
     valuesLabel: string
+    valuesTitle: string
     values: { title: string; body: string }[]
     whyLabel: string
     whyTitle: string
@@ -109,6 +110,7 @@ export type Content = {
     whereHelpLabel: string
     whereHelp: string[]
     practicesLabel: string
+    practicesTitle: string
     practices: { title: string; body: string }[]
     clientsLabel: string
     clientsTitle: string
@@ -119,6 +121,8 @@ export type Content = {
     eyebrow: string
     title: string
     subtitle: string
+    indexLabel: string
+    indexTitle: string
     items: { title: string; body: string; image: string }[]
     enablersLabel: string
     enablersTitle: string
@@ -227,7 +231,6 @@ export const content: Record<Lang, Content> = {
       { id: 'sectors', label: 'Sectors' },
       { id: 'approach', label: 'Approach' },
       { id: 'projects', label: 'Projects' },
-      { id: 'board', label: 'Board' },
       { id: 'experts', label: 'Experts' },
     ],
     contactCta: 'Contact',
@@ -439,6 +442,7 @@ export const content: Record<Lang, Content> = {
       visionBody:
         'For those who want to contribute through strategic cooperation, responsible investment and lasting partnerships.',
       valuesLabel: 'Our Values',
+      valuesTitle: 'Principles that shape every mandate.',
       values: [
         {
           title: 'Foresight',
@@ -491,6 +495,7 @@ export const content: Record<Lang, Content> = {
         'Helping private companies understand and access the public sector',
       ],
       practicesLabel: 'Our other practices',
+      practicesTitle: 'Advice across the full arc of decision.',
       practices: [
         {
           title: 'Strategic advisory & foresight',
@@ -520,6 +525,8 @@ export const content: Record<Lang, Content> = {
       title: 'Where transformation happens.',
       subtitle:
         'Three strategic sectors for West Africa, carried by two levers: technology and finance.',
+      indexLabel: 'All sectors',
+      indexTitle: 'Choose a market to explore.',
       items: [
         {
           title: 'Extractive industries',
@@ -734,7 +741,6 @@ export const content: Record<Lang, Content> = {
       { id: 'sectors', label: 'Secteurs' },
       { id: 'approach', label: 'Approche' },
       { id: 'projects', label: 'Projets' },
-      { id: 'board', label: 'Conseil' },
       { id: 'experts', label: 'Experts' },
     ],
     contactCta: 'Contact',
@@ -947,6 +953,7 @@ export const content: Record<Lang, Content> = {
       visionBody:
         'Pour ceux qui souhaitent contribuer par la coopération stratégique, l’investissement responsable et des partenariats durables.',
       valuesLabel: 'Nos valeurs',
+      valuesTitle: 'Des principes qui guident chaque mandat.',
       values: [
         {
           title: 'Prospective',
@@ -999,6 +1006,7 @@ export const content: Record<Lang, Content> = {
         'Accès au secteur public pour les entreprises et les institutions privées',
       ],
       practicesLabel: 'Nos autres pratiques',
+      practicesTitle: 'Un conseil sur tout l’arc de la décision.',
       practices: [
         {
           title: 'Conseil stratégique & prospective',
@@ -1028,6 +1036,8 @@ export const content: Record<Lang, Content> = {
       title: 'Là où se joue la transformation.',
       subtitle:
         'Trois secteurs stratégiques pour l’Afrique de l’Ouest, portés par deux leviers : la technologie et la finance.',
+      indexLabel: 'Tous les secteurs',
+      indexTitle: 'Choisissez un marché à explorer.',
       items: [
         {
           title: 'Industries extractives',

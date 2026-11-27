@@ -5,10 +5,28 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion'
-import { useRef, type ReactNode } from 'react'
+import {
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+  type RefObject,
+} from 'react'
 import { homeTween } from '../../lib/motion'
 
-type As = 'div' | 'section' | 'article' | 'li' | 'span' | 'p' | 'h2' | 'h3' | 'ol' | 'ul' | 'dl'
+type As =
+  | 'div'
+  | 'section'
+  | 'article'
+  | 'li'
+  | 'span'
+  | 'p'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'ol'
+  | 'ul'
+  | 'dl'
 
 function pick(as: As) {
   switch (as) {
@@ -22,6 +40,8 @@ function pick(as: As) {
       return motion.span
     case 'p':
       return motion.p
+    case 'h1':
+      return motion.h1
     case 'h2':
       return motion.h2
     case 'h3':
@@ -37,7 +57,24 @@ function pick(as: As) {
   }
 }
 
-const viewOpts = { once: true, amount: 0.2 as const }
+const viewOpts = { once: true, amount: 0.15 as const }
+
+/** True once the node is (or was) in view — layout-sync for above-the-fold. */
+function useRevealGate(ref: RefObject<Element | null>) {
+  const inView = useInView(ref, viewOpts)
+  const [early, setEarly] = useState(false)
+
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el || typeof window === 'undefined') return
+    const rect = el.getBoundingClientRect()
+    if (rect.top < window.innerHeight * 0.92 && rect.bottom > 48) {
+      setEarly(true)
+    }
+  }, [ref])
+
+  return early || inView
+}
 
 /** Single block — useInView + animate (reliable). */
 export function HomeReveal({
@@ -53,7 +90,7 @@ export function HomeReveal({
 }) {
   const reduce = useReducedMotion()
   const ref = useRef(null)
-  const inView = useInView(ref, viewOpts)
+  const show = useRevealGate(ref)
   const Component = pick(as)
 
   if (reduce) {
@@ -65,7 +102,7 @@ export function HomeReveal({
       ref={ref}
       className={className}
       initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
       transition={homeTween(delay, 0.75)}
     >
       {children}
@@ -111,7 +148,7 @@ export function HomeItem({
 }) {
   const reduce = useReducedMotion()
   const ref = useRef(null)
-  const inView = useInView(ref, viewOpts)
+  const show = useRevealGate(ref)
   const Component = pick(as)
   const delay = baseDelay + index * stagger
 
@@ -131,7 +168,7 @@ export function HomeItem({
         aria-hidden={ariaHidden}
         style={{ originX: 0, transformOrigin: 'left center' }}
         initial={{ opacity: 0, scaleX: 0 }}
-        animate={inView ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
+        animate={show ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
         transition={homeTween(delay, 0.55)}
       />
     )
@@ -148,7 +185,7 @@ export function HomeItem({
       className={className}
       aria-hidden={ariaHidden}
       initial={hidden}
-      animate={inView ? shown : hidden}
+      animate={show ? shown : hidden}
       transition={homeTween(delay, tone === 'soft' ? 0.55 : 0.7)}
     >
       {children}
@@ -170,7 +207,7 @@ export function HomeImage({
 }) {
   const reduce = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, viewOpts)
+  const show = useRevealGate(ref)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
@@ -199,7 +236,7 @@ export function HomeImage({
       className={className}
       style={{ overflow: 'hidden' }}
       initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
       transition={homeTween(delay, 0.85)}
     >
       <motion.img
@@ -221,9 +258,15 @@ export function HomeImage({
 export function HomeSection({
   children,
   className = '',
+  id,
 }: {
   children: ReactNode
   className?: string
+  id?: string
 }) {
-  return <section className={className}>{children}</section>
+  return (
+    <section id={id} className={className}>
+      {children}
+    </section>
+  )
 }

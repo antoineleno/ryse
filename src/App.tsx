@@ -4,7 +4,6 @@ import { LanguageProvider } from './context/LanguageContext'
 import { routes } from './lib/routes'
 import { AboutPage } from './pages/AboutPage'
 import { ApproachPage } from './pages/ApproachPage'
-import { BoardPage } from './pages/BoardPage'
 import { ContactPage } from './pages/ContactPage'
 import { ExpertisePage } from './pages/ExpertisePage'
 import { ExpertsPage } from './pages/ExpertsPage'
@@ -25,7 +24,7 @@ export default function App() {
             <Route path={routes.approach} element={<ApproachPage />} />
             <Route path={routes.projects} element={<ProjectsPage />} />
             <Route path="/where" element={<Navigate to="/about#where" replace />} />
-            <Route path={routes.board} element={<BoardPage />} />
+            <Route path="/board" element={<Navigate to="/about#board" replace />} />
             <Route path={routes.experts} element={<ExpertsPage />} />
             <Route path={routes.contact} element={<ContactPage />} />
             <Route path="*" element={<Navigate to={routes.home} replace />} />
