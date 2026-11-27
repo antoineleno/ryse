@@ -113,7 +113,7 @@ export type Content = {
     privateTitle: string
     privateBody: string
     whereHelpLabel: string
-    whereHelp: string[]
+    whereHelp: { title: string; body: string }[]
     practicesLabel: string
     practicesTitle: string
     practices: { title: string; body: string }[]
@@ -485,14 +485,34 @@ export const content: Record<Lang, Content> = {
         'We help the private sector understand how public action works, read the political context and engage with the right institutions. We support the structuring of public private partnerships, so that private projects move forward in step with the State.',
       whereHelpLabel: 'Where we help',
       whereHelp: [
-        'Political & institutional strategy',
-        'Policy design',
-        'Reform delivery',
-        'Government & parliamentary relations',
-        'State to State and State to region cooperation',
-        'Public private partnerships (PPPs)',
-        'Private sector advisory',
-        'Helping private companies understand and access the public sector',
+        {
+          title: 'Political & institutional strategy',
+          body: 'We help leaders define political priorities, map institutional actors and choose a course of action that holds under pressure, from agenda setting to the alliances needed to deliver it.',
+        },
+        {
+          title: 'Policy design',
+          body: 'We turn political intent into workable policy: clarifying objectives, testing options against the local context, and drafting frameworks that can be owned and implemented by the institutions responsible.',
+        },
+        {
+          title: 'Reform delivery',
+          body: 'Reform fails in execution more often than in design. We support the sequencing, coordination and follow through that turn announced reforms into results on the ground.',
+        },
+        {
+          title: 'Government & parliamentary relations',
+          body: 'We help clients read how decisions actually move through government and parliament, identify the right counterparts, and engage them with a clear, constructive brief.',
+        },
+        {
+          title: 'State to State and State to region cooperation',
+          body: 'We facilitate dialogue and structured cooperation between States and with regional organisations, aligning interests so partnerships are practical and durable.',
+        },
+        {
+          title: 'Public private partnerships (PPPs)',
+          body: 'We support the structuring of PPPs from both sides of the table, clarifying roles, risk and process so public goals and private investment can move forward together.',
+        },
+        {
+          title: 'Private sector advisory',
+          body: 'We help private companies and investors understand how the public sector works, find the right entry points, and engage institutions in a way that opens access without missteps.',
+        },
       ],
       practicesLabel: 'Our other practices',
       practicesTitle: 'Advice across the full arc of decision.',
@@ -619,7 +639,7 @@ export const content: Record<Lang, Content> = {
           name: 'David S. Edoh',
           role: 'Board Member',
           image: '/media/david-edoh.jpg',
-          bio: 'A lawyer and entrepreneur based in Lomé, David S. Edoh has more than twenty years of experience in management and the delivery of energy infrastructure. He founded and has led three companies in Togo and Benin, carrying out electrical works and engineering services for the national utilities CEET and SBEE, alongside contractors such as SDEL-ELEXA (VINCI Energies) and AEE Power, on programmes financed by the World Bank, the AFD, the European Union and KfW.',
+          bio: 'A lawyer and entrepreneur based in Lomé, David S. Edoh has more than twenty years of experience in management and the delivery of energy infrastructure. He founded and has led three companies in Togo and Benin, carrying out electrical works and engineering services for the national utilities CEET and SBEE, alongside contractors such as SDEL ELEXA (VINCI Energies) and AEE Power, on programmes financed by the World Bank, the AFD, the European Union and KfW.',
           highlights: [
             'Founder and CEO, ETS (Energies Technologies & Solutions) and AXELEC (Axe Electrique), Togo',
             'Founder, ENERTECH, electrical works, Benin',
@@ -976,14 +996,34 @@ export const content: Record<Lang, Content> = {
         'Nous aidons le secteur privé à comprendre le fonctionnement de l’action publique, à lire le contexte politique et à engager les bonnes institutions. Nous accompagnons la structuration de partenariats public privé, pour que les projets privés avancent au rythme de l’État.',
       whereHelpLabel: 'Où nous intervenons',
       whereHelp: [
-        'Stratégie politique et institutionnelle',
-        'Conception des politiques publiques',
-        'Conduite des réformes',
-        'Relations gouvernementales et parlementaires',
-        'Coopération État à État et État à région',
-        'Partenariats public privé (PPP)',
-        'Conseil au secteur privé',
-        'Accès au secteur public pour les entreprises et les institutions privées',
+        {
+          title: 'Stratégie politique et institutionnelle',
+          body: 'Nous aidons les dirigeants à fixer des priorités politiques, cartographier les acteurs institutionnels et choisir une ligne d’action qui tient sous pression, de la fixation de l’agenda aux alliances nécessaires pour la délivrer.',
+        },
+        {
+          title: 'Conception des politiques publiques',
+          body: 'Nous transformons l’intention politique en politique opérationnelle : clarifier les objectifs, tester les options dans le contexte local, et rédiger des cadres que les institutions responsables peuvent s’approprier et mettre en œuvre.',
+        },
+        {
+          title: 'Conduite des réformes',
+          body: 'Les réformes échouent plus souvent dans l’exécution que dans la conception. Nous accompagnons le séquençage, la coordination et le suivi qui transforment les annonces en résultats concrets.',
+        },
+        {
+          title: 'Relations gouvernementales et parlementaires',
+          body: 'Nous aidons nos clients à comprendre comment les décisions avancent réellement au sein du gouvernement et du parlement, à identifier les bons interlocuteurs, et à les engager avec un dossier clair et constructif.',
+        },
+        {
+          title: 'Coopération État à État et État à région',
+          body: 'Nous facilitons le dialogue et une coopération structurée entre États et avec les organisations régionales, en alignant les intérêts pour des partenariats pratiques et durables.',
+        },
+        {
+          title: 'Partenariats public privé (PPP)',
+          body: 'Nous accompagnons la structuration des PPP des deux côtés de la table, en clarifiant rôles, risques et process pour que les objectifs publics et l’investissement privé avancent ensemble.',
+        },
+        {
+          title: 'Conseil au secteur privé',
+          body: 'Nous aidons les entreprises et les investisseurs à comprendre le fonctionnement du secteur public, à trouver les bons points d’entrée, et à engager les institutions sans faux pas.',
+        },
       ],
       practicesLabel: 'Nos autres pratiques',
       practicesTitle: 'Un conseil sur tout l’arc de la décision.',
@@ -1110,7 +1150,7 @@ export const content: Record<Lang, Content> = {
           name: 'David S. Edoh',
           role: 'Administrateur',
           image: '/media/david-edoh.jpg',
-          bio: 'Avocat et entrepreneur basé à Lomé, David S. Edoh compte plus de vingt ans d’expérience dans le management et la livraison d’infrastructures énergétiques. Il a fondé et dirigé trois sociétés au Togo et au Bénin, réalisant des travaux électriques et des services d’ingénierie pour les sociétés nationales CEET et SBEE, aux côtés d’entreprises comme SDEL-ELEXA (VINCI Energies) et AEE Power, sur des programmes financés par la Banque mondiale, l’AFD, l’Union européenne et la KfW.',
+          bio: 'Avocat et entrepreneur basé à Lomé, David S. Edoh compte plus de vingt ans d’expérience dans le management et la livraison d’infrastructures énergétiques. Il a fondé et dirigé trois sociétés au Togo et au Bénin, réalisant des travaux électriques et des services d’ingénierie pour les sociétés nationales CEET et SBEE, aux côtés d’entreprises comme SDEL ELEXA (VINCI Energies) et AEE Power, sur des programmes financés par la Banque mondiale, l’AFD, l’Union européenne et la KfW.',
           highlights: [
             'Fondateur et CEO, ETS (Energies Technologies & Solutions) et AXELEC (Axe Electrique), Togo',
             'Fondateur, ENERTECH, travaux électriques, Bénin',
