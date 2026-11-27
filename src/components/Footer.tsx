@@ -92,10 +92,8 @@ export function Footer() {
                 <dt className="font-label text-[10.5px] font-semibold tracking-[1.6px] text-onf2/80 uppercase">
                   {f.offices}
                 </dt>
-                <dd className="mt-1.5 space-y-1 text-[14.5px] text-[#F1E9DC]">
-                  {f.officeLines.map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
+                <dd className="mt-1.5 text-[14.5px] text-[#F1E9DC]">
+                  {f.officeLines.join(' · ')}
                 </dd>
               </div>
             </dl>

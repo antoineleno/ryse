@@ -3189,10 +3189,10 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   color: #17251f !important;
 }
 
-/* —— Sector Demo (layout demo page) —— */
+/* —— Sectors page —— */
 .sector-demo {
-  background: #faf8f5;
-  color: #2a3038;
+  background: var(--color-ivory);
+  color: var(--color-ink);
 }
 
 .sd-hero {
@@ -3203,7 +3203,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  background: #e8dfd3;
+  background: var(--color-sand2);
 }
 
 .sd-hero__bg {
@@ -3221,10 +3221,10 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   inset: 0;
   background: linear-gradient(
     100deg,
-    rgba(250, 248, 245, 0.94) 0%,
-    rgba(250, 248, 245, 0.82) 32%,
-    rgba(250, 248, 245, 0.35) 52%,
-    rgba(250, 248, 245, 0.05) 72%,
+    color-mix(in srgb, var(--color-ivory) 94%, transparent) 0%,
+    color-mix(in srgb, var(--color-ivory) 82%, transparent) 32%,
+    color-mix(in srgb, var(--color-ivory) 35%, transparent) 52%,
+    color-mix(in srgb, var(--color-ivory) 5%, transparent) 72%,
     transparent 100%
   );
 }
@@ -3247,7 +3247,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   line-height: 1.3;
   letter-spacing: 2.6px;
   text-transform: uppercase;
-  color: #c29a62;
+  color: var(--color-bronzeh);
 }
 
 .sd-hero__eyebrow::before {
@@ -3267,7 +3267,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(36px, 5.4vw, 58px);
   line-height: 1.08;
   letter-spacing: -0.02em;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-hero__body {
@@ -3276,7 +3276,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-family: var(--font-sans);
   font-size: 15.5px;
   line-height: 1.65;
-  color: #4a525c;
+  color: var(--color-ink2);
 }
 
 .sd-hero__consult {
@@ -3290,7 +3290,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #b8925a;
+  color: var(--color-bronzel);
 }
 
 .sd-hero__phones {
@@ -3298,7 +3298,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-family: var(--font-sans);
   font-size: 18px;
   font-weight: 500;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-hero__phones a {
@@ -3307,7 +3307,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
 }
 
 .sd-hero__phones a:hover {
-  color: #b8925a;
+  color: var(--color-bronzel);
 }
 
 .sd-cards-wrap {
@@ -3331,8 +3331,8 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
 }
 
 .sd-card {
-  background: #2f3842;
-  color: #f4eee6;
+  background: var(--color-forest);
+  color: var(--color-onf);
   padding: 34px 28px 36px;
   text-align: center;
   min-height: 220px;
@@ -3345,7 +3345,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
 .sd-card__icon {
   width: 52px;
   height: 52px;
-  color: #c29a62;
+  color: var(--color-bronzeh);
   margin-bottom: 18px;
   display: block;
 }
@@ -3357,7 +3357,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #f4eee6;
+  color: var(--color-onf);
 }
 
 .sd-card__body {
@@ -3368,7 +3368,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-style: italic;
   font-weight: 500;
   line-height: 1.4;
-  color: #d7cfc4;
+  color: var(--color-onf2);
   text-wrap: balance;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -3388,12 +3388,12 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(26px, 3.4vw, 36px);
   font-weight: 500;
   line-height: 1.35;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-statement__text em {
   font-style: italic;
-  color: #b8925a;
+  color: var(--color-bronzel);
   font-family: var(--font-display);
 }
 
@@ -3404,10 +3404,10 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
 .sd-problem-box {
   margin-inline: auto;
   max-width: 520px;
-  border: 1px solid #d6c7b4;
+  border: 1px solid var(--color-rule);
   padding: 28px 32px;
   text-align: center;
-  background: #faf8f5;
+  background: var(--color-ivory);
 }
 
 .sd-problem-box__title {
@@ -3416,12 +3416,12 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(24px, 3vw, 32px);
   font-weight: 600;
   line-height: 1.25;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-problem-box__title em {
   font-style: italic;
-  color: #b8925a;
+  color: var(--color-bronzel);
 }
 
 .sd-step {
@@ -3447,7 +3447,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   position: relative;
   z-index: 2;
   overflow: hidden;
-  background: #e8dfd3;
+  background: var(--color-sand2);
   aspect-ratio: 4 / 5;
   max-width: 440px;
   margin-inline: auto;
@@ -3474,7 +3474,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
 .sd-step__panel {
   position: relative;
   z-index: 1;
-  background: #ebe3d7;
+  background: var(--color-sand2);
   padding: 40px 34px 44px;
   margin-top: -56px;
   margin-inline: 20px 0;
@@ -3511,7 +3511,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 400;
   line-height: 0.72;
   letter-spacing: -0.05em;
-  color: #c29a62;
+  color: var(--color-bronzeh);
 }
 
 .sd-step__title {
@@ -3522,7 +3522,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(26px, 3vw, 36px);
   font-weight: 600;
   line-height: 1.12;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-step__rule {
@@ -3533,7 +3533,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   height: 0;
   margin: 14px 0 0;
   border: 0;
-  border-top: 1px solid rgba(42, 48, 56, 0.18);
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 18%, transparent);
 }
 
 .sd-step__body {
@@ -3543,7 +3543,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-family: var(--font-sans);
   font-size: 15.5px;
   line-height: 1.7;
-  color: #4a525c;
+  color: var(--color-ink2);
   text-align: justify;
   text-justify: inter-word;
   hyphens: none;
@@ -3593,7 +3593,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 400;
   line-height: 0.8;
   letter-spacing: -0.04em;
-  color: #c29a62;
+  color: var(--color-bronzeh);
   align-self: stretch;
   display: flex;
   align-items: flex-start;
@@ -3640,7 +3640,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  background: #c29a62;
+  background: var(--color-bronzeh);
 }
 
 .sd-step__center .sd-step__rule-line {
@@ -3649,7 +3649,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   height: 0;
   margin: 0;
   border: 0;
-  border-top: 1.5px solid rgba(42, 48, 56, 0.32);
+  border-top: 1.5px solid color-mix(in srgb, var(--color-ink) 32%, transparent);
 }
 
 .sd-step__center .sd-step__body {
@@ -3675,7 +3675,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
 
 .sd-enablers {
   padding-block: 72px 80px;
-  background: #e8dfd3;
+  background: var(--color-sand2);
 }
 
 .sd-enablers__head {
@@ -3693,7 +3693,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 600;
   letter-spacing: 2.4px;
   text-transform: uppercase;
-  color: #86652f;
+  color: var(--color-bronze);
 }
 
 .sd-enablers__label::before {
@@ -3711,7 +3711,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 600;
   line-height: 1.15;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-enablers__grid {
@@ -3733,7 +3733,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 400;
   line-height: 0.9;
   letter-spacing: -0.03em;
-  color: #c29a62;
+  color: var(--color-bronzeh);
 }
 
 .sd-enablers__item-title {
@@ -3742,7 +3742,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(24px, 2.8vw, 32px);
   font-weight: 600;
   line-height: 1.15;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-enablers__body {
@@ -3751,7 +3751,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.7;
-  color: #4a525c;
+  color: var(--color-ink2);
 }
 
 .sd-cta {
@@ -3778,7 +3778,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-weight: 600;
   letter-spacing: 2.4px;
   text-transform: uppercase;
-  color: #c29a62;
+  color: var(--color-bronzeh);
 }
 
 .sd-cta__label::before {
@@ -3796,7 +3796,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-size: clamp(28px, 4vw, 42px);
   font-weight: 600;
   line-height: 1.15;
-  color: #2a3038;
+  color: var(--color-ink);
 }
 
 .sd-cta__body {
@@ -3805,7 +3805,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   font-family: var(--font-sans);
   font-size: 15.5px;
   line-height: 1.7;
-  color: #4a525c;
+  color: var(--color-ink2);
 }
 
 .sd-cta__btn {
@@ -3817,15 +3817,15 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
-  background: #c29a62;
-  border: 1.5px solid #c29a62;
+  color: var(--color-ink);
+  background: var(--color-bronzeh);
+  border: 1.5px solid var(--color-bronzeh);
   padding: 14px 22px;
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .sd-cta__btn:hover {
-  background: #b08952;
-  border-color: #b08952;
-  color: #fff;
+  background: var(--color-bronzel);
+  border-color: var(--color-bronzel);
+  color: var(--color-ink);
 }
