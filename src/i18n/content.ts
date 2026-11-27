@@ -88,6 +88,10 @@ export type Content = {
     visionLabel: string
     visionTitle: string
     visionBody: string
+    networkLabel: string
+    networkTitle: string
+    networkBody: string
+    networkCta: string
     valuesLabel: string
     valuesTitle: string
     values: { title: string; body: string }[]
@@ -121,23 +125,11 @@ export type Content = {
     eyebrow: string
     title: string
     subtitle: string
-    indexLabel: string
-    indexTitle: string
     items: { title: string; body: string; image: string }[]
     enablersLabel: string
     enablersTitle: string
     technology: { title: string; body: string }
     finance: { title: string; body: string }
-  }
-  approach: {
-    eyebrow: string
-    title: string
-    subtitle: string
-    steps: { num: string; title: string; body: string }[]
-    networkLabel: string
-    networkTitle: string
-    networkBody: string
-    networkCta: string
   }
   projects: {
     eyebrow: string
@@ -226,10 +218,10 @@ export const content: Record<Lang, Content> = {
         '© 2026 RYSE & Co. All rights reserved. · West Africa · Offices in Conakry and Lomé',
     },
     nav: [
+      { id: 'home', label: 'Home' },
       { id: 'about', label: 'About' },
       { id: 'expertise', label: 'Expertise' },
       { id: 'sectors', label: 'Sectors' },
-      { id: 'approach', label: 'Approach' },
       { id: 'projects', label: 'Projects' },
       { id: 'experts', label: 'Experts' },
     ],
@@ -441,6 +433,11 @@ export const content: Record<Lang, Content> = {
       visionTitle: "A trusted partner in Africa's transformation.",
       visionBody:
         'For those who want to contribute through strategic cooperation, responsible investment and lasting partnerships.',
+      networkLabel: 'Our Expert Network',
+      networkTitle: 'The right expertise on every mandate.',
+      networkBody:
+        'RYSE draws on a network of consultants and sector specialists. On every project, we bring in the team the question calls for: political and institutional advisers, and experts in mining, energy, security, technology and finance.',
+      networkCta: 'Join our expert network',
       valuesLabel: 'Our Values',
       valuesTitle: 'Principles that shape every mandate.',
       values: [
@@ -525,8 +522,6 @@ export const content: Record<Lang, Content> = {
       title: 'Where transformation happens.',
       subtitle:
         'Three strategic sectors for West Africa, carried by two levers: technology and finance.',
-      indexLabel: 'All sectors',
-      indexTitle: 'Choose a market to explore.',
       items: [
         {
           title: 'Extractive industries',
@@ -554,34 +549,6 @@ export const content: Record<Lang, Content> = {
         title: 'Finance',
         body: 'Investment structuring, development finance and blended finance that turn projects into reality.',
       },
-    },
-    approach: {
-      eyebrow: 'Our Approach',
-      title: 'Advice that begins with understanding.',
-      subtitle:
-        'Every mandate starts with a question that matters. We listen first, read the context carefully, then stay until decisions become delivery.',
-      steps: [
-        {
-          num: '01',
-          title: 'Understand',
-          body: 'Your goals, constraints and what success must look like.',
-        },
-        {
-          num: '02',
-          title: 'Assess',
-          body: 'A clear reading of the political and institutional landscape.',
-        },
-        {
-          num: '03',
-          title: 'Execute',
-          body: 'Relationships and delivery that hold as conditions change.',
-        },
-      ],
-      networkLabel: 'Our Expert Network',
-      networkTitle: 'The right expertise on every mandate.',
-      networkBody:
-        'RYSE draws on a network of consultants and sector specialists. On every project, we bring in the team the question calls for: political and institutional advisers, and experts in mining, energy, security, technology and finance.',
-      networkCta: 'Join our expert network',
     },
     projects: {
       eyebrow: 'Our Projects',
@@ -736,10 +703,10 @@ export const content: Record<Lang, Content> = {
         '© 2026 RYSE & Co. Tous droits réservés. · Afrique de l’Ouest · Bureaux à Conakry et Lomé',
     },
     nav: [
+      { id: 'home', label: 'Accueil' },
       { id: 'about', label: 'À propos' },
       { id: 'expertise', label: 'Expertise' },
       { id: 'sectors', label: 'Secteurs' },
-      { id: 'approach', label: 'Approche' },
       { id: 'projects', label: 'Projets' },
       { id: 'experts', label: 'Experts' },
     ],
@@ -952,6 +919,11 @@ export const content: Record<Lang, Content> = {
       visionTitle: 'Un partenaire de confiance dans la transformation africaine.',
       visionBody:
         'Pour ceux qui souhaitent contribuer par la coopération stratégique, l’investissement responsable et des partenariats durables.',
+      networkLabel: 'Notre réseau d’experts',
+      networkTitle: 'La bonne expertise sur chaque mandat.',
+      networkBody:
+        'RYSE s’appuie sur un réseau de consultants et de spécialistes sectoriels. Sur chaque projet, nous constituons l’équipe que la question appelle : conseillers politiques et institutionnels, et experts en mines, énergie, sécurité, technologie et finance.',
+      networkCta: 'Rejoindre notre réseau d’experts',
       valuesLabel: 'Nos valeurs',
       valuesTitle: 'Des principes qui guident chaque mandat.',
       values: [
@@ -1036,8 +1008,6 @@ export const content: Record<Lang, Content> = {
       title: 'Là où se joue la transformation.',
       subtitle:
         'Trois secteurs stratégiques pour l’Afrique de l’Ouest, portés par deux leviers : la technologie et la finance.',
-      indexLabel: 'Tous les secteurs',
-      indexTitle: 'Choisissez un marché à explorer.',
       items: [
         {
           title: 'Industries extractives',
@@ -1065,34 +1035,6 @@ export const content: Record<Lang, Content> = {
         title: 'Finance',
         body: 'Structuration d’investissements, finance du développement et blended finance qui transforment les projets en réalité.',
       },
-    },
-    approach: {
-      eyebrow: 'Notre approche',
-      title: 'Un conseil qui commence par comprendre.',
-      subtitle:
-        'Chaque mandat commence par une question qui compte. Nous écoutons d’abord, lisons le contexte avec rigueur, puis restons jusqu’à ce que la décision se traduise en résultats.',
-      steps: [
-        {
-          num: '01',
-          title: 'Comprendre',
-          body: 'Vos objectifs, vos contraintes et ce à quoi ressemble la réussite.',
-        },
-        {
-          num: '02',
-          title: 'Évaluer',
-          body: 'Une lecture claire du paysage politique et institutionnel.',
-        },
-        {
-          num: '03',
-          title: 'Exécuter',
-          body: 'Des relations et une mise en œuvre qui tiennent dans la durée.',
-        },
-      ],
-      networkLabel: 'Notre réseau d’experts',
-      networkTitle: 'La bonne expertise sur chaque mandat.',
-      networkBody:
-        'RYSE s’appuie sur un réseau de consultants et de spécialistes sectoriels. Sur chaque projet, nous constituons l’équipe que la question appelle : conseillers politiques et institutionnels, et experts en mines, énergie, sécurité, technologie et finance.',
-      networkCta: 'Rejoindre notre réseau d’experts',
     },
     projects: {
       eyebrow: 'Nos projets',

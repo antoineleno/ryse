@@ -33,7 +33,7 @@ export function Experts() {
                 {e.eyebrow}
               </HomeItem>
               <HomeItem index={1} as="h2" className="page-form__aside-title">
-                {t.approach.networkTitle}
+                {t.about.networkTitle}
               </HomeItem>
               <HomeItem
                 index={2}
@@ -43,7 +43,7 @@ export function Experts() {
                 aria-hidden
               />
               <HomeItem index={3} as="p" className="page-form__aside-body">
-                {t.approach.networkBody}
+                {t.about.networkBody}
               </HomeItem>
             </HomeStagger>
 

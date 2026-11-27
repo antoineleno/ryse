@@ -54,7 +54,7 @@ export function Hero() {
             <Link to={routes.contact} className="btn-ryse solid !text-ink">
               {t.hero.primary}
             </Link>
-            <Link to={routes.approach} className="hero__link">
+            <Link to={routes.mission} className="hero__link">
               {t.hero.secondary}
             </Link>
           </motion.div>

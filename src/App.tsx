@@ -3,7 +3,6 @@ import { Layout } from './components/Layout'
 import { LanguageProvider } from './context/LanguageContext'
 import { routes } from './lib/routes'
 import { AboutPage } from './pages/AboutPage'
-import { ApproachPage } from './pages/ApproachPage'
 import { ContactPage } from './pages/ContactPage'
 import { ExpertisePage } from './pages/ExpertisePage'
 import { ExpertsPage } from './pages/ExpertsPage'
@@ -21,10 +20,10 @@ export default function App() {
             <Route path={routes.about} element={<AboutPage />} />
             <Route path={routes.expertise} element={<ExpertisePage />} />
             <Route path={routes.sectors} element={<SectorsPage />} />
-            <Route path={routes.approach} element={<ApproachPage />} />
             <Route path={routes.projects} element={<ProjectsPage />} />
-            <Route path="/where" element={<Navigate to="/about#where" replace />} />
-            <Route path="/board" element={<Navigate to="/about#board" replace />} />
+            <Route path="/approach" element={<Navigate to={routes.mission} replace />} />
+            <Route path="/where" element={<Navigate to={routes.where} replace />} />
+            <Route path="/board" element={<Navigate to={routes.board} replace />} />
             <Route path={routes.experts} element={<ExpertsPage />} />
             <Route path={routes.contact} element={<ContactPage />} />
             <Route path="*" element={<Navigate to={routes.home} replace />} />

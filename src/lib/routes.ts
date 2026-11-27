@@ -3,10 +3,11 @@ export const routes = {
   about: '/about',
   expertise: '/expertise',
   sectors: '/sectors',
-  approach: '/approach',
   projects: '/projects',
   where: '/about#where',
   board: '/about#board',
+  mission: '/about#mission',
+  network: '/about#network',
   experts: '/experts',
   contact: '/contact',
 } as const
@@ -14,10 +15,10 @@ export const routes = {
 export type RouteId = keyof typeof routes
 
 export const navRoutes = [
+  { id: 'home', path: routes.home },
   { id: 'about', path: routes.about },
   { id: 'expertise', path: routes.expertise },
   { id: 'sectors', path: routes.sectors },
-  { id: 'approach', path: routes.approach },
   { id: 'projects', path: routes.projects },
   { id: 'experts', path: routes.experts },
 ] as const

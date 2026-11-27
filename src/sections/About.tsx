@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { CorridorMap } from '../components/CorridorMap'
 import { IconPin } from '../components/BrandIcons'
 import {
@@ -9,6 +10,7 @@ import {
 } from '../components/home/HomeReveal'
 import { PageIntro } from '../components/PageIntro'
 import { useLanguage } from '../context/LanguageContext'
+import { routes } from '../lib/routes'
 
 export function About() {
   const { t } = useLanguage()
@@ -46,7 +48,7 @@ export function About() {
       </HomeSection>
 
       {/* Mission / Vision */}
-      <HomeSection className="border-b border-rule bg-ivory">
+      <HomeSection className="border-b border-rule bg-ivory" id="mission">
         <div className="page-pair">
           <div className="wrap page-pair__grid">
             <HomeStagger className="page-pair__item">
@@ -86,6 +88,37 @@ export function About() {
                 {a.visionBody}
               </HomeItem>
             </HomeStagger>
+          </div>
+        </div>
+      </HomeSection>
+
+      {/* Expert network */}
+      <HomeSection className="border-b border-rule bg-sand2" id="network">
+        <div className="page-band">
+          <div className="wrap page-band__grid">
+            <HomeStagger className="page-band__intro">
+              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
+                {a.networkLabel}
+              </HomeItem>
+              <HomeItem index={1} as="h2" className="page-band__title">
+                {a.networkTitle}
+              </HomeItem>
+              <HomeItem
+                index={2}
+                as="span"
+                tone="rule"
+                className="page-band__rule"
+                aria-hidden
+              />
+              <HomeItem index={3}>
+                <Link to={routes.experts} className="page-band__cta">
+                  {a.networkCta}
+                </Link>
+              </HomeItem>
+            </HomeStagger>
+            <HomeItem index={0} className="page-band__copy" baseDelay={0.1}>
+              <p className="page-band__body">{a.networkBody}</p>
+            </HomeItem>
           </div>
         </div>
       </HomeSection>

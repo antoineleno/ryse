@@ -12,7 +12,6 @@ const firmLinks = [
 const practiceLinks = [
   { id: 'expertise', path: routes.expertise },
   { id: 'sectors', path: routes.sectors },
-  { id: 'approach', path: routes.approach },
   { id: 'projects', path: routes.projects },
 ] as const
 

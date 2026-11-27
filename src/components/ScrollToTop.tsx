@@ -5,21 +5,31 @@ export function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    if (hash) {
-      const id = hash.replace('#', '')
-      // Wait for page paint, then scroll to target
-      const timer = window.setTimeout(() => {
-        const el = document.getElementById(id)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        } else {
-          window.scrollTo(0, 0)
-        }
-      }, 80)
-      return () => window.clearTimeout(timer)
+    if (!hash) {
+      window.scrollTo(0, 0)
+      return
     }
 
-    window.scrollTo(0, 0)
+    const id = hash.replace('#', '')
+    let attempts = 0
+    let timer = 0
+
+    const tryScroll = () => {
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        return
+      }
+      attempts += 1
+      if (attempts < 12) {
+        timer = window.setTimeout(tryScroll, 50)
+      } else {
+        window.scrollTo(0, 0)
+      }
+    }
+
+    timer = window.setTimeout(tryScroll, 40)
+    return () => window.clearTimeout(timer)
   }, [pathname, hash])
 
   return null

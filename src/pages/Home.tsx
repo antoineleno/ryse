@@ -42,7 +42,7 @@ export function Home() {
                 aria-hidden
               />
               <HomeItem index={4}>
-                <Link to={routes.approach} className="approach-listen__cta">
+                <Link to={routes.mission} className="approach-listen__cta">
                   {h.listeningCta}
                 </Link>
               </HomeItem>
