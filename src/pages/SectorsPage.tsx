@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
   IconEnergy,
@@ -11,7 +10,6 @@ import {
   HomeStagger,
 } from '../components/home/HomeReveal'
 import { useLanguage } from '../context/LanguageContext'
-import { homeTween } from '../lib/motion'
 import { routes } from '../lib/routes'
 
 const sectorIcons = [IconExtractive, IconEnergy, IconSecurity] as const
@@ -20,7 +18,6 @@ export function SectorsPage() {
   const { t } = useLanguage()
   const s = t.sectors
   const [extractive, energy, security] = s.items
-  const reduce = useReducedMotion()
 
   const cardBodies = t.home.pillars
     .filter((p) =>
@@ -56,29 +53,45 @@ export function SectorsPage() {
   return (
     <div className="sector-demo">
       <section className="sd-hero">
-        <motion.img
-          className="sd-hero__bg"
-          src="/media/sector-demo-hero.jpg"
-          alt=""
-          aria-hidden="true"
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={homeTween(0, 0.9)}
-        />
-        <div className="sd-hero__veil" aria-hidden="true" />
-        <div className="wrap sd-hero__inner">
-          <HomeStagger>
-            <HomeItem index={0} as="p" className="sd-hero__eyebrow" tone="soft">
-              {t.nav.find((item) => item.id === 'sectors')?.label ?? 'Sectors'}
-            </HomeItem>
-            <HomeItem index={1} as="h1" className="sd-hero__title">
-              {s.title}
-            </HomeItem>
-            <HomeItem index={2} as="p" className="sd-hero__body" tone="soft">
-              {s.subtitle}
-            </HomeItem>
-          </HomeStagger>
-        </div>
+        <HomeStagger className="sd-hero__copy">
+          <HomeItem
+            index={0}
+            as="p"
+            className="sd-hero__eyebrow"
+            tone="soft"
+            baseDelay={0.04}
+            stagger={0.1}
+          >
+            {t.nav.find((item) => item.id === 'sectors')?.label ?? 'Sectors'}
+          </HomeItem>
+          <HomeItem
+            index={1}
+            as="h1"
+            className="sd-hero__title"
+            baseDelay={0.04}
+            stagger={0.1}
+          >
+            {s.title}
+          </HomeItem>
+          <HomeItem
+            index={2}
+            as="p"
+            className="sd-hero__body"
+            tone="soft"
+            baseDelay={0.04}
+            stagger={0.1}
+          >
+            {s.subtitle}
+          </HomeItem>
+        </HomeStagger>
+        <HomeReveal className="sd-hero__media" delay={0.18} tone="soft">
+          <img
+            className="sd-hero__bg"
+            src="/media/sector-demo-hero.jpg"
+            alt=""
+            aria-hidden="true"
+          />
+        </HomeReveal>
       </section>
 
       <section className="sd-cards-wrap">
@@ -89,8 +102,8 @@ export function SectorsPage() {
               as="article"
               className="sd-card"
               index={i}
-              baseDelay={0.06}
-              stagger={0.1}
+              baseDelay={0.32}
+              stagger={0.12}
             >
               <Icon className="sd-card__icon" />
               <h2 className="sd-card__title">{label}</h2>
@@ -102,7 +115,7 @@ export function SectorsPage() {
 
       <section className="sd-statement">
         <div className="wrap">
-          <HomeReveal as="p" className="sd-statement__text">
+          <HomeReveal as="p" className="sd-statement__text" delay={0.04}>
             {s.subtitle.includes(':') ? (
               <>
                 {s.subtitle.slice(0, s.subtitle.indexOf(':') + 1)}{' '}
@@ -117,7 +130,7 @@ export function SectorsPage() {
 
       <section className="sd-problem-intro">
         <div className="wrap">
-          <HomeReveal className="sd-problem-box" delay={0.06}>
+          <HomeReveal className="sd-problem-box" delay={0.08}>
             <h2 className="sd-problem-box__title">{problemTitle}</h2>
           </HomeReveal>
         </div>
@@ -126,10 +139,10 @@ export function SectorsPage() {
       {/* 1 — Energy (image + overlapping panel) */}
       <section className="sd-step sd-step--media">
         <div className="wrap sd-step__grid">
-          <HomeReveal className="sd-step__media" delay={0.05}>
+          <HomeReveal className="sd-step__media" delay={0.04} tone="soft">
             <img src={energy.image} alt="" />
           </HomeReveal>
-          <HomeReveal className="sd-step__panel" delay={0.16}>
+          <HomeReveal className="sd-step__panel" delay={0.18}>
             <p className="sd-step__num" aria-hidden="true">
               1.
             </p>
@@ -148,15 +161,27 @@ export function SectorsPage() {
             as="p"
             className="sd-step__digit"
             aria-hidden="true"
-            baseDelay={0.04}
+            baseDelay={0.05}
+            stagger={0.1}
           >
             2
           </HomeItem>
-          <HomeItem index={1} className="sd-step__head" baseDelay={0.04}>
+          <HomeItem
+            index={1}
+            className="sd-step__head"
+            baseDelay={0.05}
+            stagger={0.1}
+          >
             <h3 className="sd-step__title">{extractive.title}</h3>
             <div className="sd-step__rule-row" aria-hidden="true">
               <span className="sd-step__dot" />
-              <span className="sd-step__rule-line" />
+              <HomeItem
+                as="span"
+                className="sd-step__rule-line"
+                tone="rule"
+                index={0}
+                baseDelay={0.28}
+              />
             </div>
           </HomeItem>
           <HomeItem
@@ -164,7 +189,8 @@ export function SectorsPage() {
             as="p"
             className="sd-step__body"
             tone="soft"
-            baseDelay={0.04}
+            baseDelay={0.05}
+            stagger={0.1}
           >
             {extractive.body}
           </HomeItem>
@@ -174,10 +200,10 @@ export function SectorsPage() {
       {/* 3 — Security (image + overlapping panel) */}
       <section className="sd-step sd-step--media">
         <div className="wrap sd-step__grid">
-          <HomeReveal className="sd-step__media" delay={0.05}>
+          <HomeReveal className="sd-step__media" delay={0.04} tone="soft">
             <img src={security.image} alt="" />
           </HomeReveal>
-          <HomeReveal className="sd-step__panel" delay={0.16}>
+          <HomeReveal className="sd-step__panel" delay={0.18}>
             <p className="sd-step__num" aria-hidden="true">
               3.
             </p>
@@ -191,22 +217,47 @@ export function SectorsPage() {
       <section className="sd-enablers">
         <div className="wrap">
           <HomeStagger className="sd-enablers__head">
-            <HomeItem index={0} as="p" className="sd-enablers__label" tone="soft">
+            <HomeItem
+              index={0}
+              as="p"
+              className="sd-enablers__label"
+              tone="soft"
+              baseDelay={0.04}
+              stagger={0.1}
+            >
               {s.enablersLabel}
             </HomeItem>
-            <HomeItem index={1} as="h2" className="sd-enablers__title">
+            <HomeItem
+              index={1}
+              as="h2"
+              className="sd-enablers__title"
+              baseDelay={0.04}
+              stagger={0.1}
+            >
               {s.enablersTitle}
             </HomeItem>
           </HomeStagger>
           <div className="sd-enablers__grid">
-            <HomeItem as="article" className="sd-enablers__item" index={0} baseDelay={0.08}>
+            <HomeItem
+              as="article"
+              className="sd-enablers__item"
+              index={0}
+              baseDelay={0.12}
+              stagger={0.12}
+            >
               <p className="sd-enablers__num" aria-hidden="true">
                 01
               </p>
               <h3 className="sd-enablers__item-title">{s.technology.title}</h3>
               <p className="sd-enablers__body">{s.technology.body}</p>
             </HomeItem>
-            <HomeItem as="article" className="sd-enablers__item" index={1} baseDelay={0.08}>
+            <HomeItem
+              as="article"
+              className="sd-enablers__item"
+              index={1}
+              baseDelay={0.12}
+              stagger={0.12}
+            >
               <p className="sd-enablers__num" aria-hidden="true">
                 02
               </p>
@@ -219,16 +270,36 @@ export function SectorsPage() {
 
       <section className="sd-cta">
         <HomeStagger className="wrap sd-cta__inner">
-          <HomeItem index={0} as="p" className="sd-cta__label" tone="soft">
+          <HomeItem
+            index={0}
+            as="p"
+            className="sd-cta__label"
+            tone="soft"
+            baseDelay={0.04}
+            stagger={0.09}
+          >
             {t.home.closeLabel}
           </HomeItem>
-          <HomeItem index={1} as="h2" className="sd-cta__title">
+          <HomeItem
+            index={1}
+            as="h2"
+            className="sd-cta__title"
+            baseDelay={0.04}
+            stagger={0.09}
+          >
             {t.home.ctaTitle}
           </HomeItem>
-          <HomeItem index={2} as="p" className="sd-cta__body" tone="soft">
+          <HomeItem
+            index={2}
+            as="p"
+            className="sd-cta__body"
+            tone="soft"
+            baseDelay={0.04}
+            stagger={0.09}
+          >
             {t.home.ctaBody}
           </HomeItem>
-          <HomeItem index={3} baseDelay={0.08}>
+          <HomeItem index={3} baseDelay={0.04} stagger={0.09}>
             <Link to={routes.contact} className="sd-cta__btn">
               {t.hero.primary}
             </Link>

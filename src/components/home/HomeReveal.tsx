@@ -82,11 +82,14 @@ export function HomeReveal({
   className = '',
   delay = 0,
   as = 'div',
+  tone = 'up',
 }: {
   children?: ReactNode
   className?: string
   delay?: number
   as?: As
+  /** `soft` = fade only (images / full-bleed). `up` = fade + rise. */
+  tone?: 'up' | 'soft'
 }) {
   const reduce = useReducedMotion()
   const ref = useRef(null)
@@ -97,13 +100,16 @@ export function HomeReveal({
     return <Component className={className}>{children}</Component>
   }
 
+  const hidden = tone === 'soft' ? { opacity: 0 } : { opacity: 0, y: 28 }
+  const shown = tone === 'soft' ? { opacity: 1 } : { opacity: 1, y: 0 }
+
   return (
     <Component
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 28 }}
-      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-      transition={homeTween(delay, 0.75)}
+      initial={hidden}
+      animate={show ? shown : hidden}
+      transition={homeTween(delay, tone === 'soft' ? 0.9 : 0.75)}
     >
       {children}
     </Component>

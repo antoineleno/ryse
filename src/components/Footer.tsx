@@ -93,7 +93,7 @@ export function Footer() {
                   {f.offices}
                 </dt>
                 <dd className="mt-1.5 text-[14.5px] text-[#F1E9DC]">
-                  {f.officeLines.join(' · ')}
+                  {f.officeLines.join(' | ')}
                 </dd>
               </div>
             </dl>
