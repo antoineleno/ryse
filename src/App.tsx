@@ -8,6 +8,7 @@ import { ExpertisePage } from './pages/ExpertisePage'
 import { ExpertsPage } from './pages/ExpertsPage'
 import { Home } from './pages/Home'
 import { ProjectsPage } from './pages/ProjectsPage'
+import { SectorDemoPage } from './pages/SectorDemoPage'
 import { SectorsPage } from './pages/SectorsPage'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path={routes.about} element={<AboutPage />} />
             <Route path={routes.expertise} element={<ExpertisePage />} />
             <Route path={routes.sectors} element={<SectorsPage />} />
+            <Route path={routes.sectorDemo} element={<SectorDemoPage />} />
             <Route path={routes.projects} element={<ProjectsPage />} />
             <Route path="/approach" element={<Navigate to={routes.mission} replace />} />
             <Route path="/where" element={<Navigate to={routes.where} replace />} />
