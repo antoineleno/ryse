@@ -22,7 +22,7 @@ export default function App() {
             <Route path={routes.sectors} element={<SectorsPage />} />
             <Route path="/sector-demo" element={<Navigate to={routes.sectors} replace />} />
             <Route path={routes.projects} element={<ProjectsPage />} />
-            <Route path="/approach" element={<Navigate to={routes.mission} replace />} />
+            <Route path="/approach" element={<Navigate to={routes.approach} replace />} />
             <Route path="/where" element={<Navigate to={routes.where} replace />} />
             <Route path="/board" element={<Navigate to={routes.board} replace />} />
             <Route path={routes.experts} element={<ExpertsPage />} />

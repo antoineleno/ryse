@@ -2139,6 +2139,12 @@
     }
   }
 
+  .home-moments__link {
+    display: contents;
+    color: inherit;
+    text-decoration: none;
+  }
+
   .home-moments__item {
     display: grid;
     grid-template-columns: 48px minmax(0, 1fr);
@@ -2147,6 +2153,10 @@
     padding: 22px 0;
     border-bottom: 1px solid var(--color-rule);
     min-width: 0;
+  }
+
+  .home-moments__item:hover .home-moments__name {
+    color: var(--color-bronze);
   }
 
   @media (min-width: 640px) {
@@ -7491,19 +7501,90 @@ input:focus,select:focus,textarea:focus{outline:2px solid #A9824F;outline-offset
   }
 }
 
+.pj-feature__gallery {
+  position: absolute;
+  inset: 0;
+}
+
 .pj-feature__img {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
+  opacity: 0;
+  transition: opacity 0.85s ease;
+  pointer-events: none;
 }
 
-@media (min-width: 900px) {
-  .pj-feature__img {
-    position: absolute;
-    inset: 0;
-  }
+.pj-feature__img.is-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.pj-feature__controls {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 12px;
+  background: var(--color-ink);
+}
+
+.pj-feature__nav {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 35%, transparent);
+  background: transparent;
+  color: var(--color-ivory);
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.pj-feature__nav:hover {
+  border-color: var(--color-bronzel);
+  color: var(--color-bronzel);
+  background: color-mix(in srgb, var(--color-ink) 25%, transparent);
+}
+
+.pj-feature__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pj-feature__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--color-ivory) 45%, transparent);
+  cursor: pointer;
+  transform: rotate(45deg);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.pj-feature__dot.is-active {
+  background: var(--color-bronzel);
+  transform: rotate(45deg) scale(1.15);
+}
+
+.pj-feature__dot:hover {
+  background: var(--color-ivory);
 }
 
 .pj-feature__copy {

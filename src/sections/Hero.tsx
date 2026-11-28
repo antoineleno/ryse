@@ -24,7 +24,7 @@ export function Hero({
   primary,
   primaryTo = routes.contact,
   secondary,
-  secondaryTo = routes.mission,
+  secondaryTo = routes.approach,
   image = '/media/approach-meeting.jpg',
   cardLabel,
   cardTags,

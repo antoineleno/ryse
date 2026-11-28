@@ -13,26 +13,30 @@ import { HomeHero } from '../sections/HomeHero'
 export function Home() {
   const { t } = useLanguage()
   const h = t.home
-  const featured = t.projects.featured
-  const board = t.board.members
+  const about = t.about
+  const expertise = t.expertise
+  const sectors = t.sectors
+  const projects = t.projects
+  const experts = t.experts
+  const featured = projects.featured
 
   return (
     <>
       <HomeHero />
 
-      {/* 1 — Approach */}
-      <HomeSection className="border-t border-rule bg-ivory">
+      {/* About */}
+      <HomeSection className="border-t border-rule bg-ivory" id="about">
         <div className="approach-listen">
           <div className="wrap approach-listen__grid">
             <HomeStagger className="approach-listen__intro">
               <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {h.listeningLabel}
+                {about.eyebrow}
               </HomeItem>
               <HomeItem index={1} as="h2" className="approach-listen__title">
-                {h.listeningTitle}
+                {about.storyTitle}
               </HomeItem>
               <HomeItem index={2} as="p" className="approach-listen__body">
-                {h.listeningBody}
+                {about.body}
               </HomeItem>
               <HomeItem
                 index={3}
@@ -42,8 +46,8 @@ export function Home() {
                 aria-hidden
               />
               <HomeItem index={4}>
-                <Link to={routes.mission} className="approach-listen__cta">
-                  {h.listeningCta}
+                <Link to={routes.about} className="approach-listen__cta">
+                  {h.aboutCta}
                 </Link>
               </HomeItem>
             </HomeStagger>
@@ -56,18 +60,20 @@ export function Home() {
             </div>
 
             <HomeStagger as="ol" className="approach-listen__steps">
-              {h.listeningSteps.map((step, i) => (
+              {about.values.map((value, i) => (
                 <HomeItem
-                  key={step.num}
+                  key={value.title}
                   index={i}
                   stagger={0.1}
                   as="li"
                   className="approach-listen__step"
                 >
-                  <span className="approach-listen__num">{step.num}</span>
+                  <span className="approach-listen__num">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   <div>
-                    <h3 className="approach-listen__step-title">{step.title}</h3>
-                    <p className="approach-listen__step-body">{step.body}</p>
+                    <h3 className="approach-listen__step-title">{value.title}</h3>
+                    <p className="approach-listen__step-body">{value.body}</p>
                   </div>
                 </HomeItem>
               ))}
@@ -76,19 +82,19 @@ export function Home() {
         </div>
       </HomeSection>
 
-      {/* 2 — Focus */}
-      <HomeSection className="border-t border-rule bg-sand2">
+      {/* Expertise */}
+      <HomeSection className="border-t border-rule bg-sand2" id="expertise">
         <div className="home-focus">
           <div className="wrap home-focus__grid">
             <HomeStagger className="home-focus__intro">
               <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {h.pillarsLabel}
+                {expertise.eyebrow}
               </HomeItem>
               <HomeItem index={1} as="h2" className="home-focus__title">
-                {h.pillarsTitle}
+                {expertise.leadingTitle}
               </HomeItem>
               <HomeItem index={2} as="p" className="home-focus__body">
-                {h.pillarsBody}
+                {expertise.leadingBody}
               </HomeItem>
               <HomeItem
                 index={3}
@@ -98,25 +104,27 @@ export function Home() {
                 aria-hidden
               />
               <HomeItem index={4}>
-                <Link to={routes.sectors} className="home-focus__cta">
-                  {h.pillarsCta}
+                <Link to={routes.expertise} className="home-focus__cta">
+                  {h.expertiseCta}
                 </Link>
               </HomeItem>
             </HomeStagger>
 
             <HomeStagger as="ol" className="home-focus__list">
-              {h.pillars.map((pillar, i) => (
+              {expertise.practices.map((practice, i) => (
                 <HomeItem
-                  key={pillar.num}
+                  key={practice.title}
                   index={i}
                   stagger={0.09}
                   as="li"
                   className="home-focus__item"
                 >
-                  <span className="home-focus__num">{pillar.num}</span>
+                  <span className="home-focus__num">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   <div className="home-focus__copy">
-                    <h3 className="home-focus__item-title">{pillar.title}</h3>
-                    <p className="home-focus__item-body">{pillar.body}</p>
+                    <h3 className="home-focus__item-title">{practice.title}</h3>
+                    <p className="home-focus__item-body">{practice.body}</p>
                   </div>
                 </HomeItem>
               ))}
@@ -125,19 +133,72 @@ export function Home() {
         </div>
       </HomeSection>
 
-      {/* 3 — Ground */}
-      <HomeSection className="border-t border-rule bg-ivory">
+      {/* Sectors */}
+      <HomeSection className="border-t border-rule bg-ivory" id="sectors">
+        <div className="home-moments">
+          <div className="wrap home-moments__grid">
+            <HomeStagger className="home-moments__intro">
+              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
+                {sectors.eyebrow}
+              </HomeItem>
+              <HomeItem index={1} as="h2" className="home-moments__title">
+                {sectors.title}
+              </HomeItem>
+              <HomeItem index={2} as="p" className="home-moments__body">
+                {sectors.subtitle}
+              </HomeItem>
+              <HomeItem
+                index={3}
+                as="span"
+                tone="rule"
+                className="home-moments__rule"
+                aria-hidden
+              />
+              <HomeItem index={4}>
+                <Link to={routes.sectors} className="home-focus__cta">
+                  {h.sectorsCta}
+                </Link>
+              </HomeItem>
+            </HomeStagger>
+
+            <HomeStagger as="ol" className="home-moments__list">
+              {h.sectorCards.map((sector, i) => (
+                <HomeItem
+                  key={sector.title}
+                  index={i}
+                  stagger={0.09}
+                  as="li"
+                  className="home-moments__item"
+                >
+                  <Link to={routes.sectors} className="home-moments__link">
+                    <span className="home-moments__num">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <div className="home-moments__media">
+                      <img src={sector.image} alt="" />
+                    </div>
+                    <h3 className="home-moments__name">{sector.title}</h3>
+                  </Link>
+                </HomeItem>
+              ))}
+            </HomeStagger>
+          </div>
+        </div>
+      </HomeSection>
+
+      {/* Projects */}
+      <HomeSection className="border-t border-rule bg-sand2" id="projects">
         <div className="home-ground">
           <div className="wrap home-ground__grid">
             <HomeStagger className="home-ground__intro">
               <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {h.mapLabel}
+                {projects.eyebrow}
               </HomeItem>
               <HomeItem index={1} as="h2" className="home-ground__title">
-                {h.mapTitle}
+                {projects.title}
               </HomeItem>
               <HomeItem index={2} as="p" className="home-ground__body">
-                {h.mapBody}
+                {projects.subtitle}
               </HomeItem>
               <HomeItem
                 index={3}
@@ -167,7 +228,7 @@ export function Home() {
               </HomeItem>
               <HomeItem index={3}>
                 <dl className="home-ground__stats">
-                  {h.mapStats.map((stat) => (
+                  {featured.meta.slice(0, 3).map((stat) => (
                     <div key={stat.label} className="home-ground__stat">
                       <dt>{stat.label}</dt>
                       <dd>{stat.value}</dd>
@@ -185,95 +246,50 @@ export function Home() {
         </div>
       </HomeSection>
 
-      {/* 4 — Board */}
-      <HomeSection className="border-t border-rule bg-sand2">
-        <div className="board-home">
-          <div className="wrap board-home__grid">
-            <HomeStagger className="board-home__intro">
+      {/* Experts */}
+      <HomeSection className="border-t border-rule bg-ivory" id="experts">
+        <div className="home-focus">
+          <div className="wrap home-focus__grid">
+            <HomeStagger className="home-focus__intro">
               <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {h.boardLabel}
+                {experts.eyebrow}
               </HomeItem>
-              <HomeItem index={1} as="h2" className="board-home__title">
-                {h.boardTitle}
+              <HomeItem index={1} as="h2" className="home-focus__title">
+                {experts.directTitle}
               </HomeItem>
-              <HomeItem index={2} as="p" className="board-home__body">
-                {h.boardBody}
+              <HomeItem index={2} as="p" className="home-focus__body">
+                {experts.directBody}
               </HomeItem>
               <HomeItem
                 index={3}
                 as="span"
                 tone="rule"
-                className="board-home__rule"
+                className="home-focus__rule"
                 aria-hidden
               />
               <HomeItem index={4}>
-                <Link to={routes.board} className="board-home__cta">
-                  {h.boardCta}
+                <Link to={routes.experts} className="home-focus__cta">
+                  {h.expertsCta}
                 </Link>
               </HomeItem>
             </HomeStagger>
 
-            <HomeStagger className="board-home__people">
-              {board.map((member, i) => (
-                <HomeItem key={member.name} index={i} stagger={0.12}>
-                  <Link
-                    to={routes.board}
-                    className="board-home__person"
-                    aria-label={`${member.name}, ${member.role}`}
-                  >
-                    <div className="board-home__photo">
-                      <img src={member.image} alt="" />
-                    </div>
-                    <div className="board-home__meta">
-                      <p className="board-home__role">{member.role}</p>
-                      <h3 className="board-home__name">{member.name}</h3>
-                      <p className="board-home__snippet">{member.highlights[0]}</p>
-                    </div>
-                  </Link>
-                </HomeItem>
-              ))}
-            </HomeStagger>
-          </div>
-        </div>
-      </HomeSection>
-
-      {/* 5 — Moments */}
-      <HomeSection className="border-t border-rule bg-ivory">
-        <div className="home-moments">
-          <div className="wrap home-moments__grid">
-            <HomeStagger className="home-moments__intro">
-              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {h.momentsLabel}
-              </HomeItem>
-              <HomeItem index={1} as="h2" className="home-moments__title">
-                {h.momentsTitle}
-              </HomeItem>
-              <HomeItem index={2} as="p" className="home-moments__body">
-                {h.momentsBody}
-              </HomeItem>
-              <HomeItem
-                index={3}
-                as="span"
-                tone="rule"
-                className="home-moments__rule"
-                aria-hidden
-              />
-            </HomeStagger>
-
-            <HomeStagger as="ol" className="home-moments__list">
-              {h.moments.map((moment, i) => (
+            <HomeStagger as="ol" className="home-focus__list">
+              {experts.points.map((point, i) => (
                 <HomeItem
-                  key={moment.num}
+                  key={point.label}
                   index={i}
                   stagger={0.09}
                   as="li"
-                  className="home-moments__item"
+                  className="home-focus__item"
                 >
-                  <span className="home-moments__num">{moment.num}</span>
-                  <div className="home-moments__media">
-                    <img src={moment.image} alt="" />
+                  <span className="home-focus__num">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="home-focus__copy">
+                    <h3 className="home-focus__item-title">{point.label}</h3>
+                    <p className="home-focus__item-body">{point.value}</p>
                   </div>
-                  <h3 className="home-moments__name">{moment.title}</h3>
                 </HomeItem>
               ))}
             </HomeStagger>
@@ -281,50 +297,8 @@ export function Home() {
         </div>
       </HomeSection>
 
-      {/* 6 — Insights */}
+      {/* Close */}
       <HomeSection className="border-t border-rule bg-sand2">
-        <div className="home-insights">
-          <div className="wrap home-insights__grid">
-            <HomeStagger className="home-insights__intro">
-              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {h.insightsLabel}
-              </HomeItem>
-              <HomeItem index={1} as="h2" className="home-insights__title">
-                {h.insightsTitle}
-              </HomeItem>
-              <HomeItem index={2} as="p" className="home-insights__body">
-                {h.insightsBody}
-              </HomeItem>
-              <HomeItem
-                index={3}
-                as="span"
-                tone="rule"
-                className="home-insights__rule"
-                aria-hidden
-              />
-            </HomeStagger>
-
-            <HomeStagger className="home-insights__list">
-              {h.insights.map((item, i) => (
-                <HomeItem key={item.title} index={i} stagger={0.1}>
-                  <Link to={item.href} className="home-insights__row">
-                    <div className="home-insights__thumb">
-                      <img src={item.image} alt="" />
-                    </div>
-                    <div className="home-insights__meta">
-                      <h3 className="home-insights__name">{item.title}</h3>
-                      <span className="home-insights__more">{t.explore}</span>
-                    </div>
-                  </Link>
-                </HomeItem>
-              ))}
-            </HomeStagger>
-          </div>
-        </div>
-      </HomeSection>
-
-      {/* 7 — Close */}
-      <HomeSection className="border-t border-rule bg-ivory">
         <div className="home-close">
           <div className="wrap">
             <HomeReveal className="home-close__panel">

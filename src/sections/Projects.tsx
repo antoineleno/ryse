@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   HomeItem,
@@ -6,6 +7,69 @@ import {
 } from '../components/home/HomeReveal'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
+
+function FeatureGallery({ images }: { images: string[] }) {
+  const [active, setActive] = useState(0)
+  const count = images.length
+
+  const go = (next: number) => {
+    if (count < 2) return
+    setActive((next + count) % count)
+  }
+
+  return (
+    <div className="pj-feature__gallery" aria-roledescription="carousel">
+      {images.map((src, i) => (
+        <img
+          key={src}
+          className={`pj-feature__img${i === active ? ' is-active' : ''}`}
+          src={src}
+          alt=""
+          aria-hidden={i !== active}
+          decoding="async"
+          fetchPriority={i === 0 ? 'high' : 'low'}
+        />
+      ))}
+      {count > 1 ? (
+        <div className="pj-feature__controls">
+          <button
+            type="button"
+            className="pj-feature__nav"
+            aria-label="Previous image"
+            onClick={() => go(active - 1)}
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+          <div
+            className="pj-feature__dots"
+            role="tablist"
+            aria-label="Project images"
+          >
+            {images.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Image ${i + 1} of ${count}`}
+                className={`pj-feature__dot${i === active ? ' is-active' : ''}`}
+                onClick={() => setActive(i)}
+              />
+            ))}
+          </div>
+          <button
+            type="button"
+            className="pj-feature__nav"
+            aria-label="Next image"
+            onClick={() => go(active + 1)}
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+      ) : null}
+    </div>
+  )
+}
 
 export function Projects() {
   const { t } = useLanguage()
@@ -20,7 +84,7 @@ export function Projects() {
           <HomeReveal className="project-hero__media" delay={0.06} tone="media">
             <img
               className="project-hero__photo"
-              src="/media/project-energy.jpg"
+              src={f.heroImage}
               alt=""
               aria-hidden="true"
               decoding="async"
@@ -84,17 +148,11 @@ export function Projects() {
         </HomeStagger>
       </section>
 
-      {/* Single featured mandate — split editorial */}
+      {/* Featured mandate — same split, multi-image gallery */}
       <section className="pj-feature" aria-label={f.title}>
         <div className="wrap pj-feature__grid">
           <HomeReveal className="pj-feature__media" delay={0.1} tone="media">
-            <img
-              className="pj-feature__img"
-              src="/media/sector-energy.jpg"
-              alt=""
-              aria-hidden="true"
-              decoding="async"
-            />
+            <FeatureGallery images={f.images} />
           </HomeReveal>
 
           <HomeStagger className="pj-feature__copy">

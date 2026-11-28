@@ -21,6 +21,10 @@ export type Content = {
     practiceTitle: string
     practiceBody: string
     practiceTags: string[]
+    aboutCta: string
+    expertiseCta: string
+    sectorsCta: string
+    expertsCta: string
     listeningLabel: string
     listeningTitle: string
     listeningBody: string
@@ -153,6 +157,8 @@ export type Content = {
       tag: string
       title: string
       body: string[]
+      heroImage: string
+      images: string[]
       meta: { label: string; value: string }[]
       cta: string
     }
@@ -263,7 +269,7 @@ export const content: Record<Lang, Content> = {
       { id: 'expertise', label: 'Expertise' },
       { id: 'sectors', label: 'Sectors' },
       { id: 'projects', label: 'Projects' },
-      { id: 'experts', label: 'Experts' },
+      { id: 'experts', label: 'Expert network' },
     ],
     contactCta: 'Contact',
     explore: 'Explore',
@@ -285,6 +291,10 @@ export const content: Record<Lang, Content> = {
       practiceBody:
         'Our advice is shaped from inside government. Our leadership has served at the Presidency, in ministries, in Parliament and alongside international institutions.',
       practiceTags: ['Political strategy', 'Public policy', 'Reform'],
+      aboutCta: 'Discover RYSE',
+      expertiseCta: 'Explore our expertise',
+      sectorsCta: 'Explore our sectors',
+      expertsCta: 'Join the network',
       listeningLabel: 'Our approach',
       listeningTitle: 'Advice that begins with understanding.',
       listeningBody:
@@ -668,6 +678,12 @@ export const content: Record<Lang, Content> = {
           'Rensource brings its experience as an operator. RYSE brings local grounding, the structuring of the partnership and the governance of the project company.',
           'Together, we aim to bring reliable, sustainable power closer to the region’s businesses and communities.',
         ],
+        heroImage: '/media/sector-energy.jpg',
+        images: [
+          '/media/project-energy.jpg',
+          '/media/approach-meeting.jpg',
+          '/media/rensource-solar.jpg',
+        ],
         meta: [
           { label: 'Partner', value: 'Rensource Distributed Energy' },
           { label: 'Vehicle', value: 'Project company, Togo' },
@@ -693,7 +709,7 @@ export const content: Record<Lang, Content> = {
           name: 'Guinea',
           meta: 'Conakry · 9.64° N 13.58° W',
           body: 'A major market for strategic investment and institutional engagement. We help clients understand the environment and find the right counterparts.',
-          image: '/media/guinea.jpg?v=5',
+          image: '/media/guinea.jpg?v=7',
         },
         {
           name: 'Togo',
@@ -855,7 +871,7 @@ export const content: Record<Lang, Content> = {
       { id: 'expertise', label: 'Expertise' },
       { id: 'sectors', label: 'Secteurs' },
       { id: 'projects', label: 'Projets' },
-      { id: 'experts', label: 'Experts' },
+      { id: 'experts', label: 'Réseau d’experts' },
     ],
     contactCta: 'Contact',
     explore: 'Découvrir',
@@ -877,6 +893,10 @@ export const content: Record<Lang, Content> = {
       practiceBody:
         'Notre conseil est façonné de l’intérieur de l’État. Notre direction a servi à la Présidence, dans les ministères, au Parlement et aux côtés d’institutions internationales.',
       practiceTags: ['Stratégie politique', 'Politiques publiques', 'Réforme'],
+      aboutCta: 'Découvrir RYSE',
+      expertiseCta: 'Découvrir notre expertise',
+      sectorsCta: 'Découvrir nos secteurs',
+      expertsCta: 'Rejoindre le réseau',
       listeningLabel: 'Notre approche',
       listeningTitle: 'Un conseil qui commence par comprendre.',
       listeningBody:
@@ -1261,6 +1281,12 @@ export const content: Record<Lang, Content> = {
           'Rensource apporte son expérience d’opérateur. RYSE apporte l’ancrage local, la structuration du partenariat et la gouvernance de la société de projet.',
           'Ensemble, nous visons à rapprocher une énergie fiable et durable des entreprises et communautés de la région.',
         ],
+        heroImage: '/media/sector-energy.jpg',
+        images: [
+          '/media/project-energy.jpg',
+          '/media/approach-meeting.jpg',
+          '/media/rensource-solar.jpg',
+        ],
         meta: [
           { label: 'Partenaire', value: 'Rensource Distributed Energy' },
           { label: 'Véhicule', value: 'Société de projet, Togo' },
@@ -1286,7 +1312,7 @@ export const content: Record<Lang, Content> = {
           name: 'Guinée',
           meta: 'Conakry · 9.64° N 13.58° W',
           body: 'Un marché majeur pour l’investissement stratégique et l’engagement institutionnel. Nous aidons nos clients à comprendre l’environnement et à trouver les bons interlocuteurs.',
-          image: '/media/guinea.jpg?v=5',
+          image: '/media/guinea.jpg?v=7',
         },
         {
           name: 'Togo',
