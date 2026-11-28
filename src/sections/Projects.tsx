@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import {
-  HomeImage,
   HomeItem,
-  HomeSection,
+  HomeReveal,
   HomeStagger,
 } from '../components/home/HomeReveal'
 import { useLanguage } from '../context/LanguageContext'
+import { routes } from '../lib/routes'
 
 export function Projects() {
   const { t } = useLanguage()
@@ -12,29 +13,48 @@ export function Projects() {
   const f = p.featured
 
   return (
-    <section className="bg-sand2">
-      {/* Stillwell reference: right image + overlapping ivory card + italic lead */}
+    <div className="projects-page">
+      {/* Stillwell-style hero */}
       <section className="project-hero" aria-label={p.title}>
         <div className="project-hero__stage">
-          <div className="project-hero__media">
-            <HomeImage
-              src="/media/project-energy.jpg"
+          <HomeReveal className="project-hero__media" delay={0.06} tone="media">
+            <img
               className="project-hero__photo"
-              objectPosition="50% 48%"
-              delay={0.08}
+              src="/media/project-energy.jpg"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+              fetchPriority="high"
             />
-          </div>
+          </HomeReveal>
 
           <HomeStagger className="project-hero__card">
-            <HomeItem index={0} as="h1" className="project-hero__title">
-              {p.title}
-            </HomeItem>
+            <h1 className="project-hero__title">
+              <HomeItem
+                index={0}
+                as="span"
+                className="project-hero__line"
+                baseDelay={0.08}
+                stagger={0.1}
+              >
+                {p.titleLines[0]}
+              </HomeItem>
+              <HomeItem
+                index={1}
+                as="span"
+                className="project-hero__line is-accent"
+                baseDelay={0.08}
+                stagger={0.1}
+              >
+                {p.titleLines[1]}
+              </HomeItem>
+            </h1>
             <HomeItem
-              index={1}
+              index={2}
               as="p"
               className="project-hero__support"
               tone="soft"
-              baseDelay={0.2}
+              baseDelay={0.28}
             >
               {p.heroSupport}
             </HomeItem>
@@ -48,6 +68,7 @@ export function Projects() {
             className="project-hero__divider"
             tone="rule"
             baseDelay={0.28}
+            eager
             aria-hidden
           />
           <HomeItem
@@ -56,70 +77,85 @@ export function Projects() {
             className="project-hero__italic"
             tone="soft"
             baseDelay={0.38}
+            eager
           >
             {p.subtitle}
           </HomeItem>
         </HomeStagger>
       </section>
 
-      {/* Featured mandate */}
-      <HomeSection className="border-t border-rule bg-ivory">
-        <div className="project-feature">
-          <div className="wrap project-feature__grid">
-            <HomeStagger className="project-feature__intro">
-              <HomeItem index={0} as="p" className="eyebrow" tone="soft">
-                {f.tag}
-              </HomeItem>
-              <HomeItem index={1} as="h2" className="project-feature__title">
-                {f.title}
-              </HomeItem>
-              <HomeItem index={2} as="p" className="project-feature__lede">
-                {f.body[0]}
-              </HomeItem>
-              <HomeItem
-                index={3}
-                as="span"
-                tone="rule"
-                className="project-feature__rule"
-                aria-hidden
-              />
-            </HomeStagger>
+      {/* Single featured mandate — split editorial */}
+      <section className="pj-feature" aria-label={f.title}>
+        <div className="wrap pj-feature__grid">
+          <HomeReveal className="pj-feature__media" delay={0.1} tone="media">
+            <img
+              className="pj-feature__img"
+              src="/media/sector-energy.jpg"
+              alt=""
+              aria-hidden="true"
+              decoding="async"
+            />
+          </HomeReveal>
 
-            <div className="project-feature__media">
-              <HomeImage
-                src="/media/sector-energy.jpg"
-                className="project-feature__frame"
-                objectPosition="50% 40%"
-              />
-            </div>
+          <HomeStagger className="pj-feature__copy">
+            <HomeItem
+              index={0}
+              as="p"
+              className="ab-eyebrow"
+              tone="soft"
+              baseDelay={0.06}
+              stagger={0.09}
+            >
+              {f.tag}
+            </HomeItem>
+            <HomeItem
+              index={1}
+              as="h2"
+              className="pj-feature__title"
+              baseDelay={0.06}
+              stagger={0.09}
+            >
+              {f.title}
+            </HomeItem>
+            <HomeItem
+              index={2}
+              as="span"
+              className="ab-rule"
+              tone="rule"
+              baseDelay={0.28}
+            />
 
-            <HomeStagger className="project-feature__aside">
-              {f.body.slice(1).map((paragraph, i) => (
-                <HomeItem
-                  key={paragraph.slice(0, 28)}
-                  index={i}
-                  as="p"
-                  className="project-feature__copy"
-                >
-                  {paragraph}
-                </HomeItem>
-              ))}
+            {f.body.map((paragraph, i) => (
               <HomeItem
-                index={f.body.length}
-                as="dl"
-                className="project-feature__meta"
+                key={paragraph.slice(0, 28)}
+                index={i + 3}
+                as="p"
+                className="pj-feature__text"
+                tone="soft"
+                baseDelay={0.08}
+                stagger={0.08}
               >
-                {f.meta.map((item) => (
-                  <div key={item.label} className="project-feature__row">
-                    <dt>{item.label}</dt>
-                    <dd>{item.value}</dd>
-                  </div>
-                ))}
+                {paragraph}
               </HomeItem>
-            </HomeStagger>
-          </div>
+            ))}
+
+            <HomeItem index={8} as="dl" className="pj-feature__facts" baseDelay={0.14}>
+              {f.meta.map((item) => (
+                <div key={item.label} className="pj-feature__row">
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
+              ))}
+            </HomeItem>
+
+            <HomeItem index={9} className="pj-feature__actions" baseDelay={0.22}>
+              <Link to={routes.contact} className="btn-ryse solid">
+                {f.cta}
+              </Link>
+            </HomeItem>
+          </HomeStagger>
         </div>
-      </HomeSection>
-    </section>
+      </section>
+    </div>
   )
 }

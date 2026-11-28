@@ -145,13 +145,22 @@ export type Content = {
   projects: {
     eyebrow: string
     title: string
+    titleLines: [string, string]
     subtitle: string
     heroSupport: string
     featured: {
+      sectionLabel: string
       tag: string
       title: string
       body: string[]
       meta: { label: string; value: string }[]
+      cta: string
+    }
+    closing: {
+      eyebrow: string
+      title: string
+      body: string
+      cta: string
     }
   }
   where: {
@@ -644,17 +653,20 @@ export const content: Record<Lang, Content> = {
     },
     projects: {
       eyebrow: 'Our Projects',
-      title: 'Partnerships that build.',
+      title: 'Partnerships that advance the region.',
+      titleLines: ['Partnerships that', 'advance the region.'],
       subtitle:
         'Our mandates take shape on the ground, alongside partners who share our ambition for the region.',
       heroSupport:
-        'Strategic partnerships for energy, institutions and investment across West Africa.',
+        'Strategic collaboration in energy, institutions and investment across West Africa.',
       featured: {
+        sectionLabel: 'Featured mandate',
         tag: 'Energy · Togo',
         title: 'RYSE × Rensource',
         body: [
           'RYSE is partnering with Rensource Distributed Energy to set up a project company in Togo dedicated to distributed renewable energy across Francophone Africa.',
-          'Rensource brings its experience as an operator; RYSE brings local grounding, the structuring of the partnership and the governance of the project company. Together, we aim to bring reliable, sustainable power closer to the region’s businesses and communities.',
+          'Rensource brings its experience as an operator. RYSE brings local grounding, the structuring of the partnership and the governance of the project company.',
+          'Together, we aim to bring reliable, sustainable power closer to the region’s businesses and communities.',
         ],
         meta: [
           { label: 'Partner', value: 'Rensource Distributed Energy' },
@@ -662,6 +674,13 @@ export const content: Record<Lang, Content> = {
           { label: 'Sector', value: 'Distributed renewable energy' },
           { label: 'Reach', value: 'Francophone Africa' },
         ],
+        cta: 'Discuss a similar mandate',
+      },
+      closing: {
+        eyebrow: 'Next mandate',
+        title: 'Have a partnership in mind?',
+        body: 'From market entry to project structuring, we work with partners who want durable results in West Africa.',
+        cta: 'Start a conversation',
       },
     },
     where: {
@@ -1227,17 +1246,20 @@ export const content: Record<Lang, Content> = {
     },
     projects: {
       eyebrow: 'Nos projets',
-      title: 'Des partenariats qui construisent.',
+      title: 'Des partenariats qui construisent la région.',
+      titleLines: ['Des partenariats qui', 'construisent la région.'],
       subtitle:
         'Nos mandats prennent forme sur le terrain, aux côtés de partenaires qui partagent notre ambition pour la région.',
       heroSupport:
-        'Des partenariats stratégiques pour l’énergie, les institutions et l’investissement en Afrique de l’Ouest.',
+        'Une collaboration stratégique en énergie, institutions et investissement en Afrique de l’Ouest.',
       featured: {
+        sectionLabel: 'Mandat phare',
         tag: 'Énergie · Togo',
         title: 'RYSE × Rensource',
         body: [
           'RYSE s’associe à Rensource Distributed Energy pour créer une société de projet au Togo dédiée à l’énergie renouvelable distribuée en Afrique francophone.',
-          'Rensource apporte son expérience d’opérateur ; RYSE apporte l’ancrage local, la structuration du partenariat et la gouvernance de la société de projet. Ensemble, nous visons à rapprocher une énergie fiable et durable des entreprises et communautés de la région.',
+          'Rensource apporte son expérience d’opérateur. RYSE apporte l’ancrage local, la structuration du partenariat et la gouvernance de la société de projet.',
+          'Ensemble, nous visons à rapprocher une énergie fiable et durable des entreprises et communautés de la région.',
         ],
         meta: [
           { label: 'Partenaire', value: 'Rensource Distributed Energy' },
@@ -1245,6 +1267,13 @@ export const content: Record<Lang, Content> = {
           { label: 'Secteur', value: 'Énergie renouvelable distribuée' },
           { label: 'Portée', value: 'Afrique francophone' },
         ],
+        cta: 'Discuter d’un mandat similaire',
+      },
+      closing: {
+        eyebrow: 'Prochain mandat',
+        title: 'Un partenariat en tête ?',
+        body: 'De l’entrée sur un marché à la structuration de projet, nous accompagnons les partenaires qui visent des résultats durables en Afrique de l’Ouest.',
+        cta: 'Engager la conversation',
       },
     },
     where: {

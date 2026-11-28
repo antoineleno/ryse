@@ -141,6 +141,8 @@ export function HomeItem({
   index = 0,
   stagger = 0.08,
   baseDelay = 0.05,
+  /** Play on mount (hero-adjacent) instead of waiting for scroll into view. */
+  eager = false,
   'aria-hidden': ariaHidden,
 }: {
   children?: ReactNode
@@ -150,6 +152,7 @@ export function HomeItem({
   index?: number
   stagger?: number
   baseDelay?: number
+  eager?: boolean
   'aria-hidden'?: boolean | 'true' | 'false'
 }) {
   const reduce = useReducedMotion()
@@ -164,15 +167,33 @@ export function HomeItem({
     )
   }
 
+  const motionProps = eager
+    ? {
+        initial: hiddenState(tone),
+        animate: shownState(tone),
+      }
+    : {
+        initial: hiddenState(tone),
+        whileInView: shownState(tone),
+        viewport,
+      }
+
   if (tone === 'rule') {
     return (
       <Component
         className={className}
         aria-hidden={ariaHidden}
-        style={{ originX: 0, transformOrigin: 'left center' }}
-        initial={hiddenState('rule')}
-        whileInView={shownState('rule')}
-        viewport={viewport}
+        style={{ originX: 0, transformOrigin: 'center center' }}
+        {...(eager
+          ? {
+              initial: hiddenState('rule'),
+              animate: shownState('rule'),
+            }
+          : {
+              initial: hiddenState('rule'),
+              whileInView: shownState('rule'),
+              viewport,
+            })}
         transition={homeTween(delay, durationFor('rule'))}
       />
     )
@@ -182,9 +203,7 @@ export function HomeItem({
     <Component
       className={className}
       aria-hidden={ariaHidden}
-      initial={hiddenState(tone)}
-      whileInView={shownState(tone)}
-      viewport={viewport}
+      {...motionProps}
       transition={homeTween(delay, durationFor(tone))}
       style={tone === 'media' ? { transformOrigin: 'center center' } : undefined}
     >
