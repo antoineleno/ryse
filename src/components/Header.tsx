@@ -18,6 +18,10 @@ export function Header() {
   })
 
   useEffect(() => {
+    setScrolled(window.scrollY > 12)
+  }, [pathname])
+
+  useEffect(() => {
     setOpen(false)
   }, [pathname])
 
@@ -28,8 +32,19 @@ export function Header() {
     }
   }, [open])
 
+  useEffect(() => {
+    document.body.dataset.header = 'solid'
+    return () => {
+      delete document.body.dataset.header
+    }
+  }, [])
+
   return (
-    <header className="site-header" data-scrolled={scrolled}>
+    <header
+      className="site-header"
+      data-scrolled={scrolled}
+      data-transparent="false"
+    >
       <div className="site-header__bar">
         <Logo />
 
