@@ -146,6 +146,7 @@ export type Content = {
     eyebrow: string
     title: string
     subtitle: string
+    heroSupport: string
     featured: {
       tag: string
       title: string
@@ -174,11 +175,22 @@ export type Content = {
   experts: {
     eyebrow: string
     title: string
+    titleLines: [string, string]
     subtitle: string
+    heroCta: string
+    heroMeta: string
+    directLabel: string
+    directTitle: string
+    directBody: string
+    points: { label: string; value: string }[]
+    formLabel: string
+    formLead: string
     fields: {
       fullName: string
       email: string
       phone: string
+      countryCode: string
+      residence: string
       linkedin: string
       mainField: string
       years: string
@@ -190,6 +202,7 @@ export type Content = {
       cvHint: string
       countriesPlaceholder: string
       success: string
+      note: string
     }
     fieldOptions: string[]
     yearOptions: string[]
@@ -198,15 +211,22 @@ export type Content = {
     eyebrow: string
     title: string
     subtitle: string
+    directLabel: string
+    directTitle: string
+    emailLabel: string
+    emailValue: string
     whereLabel: string
     whereValue: string
     officesLabel: string
     officesValue: string
+    formLabel: string
+    formLead: string
     fields: {
       name: string
       organisation: string
       email: string
       phone: string
+      countryCode: string
       industry: string
       subject: string
       objectives: string
@@ -627,6 +647,8 @@ export const content: Record<Lang, Content> = {
       title: 'Partnerships that build.',
       subtitle:
         'Our mandates take shape on the ground, alongside partners who share our ambition for the region.',
+      heroSupport:
+        'Strategic partnerships for energy, institutions and investment across West Africa.',
       featured: {
         tag: 'Energy · Togo',
         title: 'RYSE × Rensource',
@@ -695,18 +717,44 @@ export const content: Record<Lang, Content> = {
       ],
     },
     experts: {
-      eyebrow: 'Join Our Expert Network',
+      eyebrow: 'Experts',
       title: 'Bring your expertise to our mandates.',
+      titleLines: ['Bring your expertise', 'to our mandates.'],
       subtitle:
-        'RYSE draws on a network of recognised consultants and specialists. Share your profile and we will contact you when an assignment matches your expertise.',
+        'RYSE draws on a network of recognised consultants and specialists across West Africa.',
+      heroCta: 'Share your profile',
+      heroMeta:
+        'Political · Mining · Energy · Security · Technology · Finance',
+      directLabel: 'The network',
+      directTitle: 'The right expertise on every mandate.',
+      directBody:
+        'On every project, we bring in the team the question calls for: political and institutional advisers, and experts in mining, energy, security, technology and finance.',
+      points: [
+        {
+          label: 'How it works',
+          value: 'Share your profile. We get in touch when an assignment matches.',
+        },
+        {
+          label: 'What we look for',
+          value: 'Field experience, judgement and the ability to work close to decision making.',
+        },
+        {
+          label: 'Confidentiality',
+          value: 'Applications are reviewed privately by the firm.',
+        },
+      ],
+      formLabel: 'Application',
+      formLead: 'A clear profile is enough. We respond when a mandate fits.',
       fields: {
-        fullName: 'Full Name',
+        fullName: 'Full name',
         email: 'Email',
         phone: 'Phone',
-        linkedin: 'LinkedIn Profile',
-        mainField: 'Main Field',
-        years: 'Years of Experience',
-        countries: 'Countries of Experience',
+        countryCode: 'Country code',
+        residence: 'Country of residence',
+        linkedin: 'LinkedIn profile',
+        mainField: 'Main field',
+        years: 'Years of experience',
+        countries: 'Countries of experience',
         cv: 'CV',
         consent:
           'I agree that RYSE may keep my details and CV to contact me about assignments.',
@@ -714,7 +762,8 @@ export const content: Record<Lang, Content> = {
         choose: 'Choose',
         cvHint: 'PDF or Word, 8 MB maximum',
         countriesPlaceholder: 'e.g. Guinea, Togo, Senegal',
-        success: 'Thank you. Your application has been sent.',
+        success: 'Thank you. Your application has been received.',
+        note: 'Applications are handled in confidence.',
       },
       fieldOptions: [
         'Political advisory',
@@ -728,26 +777,33 @@ export const content: Record<Lang, Content> = {
       yearOptions: ['1 to 3', '4 to 7', '8 to 12', '13 to 20', '20+'],
     },
     contact: {
-      eyebrow: "Let's start a conversation",
-      title: 'Your next opportunity begins with the right perspective.',
+      eyebrow: 'Contact',
+      title: 'Begin the conversation.',
       subtitle:
-        'Whether you are exploring a new market, preparing a reform or looking for a partner, let’s talk about your objectives in West Africa.',
-      whereLabel: 'Where we work',
+        'Whether you are exploring a new market, preparing a reform or looking for a partner, share your objectives in West Africa.',
+      directLabel: 'Reach us',
+      directTitle: 'Offices and correspondence.',
+      emailLabel: 'Email',
+      emailValue: 'contact@ryseglobalinc.com',
+      whereLabel: 'Region',
       whereValue: 'West Africa',
       officesLabel: 'Offices',
       officesValue: 'Conakry, Guinea · Lomé, Togo',
+      formLabel: 'Enquiry',
+      formLead: 'A short note is enough to begin. We respond in confidence.',
       fields: {
         name: 'Name',
         organisation: 'Organisation',
         email: 'Email',
         phone: 'Phone',
+        countryCode: 'Country code',
         industry: 'Industry',
         subject: 'Subject',
-        objectives: 'Your Objectives',
-        submit: 'Send',
+        objectives: 'Your objectives',
+        submit: 'Send message',
         note: 'Enquiries are handled in confidence.',
         choose: 'Choose',
-        success: 'Thank you. Your message is ready. We will respond shortly.',
+        success: 'Thank you. We have received your message and will respond shortly.',
       },
       industries: [
         'Government / Public sector',
@@ -1174,6 +1230,8 @@ export const content: Record<Lang, Content> = {
       title: 'Des partenariats qui construisent.',
       subtitle:
         'Nos mandats prennent forme sur le terrain, aux côtés de partenaires qui partagent notre ambition pour la région.',
+      heroSupport:
+        'Des partenariats stratégiques pour l’énergie, les institutions et l’investissement en Afrique de l’Ouest.',
       featured: {
         tag: 'Énergie · Togo',
         title: 'RYSE × Rensource',
@@ -1242,14 +1300,43 @@ export const content: Record<Lang, Content> = {
       ],
     },
     experts: {
-      eyebrow: 'Rejoindre notre réseau d’experts',
+      eyebrow: 'Experts',
       title: 'Apportez votre expertise à nos mandats.',
+      titleLines: ['Apportez votre expertise', 'à nos mandats.'],
       subtitle:
-        'RYSE s’appuie sur un réseau de consultants et de spécialistes reconnus. Partagez votre profil ; nous vous contacterons lorsqu’une mission correspondra à votre expertise.',
+        'RYSE s’appuie sur un réseau de consultants et de spécialistes reconnus en Afrique de l’Ouest.',
+      heroCta: 'Partagez votre profil',
+      heroMeta:
+        'Politique · Mines · Énergie · Sécurité · Technologie · Finance',
+      directLabel: 'Le réseau',
+      directTitle: 'La bonne expertise sur chaque mandat.',
+      directBody:
+        'Sur chaque projet, nous constituons l’équipe que la question appelle : conseillers politiques et institutionnels, et experts en mines, énergie, sécurité, technologie et finance.',
+      points: [
+        {
+          label: 'Comment ça se passe',
+          value:
+            'Partagez votre profil. Nous vous contactons lorsqu’une mission correspond.',
+        },
+        {
+          label: 'Ce que nous cherchons',
+          value:
+            'Une expérience de terrain, du jugement et la capacité à travailler près de la décision.',
+        },
+        {
+          label: 'Confidentialité',
+          value: 'Les candidatures sont examinées en privé par le cabinet.',
+        },
+      ],
+      formLabel: 'Candidature',
+      formLead:
+        'Un profil clair suffit. Nous répondons lorsqu’un mandat correspond.',
       fields: {
         fullName: 'Nom complet',
         email: 'Email',
         phone: 'Téléphone',
+        countryCode: 'Indicatif',
+        residence: 'Pays de résidence',
         linkedin: 'Profil LinkedIn',
         mainField: 'Domaine principal',
         years: 'Années d’expérience',
@@ -1261,7 +1348,8 @@ export const content: Record<Lang, Content> = {
         choose: 'Choisir',
         cvHint: 'PDF ou Word, 8 Mo maximum',
         countriesPlaceholder: 'ex. Guinée, Togo, Sénégal',
-        success: 'Merci. Votre candidature a été envoyée.',
+        success: 'Merci. Votre candidature a bien été reçue.',
+        note: 'Les candidatures sont traitées en toute confidentialité.',
       },
       fieldOptions: [
         'Conseil politique',
@@ -1272,29 +1360,38 @@ export const content: Record<Lang, Content> = {
         'Finance',
         'Autre',
       ],
-      yearOptions: ['1 to 3', '4 to 7', '8 to 12', '13 to 20', '20+'],
+      yearOptions: ['1 à 3', '4 à 7', '8 à 12', '13 à 20', '20+'],
     },
     contact: {
-      eyebrow: 'Engager la conversation',
-      title: 'Votre prochaine opportunité commence par la bonne perspective.',
+      eyebrow: 'Contact',
+      title: 'Engager la conversation.',
       subtitle:
-        'Que vous exploriez un nouveau marché, prépariez une réforme ou cherchiez un partenaire, parlons de vos objectifs en Afrique de l’Ouest.',
-      whereLabel: 'Où nous travaillons',
+        'Que vous exploriez un nouveau marché, prépariez une réforme ou cherchiez un partenaire, partagez vos objectifs en Afrique de l’Ouest.',
+      directLabel: 'Nous joindre',
+      directTitle: 'Bureaux et correspondance.',
+      emailLabel: 'Email',
+      emailValue: 'contact@ryseglobalinc.com',
+      whereLabel: 'Région',
       whereValue: 'Afrique de l’Ouest',
       officesLabel: 'Bureaux',
       officesValue: 'Conakry, Guinée · Lomé, Togo',
+      formLabel: 'Demande',
+      formLead:
+        'Quelques lignes suffisent pour commencer. Nous répondons en toute confidentialité.',
       fields: {
         name: 'Nom',
         organisation: 'Organisation',
         email: 'Email',
         phone: 'Téléphone',
+        countryCode: 'Indicatif',
         industry: 'Secteur',
         subject: 'Objet',
         objectives: 'Vos objectifs',
-        submit: 'Envoyer',
+        submit: 'Envoyer le message',
         note: 'Les demandes sont traitées en toute confidentialité.',
         choose: 'Choisir',
-        success: 'Merci. Votre message est prêt. Nous vous répondrons rapidement.',
+        success:
+          'Merci. Nous avons bien reçu votre message et vous répondrons rapidement.',
       },
       industries: [
         'Gouvernement / Secteur public',

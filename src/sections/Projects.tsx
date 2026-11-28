@@ -4,7 +4,6 @@ import {
   HomeSection,
   HomeStagger,
 } from '../components/home/HomeReveal'
-import { PageIntro } from '../components/PageIntro'
 import { useLanguage } from '../context/LanguageContext'
 
 export function Projects() {
@@ -13,59 +12,105 @@ export function Projects() {
   const f = p.featured
 
   return (
-    <section className="bg-ivory">
-      <HomeSection className="border-b border-rule">
-        <div className="wrap">
-          <PageIntro eyebrow={p.eyebrow} title={p.title} body={p.subtitle} />
-        </div>
-      </HomeSection>
+    <section className="bg-sand2">
+      {/* Stillwell reference: right image + overlapping ivory card + italic lead */}
+      <section className="project-hero" aria-label={p.title}>
+        <div className="project-hero__stage">
+          <div className="project-hero__media">
+            <HomeImage
+              src="/media/project-energy.jpg"
+              className="project-hero__photo"
+              objectPosition="50% 48%"
+              delay={0.08}
+            />
+          </div>
 
-      <HomeSection className="bg-sand2">
-        <div className="home-ground">
-          <div className="wrap home-ground__grid">
-            <HomeStagger className="home-ground__intro">
+          <HomeStagger className="project-hero__card">
+            <HomeItem index={0} as="h1" className="project-hero__title">
+              {p.title}
+            </HomeItem>
+            <HomeItem
+              index={1}
+              as="p"
+              className="project-hero__support"
+              tone="soft"
+              baseDelay={0.2}
+            >
+              {p.heroSupport}
+            </HomeItem>
+          </HomeStagger>
+        </div>
+
+        <HomeStagger className="project-hero__below">
+          <HomeItem
+            index={0}
+            as="span"
+            className="project-hero__divider"
+            tone="rule"
+            baseDelay={0.28}
+            aria-hidden
+          />
+          <HomeItem
+            index={1}
+            as="p"
+            className="project-hero__italic"
+            tone="soft"
+            baseDelay={0.38}
+          >
+            {p.subtitle}
+          </HomeItem>
+        </HomeStagger>
+      </section>
+
+      {/* Featured mandate */}
+      <HomeSection className="border-t border-rule bg-ivory">
+        <div className="project-feature">
+          <div className="wrap project-feature__grid">
+            <HomeStagger className="project-feature__intro">
               <HomeItem index={0} as="p" className="eyebrow" tone="soft">
                 {f.tag}
               </HomeItem>
-              <HomeItem index={1} as="h2" className="home-ground__title">
+              <HomeItem index={1} as="h2" className="project-feature__title">
                 {f.title}
               </HomeItem>
-              <HomeItem index={2} as="p" className="home-ground__body">
+              <HomeItem index={2} as="p" className="project-feature__lede">
                 {f.body[0]}
               </HomeItem>
               <HomeItem
                 index={3}
                 as="span"
                 tone="rule"
-                className="home-ground__rule"
+                className="project-feature__rule"
                 aria-hidden
               />
             </HomeStagger>
 
-            <div className="home-ground__media">
+            <div className="project-feature__media">
               <HomeImage
-                src="/media/project-energy.jpg"
-                className="home-ground__img-wrap"
+                src="/media/sector-energy.jpg"
+                className="project-feature__frame"
+                objectPosition="50% 40%"
               />
-              <HomeItem index={0} as="p" className="home-ground__tag" baseDelay={0.15}>
-                {f.tag}
-              </HomeItem>
             </div>
 
-            <HomeStagger className="home-ground__aside">
+            <HomeStagger className="project-feature__aside">
               {f.body.slice(1).map((paragraph, i) => (
                 <HomeItem
-                  key={paragraph.slice(0, 24)}
+                  key={paragraph.slice(0, 28)}
                   index={i}
                   as="p"
-                  className="home-ground__project-body"
+                  className="project-feature__copy"
                 >
                   {paragraph}
                 </HomeItem>
               ))}
-              <HomeItem index={f.body.length} as="dl" className="home-ground__stats">
+              <HomeItem
+                index={f.body.length}
+                as="dl"
+                className="project-feature__meta"
+              >
                 {f.meta.map((item) => (
-                  <div key={item.label} className="home-ground__stat">
+                  <div key={item.label} className="project-feature__row">
                     <dt>{item.label}</dt>
                     <dd>{item.value}</dd>
                   </div>
