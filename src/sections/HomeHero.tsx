@@ -16,8 +16,8 @@ export function HomeHero() {
       <HomeReveal className="home-hero__media" delay={0.04} tone="media">
         <img
           className="home-hero__img"
-          src="/media/home-landscape.jpg?v=clean1"
-          alt="Professionals in a strategic advisory meeting"
+          src="/media/home-landscape.jpg?v=lagos2"
+          alt="Advisory team in a strategic meeting in West Africa"
           decoding="async"
           fetchPriority="high"
         />

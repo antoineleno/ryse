@@ -880,7 +880,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 68% 36%;
+    object-position: 40% 35%;
   }
 
   /* Decorative L pieces — hidden on small screens (copy is solid ivory) */
@@ -1075,7 +1075,7 @@
   /* Desktop: full-bleed photo + ivory L-frame */
   @media (min-width: 960px) {
     .home-hero {
-      --hero-rail: clamp(30rem, 46vw, 40rem);
+      --hero-rail: clamp(30rem, 44vw, 38rem);
       --hero-plinth: 4.75rem;
       --hero-gutter: clamp(28px, 3vw, 56px);
       display: block;
@@ -1098,7 +1098,7 @@
     }
 
     .home-hero__img {
-      object-position: 74% 34%;
+      object-position: 35% 30%;
     }
 
     .home-hero__rail {
@@ -1111,7 +1111,7 @@
       width: var(--hero-rail);
       background: var(--color-ivory);
       /* Soft shear — solid geometry, not a translucent veil */
-      clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
     }
 
     .home-hero__plinth {
@@ -1131,10 +1131,10 @@
       z-index: 2;
       top: 12%;
       bottom: calc(var(--hero-plinth) + 12%);
-      left: calc(var(--hero-rail) * 0.88 - 1px);
+      left: calc(var(--hero-rail) * 0.9 - 1px);
       width: 1px;
       background: color-mix(in srgb, var(--color-bronzel) 70%, transparent);
-      transform: skewX(-6.5deg);
+      transform: skewX(-5.5deg);
       transform-origin: top left;
     }
 
@@ -1145,7 +1145,7 @@
       top: 0;
       left: 0;
       bottom: var(--hero-plinth);
-      width: calc(var(--hero-rail) * 0.88);
+      width: calc(var(--hero-rail) * 0.86);
       max-width: none;
       display: flex;
       flex-direction: column;
@@ -1222,7 +1222,7 @@
 
   @media (min-width: 1200px) {
     .home-hero {
-      --hero-rail: clamp(34rem, 44vw, 42rem);
+      --hero-rail: clamp(32rem, 42vw, 40rem);
       --hero-plinth: 5rem;
     }
 
@@ -1236,7 +1236,7 @@
     }
 
     .home-hero__img {
-      object-position: 78% 32%;
+      object-position: 65% 30%;
     }
   }
 
