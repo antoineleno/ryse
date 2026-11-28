@@ -75,6 +75,7 @@ export type Content = {
     body: string
     primary: string
     secondary: string
+    places: string
   }
   about: {
     eyebrow: string
@@ -426,6 +427,7 @@ export const content: Record<Lang, Content> = {
       body: 'Thoughtful strategic advice for the decisions that shape West Africa’s next decade, and the partnerships that endure beyond it.',
       primary: 'Book a conversation',
       secondary: 'Explore our approach',
+      places: 'West Africa · Conakry · Lomé',
     },
     about: {
       eyebrow: 'About RYSE',
@@ -971,6 +973,7 @@ export const content: Record<Lang, Content> = {
       body: 'Un conseil stratégique pensé pour les décisions qui façonnent la prochaine décennie en Afrique de l’Ouest, et les partenariats qui durent au delà.',
       primary: 'Réserver un échange',
       secondary: 'Découvrir notre approche',
+      places: 'Afrique de l’Ouest · Conakry · Lomé',
     },
     about: {
       eyebrow: 'À propos de RYSE',

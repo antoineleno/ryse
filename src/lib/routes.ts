@@ -7,6 +7,7 @@ export const routes = {
   where: '/about#where',
   board: '/about#board',
   mission: '/about#mission',
+  approach: '/about#approach',
   network: '/about#network',
   experts: '/experts',
   contact: '/contact',

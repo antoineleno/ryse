@@ -8,7 +8,7 @@ import {
 } from '../components/home/HomeReveal'
 import { useLanguage } from '../context/LanguageContext'
 import { routes } from '../lib/routes'
-import { Hero } from '../sections/Hero'
+import { HomeHero } from '../sections/HomeHero'
 
 export function Home() {
   const { t } = useLanguage()
@@ -18,7 +18,7 @@ export function Home() {
 
   return (
     <>
-      <Hero />
+      <HomeHero />
 
       {/* 1 — Approach */}
       <HomeSection className="border-t border-rule bg-ivory">
