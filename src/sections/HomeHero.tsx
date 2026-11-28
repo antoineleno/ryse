@@ -66,12 +66,12 @@ export function HomeHero() {
           {h.body}
         </HomeItem>
         <HomeItem index={5} className="home-hero__actions" baseDelay={0.4} eager>
-          <Link to={routes.contact} className="home-hero__cta">
-            {h.primary}
-          </Link>
-          <Link to={routes.approach} className="home-hero__link">
-            {h.secondary}
-          </Link>
+            <Link to={routes.contact} className="home-hero__cta">
+              {h.primary}
+            </Link>
+            <Link to={routes.approach} className="home-hero__link">
+              {h.homeSecondary}
+            </Link>
         </HomeItem>
       </HomeStagger>
 

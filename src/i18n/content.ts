@@ -79,6 +79,9 @@ export type Content = {
     body: string
     primary: string
     secondary: string
+    /** Shorter CTAs for the home L-frame hero only */
+    homePrimary: string
+    homeSecondary: string
     places: string
     scroll: string
   }
@@ -467,6 +470,8 @@ export const content: Record<Lang, Content> = {
       body: 'Thoughtful strategic advice for the decisions that shape West Africa’s next decade, and the partnerships that endure beyond it.',
       primary: 'Book a conversation',
       secondary: 'Explore our approach',
+      homePrimary: 'Book a call',
+      homeSecondary: 'Our approach',
       places: 'West Africa · Conakry · Lomé',
       scroll: 'Scroll to explore',
     },
@@ -1070,6 +1075,8 @@ export const content: Record<Lang, Content> = {
       body: 'Un conseil stratégique pensé pour les décisions qui façonnent la prochaine décennie en Afrique de l’Ouest, et les partenariats qui durent au delà.',
       primary: 'Réserver un échange',
       secondary: 'Explorer notre approche',
+      homePrimary: 'Réserver un appel',
+      homeSecondary: 'Notre approche',
       places: 'Afrique de l’Ouest · Conakry · Lomé',
       scroll: 'Défiler pour explorer',
     },

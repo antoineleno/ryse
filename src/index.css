@@ -998,17 +998,22 @@
   }
 
   .home-hero__link {
-    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
     flex: none;
+    box-sizing: border-box;
     font-family: var(--font-label);
     font-size: 11.5px;
     font-weight: 700;
+    line-height: 1;
     letter-spacing: 1.8px;
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
     color: var(--color-ink);
     border-bottom: 1.5px solid var(--color-bronzel);
+    padding-top: 6px;
     padding-bottom: 5px;
     transition:
       color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1070,7 +1075,7 @@
   /* Desktop: full-bleed photo + ivory L-frame */
   @media (min-width: 960px) {
     .home-hero {
-      --hero-rail: clamp(28rem, 42vw, 36rem);
+      --hero-rail: clamp(30rem, 46vw, 40rem);
       --hero-plinth: 4.75rem;
       --hero-gutter: clamp(28px, 3vw, 56px);
       display: block;
@@ -1140,14 +1145,14 @@
       top: 0;
       left: 0;
       bottom: var(--hero-plinth);
-      width: calc(var(--hero-rail) * 0.82);
+      width: calc(var(--hero-rail) * 0.88);
       max-width: none;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding:
         clamp(40px, 7vh, 72px)
-        clamp(24px, 2.4vw, 40px)
+        clamp(20px, 2vw, 36px)
         clamp(36px, 5vh, 56px)
         max(36px, calc((100vw - 1240px) / 2));
       background: transparent;
@@ -1185,12 +1190,15 @@
 
     .home-hero__actions {
       margin-top: 32px;
-      flex-wrap: wrap;
-      gap: 18px 28px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 18px 24px;
     }
 
     .home-hero__cta {
       flex: none;
+      width: auto;
     }
 
     .home-hero__places {
@@ -1214,7 +1222,7 @@
 
   @media (min-width: 1200px) {
     .home-hero {
-      --hero-rail: clamp(32rem, 40vw, 38rem);
+      --hero-rail: clamp(34rem, 44vw, 42rem);
       --hero-plinth: 5rem;
     }
 
