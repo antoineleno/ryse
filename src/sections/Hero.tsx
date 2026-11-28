@@ -25,7 +25,7 @@ export function Hero({
   primaryTo = routes.contact,
   secondary,
   secondaryTo = routes.approach,
-  image = '/media/approach-meeting.jpg',
+  image = '/media/expertise-hero.jpg',
   cardLabel,
   cardTags,
 }: HeroProps = {}) {

@@ -88,7 +88,7 @@ export function HomeHero() {
         <HomeReveal className="home-hero__media" delay={0.16} tone="media">
           <img
             className="home-hero__img"
-            src="/media/guinea.jpg?v=7"
+            src="/media/home-landscape.jpg"
             alt=""
             aria-hidden="true"
             decoding="async"

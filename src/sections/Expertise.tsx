@@ -10,10 +10,10 @@ import { routes } from '../lib/routes'
 import { Hero } from './Hero'
 
 const practiceImages = [
-  '/media/practice-foresight.jpg?v=2',
-  '/media/practice-market.jpg?v=2',
+  '/media/practice-foresight.jpg',
+  '/media/practice-market.jpg',
   '/media/practice-partners.jpg',
-  '/media/practice-engage.jpg?v=2',
+  '/media/expertise-practice-4.jpg',
 ] as const
 
 export function Expertise() {
@@ -27,7 +27,7 @@ export function Expertise() {
         eyebrow={e.eyebrow}
         titleLines={e.titleLines}
         body={e.subtitle}
-        image="/media/approach-meeting.jpg"
+        image="/media/expertise-hero.jpg?v=restore1"
       />
 
       {/* Leading practice + audiences — one continuous session */}
@@ -72,7 +72,7 @@ export function Expertise() {
             </HomeItem>
           </HomeStagger>
           <HomeReveal className="ex-lead__media" delay={0.12} tone="soft">
-            <img src="/media/expertise-policy.jpg" alt="" />
+            <img src="/media/expertise-leading.jpg" alt="" />
           </HomeReveal>
         </div>
 

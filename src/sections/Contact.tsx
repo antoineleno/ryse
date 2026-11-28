@@ -54,7 +54,7 @@ export function Contact() {
         <HomeReveal className="ct-hero__media" delay={0.22} tone="media">
           <img
             className="ct-hero__bg"
-            src="/media/guinea.jpg"
+            src="/media/contact-bg.jpg?v=2"
             alt=""
             aria-hidden="true"
           />

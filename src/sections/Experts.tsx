@@ -90,7 +90,7 @@ export function Experts() {
         <HomeReveal className="xp-hero__media" delay={0.16} tone="media">
           <img
             className="xp-hero__img"
-            src="/media/practice-engage.jpg"
+            src="/media/experts-hero.jpg"
             alt=""
             aria-hidden="true"
             decoding="async"

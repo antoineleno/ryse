@@ -54,7 +54,7 @@ export function Home() {
 
             <div className="approach-listen__media">
               <HomeImage
-                src="/media/approach-listen.jpg"
+                src="/media/home-about.jpg"
                 className="approach-listen__img-wrap"
               />
             </div>
@@ -211,7 +211,7 @@ export function Home() {
 
             <div className="home-ground__media">
               <HomeImage
-                src="/media/project-energy.jpg"
+                src="/media/home-featured.jpg"
                 className="home-ground__img-wrap"
               />
             </div>
